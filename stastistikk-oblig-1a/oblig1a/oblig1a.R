@@ -1,45 +1,65 @@
-# Leser inn data
-laban <- read.csv("labanXY.csv")
+#install.packages("ggplot2")
+library(ggplot2)
 
-# Erstatter NA verdier i 'Antall' med 0
-laban$Antall[is.na(laban$Antall)] <- 0
+# Read CSV data
+df <- read.csv("./labanXY.csv")
 
-# Beregner kumulativ frekvens
-laban$CumulativeFrequency <- cumsum(laban$Antall)
+# Calculate Mean
+mean <- weighted.mean(df$Midpunkt, df$Antall)
 
-# Beregner statistiske mål
-meanValue <- mean(laban$Midpunkt, na.rm = TRUE)
-medianValue <- median(laban$Midpunkt, na.rm = TRUE)
-modeValue <- as.numeric(names(sort(table(laban$Midpunkt), decreasing = TRUE)[1]))
-sdValue <- sd(laban$Midpunkt, na.rm = TRUE)
+# Calculate Median
+cumulative_frequency <- cumsum(df$Antall)
+total_frequency <- tail(cumulative_frequency, n=1)
+median_interval_index <- which(cumulative_frequency >= total_frequency / 2)[1]
+median_interval_lower <- df$Lower[median_interval_index]
+median_interval_upper <- df$Upper[median_interval_index]
+median_interval_freq <- df$Antall[median_interval_index]
+cumulative_freq_before_median <- ifelse(median_interval_index > 1, cumulative_frequency[median_interval_index - 1], 0)
+median <- median_interval_lower + (total_frequency / 2 - cumulative_freq_before_median) / median_interval_freq * (median_interval_upper - median_interval_lower)
 
+# Calculate Mode
+mode <- df$Midpunkt[which.max(df$Antall)]
 
-# Lager et 'barplot' og lagrer returverdien for å få søyleposisjonene
-bp <- barplot(laban$Antall, names.arg = laban$Midpunkt, 
-              main = "Histogram of 'Antall'", xlab = "Midpunkt", ylab = "Frekvens", 
-              col = "lightblue", border = "blue")
+# Calculate Variance and Standard Deviation
+mean_square <- weighted.mean(df$Midpunkt^2, df$Antall)
+variance <- mean_square - mean^2
+std_dev <- sqrt(variance)
 
-# Finner x-posisjonene for mean, median, mode og standardavvik
-mean_xpos <- meanValue
-median_xpos <- medianValue
-mode_xpos <- modeValue
-sd_neg_xpos <- meanValue - sdValue
-sd_pos_xpos <- meanValue + sdValue
+# Sample Standard Deviation (assuming this is a sample)
+sample_variance <- sum(df$Antall * (df$Midpunkt - mean)^2) / (total_frequency - 1)
+sample_std_dev <- sqrt(sample_variance)
 
-# Tegner linjer for statistiske mål
-abline(v = mean_xpos, col = "red", lwd = 2)
-abline(v = median_xpos, col = "blue", lwd = 2)
-abline(v = mode_xpos, col = "purple", lwd = 2)
-abline(v = sd_neg_xpos, col = "green", lwd = 2)
-abline(v = sd_pos_xpos, col = "green", lwd = 2)
+# Print calculated values
+cat("Mean:", mean, "Median:", median, "Mode:", mode, "Variance:", variance, "Standard Deviation:", std_dev, "Sample Standard Deviation:", sample_std_dev, "\n")
 
-# Legger til tekstetiketter
-text(mean_xpos, 0, "Mean", pos = 3, col = "red")
-text(median_xpos, 0, "Median", pos = 3, col = "blue")
-text(mode_xpos, 0, "Mode", pos = 3, col = "purple")
-text(sd_neg_xpos, 0, "-SD", pos = 3, col = "green")
-text(sd_pos_xpos, 0, "+SD", pos = 3, col = "green")
+# Function to draw vertical lines
+drawLines <- function(mean, median, mode, std_dev, sample_std_dev) {
+  list(
+    geom_vline(xintercept=mean, color='red', linetype="solid", linewidth=1),
+    geom_vline(xintercept=median, color='green', linetype="solid", linewidth=1),
+    geom_vline(xintercept=mode, color='blue', linetype="solid", linewidth=1),
+    geom_vline(xintercept=mean - std_dev, color='orange', linetype="dashed", linewidth=1),
+    geom_vline(xintercept=mean + std_dev, color='orange', linetype="dashed", linewidth=1),
+    geom_vline(xintercept=mean - sample_std_dev, color='purple', linetype="dotted", linewidth=1),
+    geom_vline(xintercept=mean + sample_std_dev, color='purple', linetype="dotted", linewidth=1)
+  )
+}
 
-# Lager kumulativt frekvensdiagram
-plot(laban$Midpunkt, laban$CumulativeFrequency, type = "o", 
-     main = "Kumulativt Frekvensdiagram", xlab = "Midpunkt", ylab = "Kumulativ Frekvens")
+# Plotting Histogram
+ggplot(df, aes(x=Midpunkt, y=Antall)) +
+  geom_bar(stat="identity", position=position_dodge(), color="black") +
+  labs(title="Histogram", x="Midpunkt", y="Frekvens") +
+  drawLines(mean, median, mode, std_dev, sample_std_dev)
+
+# Plotting Frequency Diagram
+ggplot(df, aes(x=Midpunkt, y=Antall)) +
+  geom_bar(stat="identity", position=position_dodge(), color="black") +
+  labs(title="Frequency Diagram", x="Midpunkt", y="Frekvens") +
+  drawLines(mean, median, mode, std_dev, sample_std_dev)
+
+# Plotting Cumulative Frequency Diagram
+ggplot(df, aes(x=Midpunkt, y=cumulative_frequency)) +
+  geom_line(color="black") +
+  labs(title="Cumulative Frequency Diagram", x="Midpunkt", y="Kumulativ Frekvens") +
+  drawLines(mean, median, mode, std_dev, sample_std_dev)
+
