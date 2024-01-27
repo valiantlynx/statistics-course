@@ -37,25 +37,25 @@ cat("Mean:", mean, "Median:", median, "Mode:", mode, "Variance:", variance, "Sta
 drawLinesAndText <- function(mean, median, mode, std_dev, sample_std_dev, ymax) {
   list(
     geom_vline(xintercept=mean, color='red', linetype="solid", linewidth=1),
-    geom_text(aes(x=mean, label="Mean", y=ymax*0.9), color='red', vjust=-1.5, size=3),
+    geom_text(aes(x=mean, label="Middelverdi", y=ymax*0.9), color='red', vjust=-1.5, size=3),
     
     geom_vline(xintercept=median, color='green', linetype="solid", linewidth=1),
     geom_text(aes(x=median, label="Median", y=ymax*0.8), color='green', vjust=-1.5, size=3),
     
     geom_vline(xintercept=mode, color='blue', linetype="solid", linewidth=1),
-    geom_text(aes(x=mode, label="Mode", y=ymax*0.7), color='blue', vjust=-1.5, size=3),
+    geom_text(aes(x=mode, label="Typetall", y=ymax*0.7), color='blue', vjust=-1.5, size=3),
     
     geom_vline(xintercept=mean - std_dev, color='orange', linetype="dashed", linewidth=1),
-    geom_text(aes(x=mean - std_dev, label="Std Dev", y=ymax*0.6), color='orange', vjust=-1.5, size=3),
+    geom_text(aes(x=mean - std_dev, label="Populasjonsstandardavvik", y=ymax*0.6), color='orange', vjust=-1.5, size=3),
     
     geom_vline(xintercept=mean + std_dev, color='orange', linetype="dashed", linewidth=1),
-    geom_text(aes(x=mean + std_dev, label="Std Dev", y=ymax*0.5), color='orange', vjust=-1.5, size=3),
+    geom_text(aes(x=mean + std_dev, label="Populasjonsstandardavvik", y=ymax*0.5), color='orange', vjust=-1.5, size=3),
     
     geom_vline(xintercept=mean - sample_std_dev, color='purple', linetype="dotted", linewidth=1),
-    geom_text(aes(x=mean - sample_std_dev, label="Sample Std Dev", y=ymax*0.4), color='purple', vjust=-1.5, size=3),
+    geom_text(aes(x=mean - sample_std_dev, label="Utvalgsstandardavvik", y=ymax*0.4), color='purple', vjust=-1.5, size=3),
     
     geom_vline(xintercept=mean + sample_std_dev, color='purple', linetype="dotted", linewidth=1),
-    geom_text(aes(x=mean + sample_std_dev, label="Sample Std Dev", y=ymax*0.3), color='purple', vjust=-1.5, size=3)
+    geom_text(aes(x=mean + sample_std_dev, label="Utvalgsstandardavvik", y=ymax*0.3), color='purple', vjust=-1.5, size=3)
   )
 }
 
