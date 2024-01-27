@@ -15,7 +15,7 @@
 \maketitle
 
 \section{Introduksjon}
-I denne rapporten analyserer jeg data samlet fra et eksperiment hvor en terning ble droppet fra ulike høyder. jeg undersøker sammenhengen mellom høyden terningen ble sluppet fra (Dropp) og lengden den rullet (Lengde) etter å ha truffet bakken. Analysen inkluderer regresjonsanalyse og residualanalyse for å forstå forholdet mellom disse variablene.
+I denne rapporten analyserer jeg data samlet fra et eksperiment hvor en terning ble droppet fra ulike høyder. Jeg undersøker sammenhengen mellom høyden terningen ble sluppet fra (Dropp) og lengden den rullet (Lengde) etter å ha truffet bakken. Analysen inkluderer regresjonsanalyse og residualanalyse for å forstå forholdet mellom disse variablene.
 
 \section{Oppgave 2}
 \subsection{2a: Datainnsamling og Analyse}
@@ -28,7 +28,38 @@ Først ble det utført en regresjonsanalyse på de første fem målingene for å
 lm_first5 <- lm(Lengde ~ Dropp, data=df[1:5, ])
 summary(lm_first5)
 \end{lstlisting}
-\textbf{Regresjonslinje (2b):} Resultatene fra R er sammenlignet med manuell beregning for å sikre nøyaktighet.
+\textbf{Manuell beregning av regresjonslinjen:} 
+bruker følgende formel for manuell beregning:
+
+\begin{align*}
+\beta &= \frac{n\sum(xy) - \sum x \sum y}{n\sum(x^2) - (\sum x)^2} \\
+\alpha &= \bar{y} - \beta\bar{x}
+\end{align*}
+
+Beregner summene:
+\begin{align*}
+\sum x &= 188 \\
+\sum y &= 326 \\
+\sum xy &= 13500 \\
+\sum x^2 &= 7674
+\end{align*}
+
+Deretter beregner vi \( \beta \) og \( \alpha \):
+\begin{align*}
+\beta &= \frac{5 \times 13500 - 188 \times 326}{5 \times 7674 - 188^2} \\
+\alpha &= \frac{326}{5} - \beta \times \frac{188}{5}
+\end{align*}
+
+\textbf{Sammenligning:} 
+Sammenlign de manuelt beregnede verdiene av \( \alpha \) og \( \beta \) med de fra R-utdataen for å sikre nøyaktighet.
+R-koden gir oss \( \beta = 2.0529 \) og \( \alpha = -11.9881 \).
+
+og manuelt beregnet gir oss: \( \beta = 2.0529 \) og \( \alpha = -11.9881 \).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{manual_calculation_regresion.png}
+    \caption{manuaelt beregning på kalulatoren (2b)}
+\end{figure}
 
 \subsection{2c: Regresjonsanalyse for Hele Datasettet}
 Deretter ble en lignende regresjonsanalyse utført på hele datasettet for å se om det samme mønsteret holder for en større mengde data.
