@@ -3,76 +3,77 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{listings}
+\usepackage[norsk]{babel}
 
-\title{Oblig 1b: Terningdropp Analysis}
-\author{Your Name}
-\date{Date of Submission}
+\title{Oblig 1b: Analyse av Terningdropp}
+\author{Ditt Navn}
+\date{Innleveringsdato}
 
 \begin{document}
 
 \maketitle
 
-\section{Introduction}
-Briefly describe the objective of the assignment and the methods used.
+\section{Introduksjon}
+Kort beskrivelse av oppgavens mål og de metoder som brukes.
 
-\section{Assignment Questions}
+\section{Oppgave Spørsmål}
 
-\subsection{Question 2a: First 5 Measurements Regression}
+\subsection{Spørsmål 2a: Regresjonslinje for de Første 5 Målingene}
 \begin{lstlisting}[language=R]
-# Linear Regression on the first 5 measurements in R
+# Lineær regresjon på de første 5 målingene i R
 lm_first5 <- lm(Lengde ~ Dropp, data=df[1:5, ])
 \end{lstlisting}
-\textbf{Calculated Regression Line:} Include your manual calculation or calculator output here.
+\textbf{Beregnet Regresjonslinje:} Inkluder din manuelle beregning eller kalkulator-resultat her.
 
-\subsection{Question 2b: Scatter Plot of Data Points}
-\textit{Scatter plot of the Dropp vs Lengde data (placeholder image).}
+\subsection{Spørsmål 2b: Spreddiagram av Data Punkter}
+\textit{Spreddiagram av Dropp mot Lengde (plassholderbilde).}
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{scatterplot.png}
-    \caption{Scatter plot of Dropp vs Lengde}
+    \caption{Spreddiagram av Dropp mot Lengde}
 \end{figure}
 
-\subsection{Question 2c: Regression Line Plot}
-\textit{Scatter plot with regression line (placeholder image).}
+\subsection{Spørsmål 2c: Spreddiagram med Regresjonslinje}
+\textit{Spreddiagram med regresjonslinje (plassholderbilde).}
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{regression_plot.png}
-    \caption{Scatter plot with regression line}
+    \caption{Spreddiagram med regresjonslinje}
 \end{figure}
 
-\subsection{Question 2d: Regression Analysis Entire Dataset}
+\subsection{Spørsmål 2d: Regresjonsanalyse for Hele Datasettet}
 \begin{lstlisting}[language=R]
-# Linear Regression on the entire dataset in R
+# Lineær regresjon på hele datasettet i R
 lm_full <- lm(Lengde ~ Dropp, data=df)
 \end{lstlisting}
 
-\subsection{Question 2e: Sum of Squared Residuals (SSe)}
-\subsubsection{First 5 Measurements}
+\subsection{Spørsmål 2e: Sum av Kvadrerte Residualer (SSe)}
+\subsubsection{Første 5 Målinger}
 \begin{lstlisting}[language=R]
 ssr_first5 <- sum(residuals(lm_first5)^2)
 \end{lstlisting}
-\textbf{SSR for First 5 Measurements:} \[ SSR = <calculated\_value> \]
+\textbf{SSR for Første 5 Målinger:} \[ SSR = <beregnet\_verdi> \]
 
-\subsubsection{Entire Dataset}
+\subsubsection{Hele Datasettet}
 \begin{lstlisting}[language=R]
 ssr_full <- sum(residuals(lm_full)^2)
 \end{lstlisting}
-\textbf{SSR for Entire Dataset:} \[ SSR = <calculated\_value> \]
+\textbf{SSR for Hele Datasettet:} \[ SSR = <beregnet\_verdi> \]
 
-\subsection{Question 2f: Standard Error (se)}
-\subsubsection{First 5 Measurements}
+\subsection{Spørsmål 2f: Standardfeil (se)}
+\subsubsection{Første 5 Målinger}
 \begin{lstlisting}[language=R]
 se_first5 <- sqrt(ssr_first5 / lm_first5$df.residual)
 \end{lstlisting}
-\textbf{Standard Error for First 5 Measurements:} \[ SE = <calculated\_value> \]
+\textbf{Standardfeil for Første 5 Målinger:} \[ SE = <beregnet\_verdi> \]
 
-\subsubsection{Entire Dataset}
+\subsubsection{Hele Datasettet}
 \begin{lstlisting}[language=R]
 se_full <- sqrt(ssr_full / lm_full$df.residual)
 \end{lstlisting}
-\textbf{Standard Error for Entire Dataset:} \[ SE = <calculated\_value> \]
+\textbf{Standardfeil for Hele Datasettet:} \[ SE = <beregnet\_verdi> \]
 
-\section{Conclusion}
-Summarize your findings and observations from the assignment.
+\section{Konklusjon}
+Oppsummer dine funn og observasjoner fra oppgaven.
 
 \end{document}
