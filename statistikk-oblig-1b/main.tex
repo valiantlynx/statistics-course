@@ -1,13 +1,76 @@
 \documentclass{article}
+\usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage{float}
 \usepackage{amsmath}
+\usepackage{listings}
+
+\title{Oblig 1b: Terningdropp Analysis}
+\author{Gormery K. Wanjiru}
+\date{\today}
 
 \begin{document}
 
-\title{Analyse av Seigmenn Strekningen}
-\author{Gormery K. Wanjiru}
-\date{\today}
 \maketitle
+
+\section{Introduction}
+Briefly describe the objective of the assignment and the methods used.
+
+\section{Data Collection}
+\subsection{CSV Data}
+\begin{lstlisting}[language=R]
+# Reading CSV data in R
+df <- read.csv("./terningDroppXY.csv")
+\end{lstlisting}
+
+\section{Linear Regression Analysis}
+\subsection{First 5 Measurements}
+\begin{lstlisting}[language=R]
+lm_first5 <- lm(Lengde ~ Dropp, data=df[1:5, ])
+\end{lstlisting}
+\textbf{Calculated Regression Line:} Include your manual calculation or calculator output here.
+
+\subsection{Entire Dataset}
+\begin{lstlisting}[language=R]
+lm_full <- lm(Lengde ~ Dropp, data=df)
+\end{lstlisting}
+
+\section{Data Visualization}
+\subsection{Scatter Plot of Data Points}
+\includegraphics[width=\linewidth]{scatterplot.png}
+\textit{Scatter plot of the Dropp vs Lengde data.}
+
+\subsection{Regression Line Plot}
+\includegraphics[width=\linewidth]{regression_plot.png}
+\textit{Scatter plot with regression line.}
+
+\section{Residual Analysis}
+\subsection{Sum of Squared Residuals}
+\subsubsection{First 5 Measurements}
+\begin{lstlisting}[language=R]
+ssr_first5 <- sum(residuals(lm_first5)^2)
+\end{lstlisting}
+\textbf{SSR for First 5 Measurements:} \[ SSR = <calculated\_value> \]
+
+\subsubsection{Entire Dataset}
+\begin{lstlisting}[language=R]
+ssr_full <- sum(residuals(lm_full)^2)
+\end{lstlisting}
+\textbf{SSR for Entire Dataset:} \[ SSR = <calculated\_value> \]
+
+\subsection{Standard Error}
+\subsubsection{First 5 Measurements}
+\begin{lstlisting}[language=R]
+se_first5 <- sqrt(ssr_first5 / lm_first5$df.residual)
+\end{lstlisting}
+\textbf{Standard Error for First 5 Measurements:} \[ SE = <calculated\_value> \]
+
+\subsubsection{Entire Dataset}
+\begin{lstlisting}[language=R]
+se_full <- sqrt(ssr_full / lm_full$df.residual)
+\end{lstlisting}
+\textbf{Standard Error for Entire Dataset:} \[ SE = <calculated\_value> \]
+
+\section{Conclusion}
+Summarize your findings and observations from the assignment.
 
 \end{document}
