@@ -32,34 +32,54 @@ sample_std_dev <- sqrt(sample_variance)
 # Print calculated values
 cat("Mean:", mean, "Median:", median, "Mode:", mode, "Variance:", variance, "Standard Deviation:", std_dev, "Sample Standard Deviation:", sample_std_dev, "\n")
 
-# Function to draw vertical lines
-drawLines <- function(mean, median, mode, std_dev, sample_std_dev) {
+
+# Function to draw vertical lines and add text annotations
+drawLinesAndText <- function(mean, median, mode, std_dev, sample_std_dev, ymax) {
   list(
     geom_vline(xintercept=mean, color='red', linetype="solid", linewidth=1),
+    geom_text(aes(x=mean, label="Mean", y=ymax*0.9), color='red', vjust=-1.5, size=3),
+    
     geom_vline(xintercept=median, color='green', linetype="solid", linewidth=1),
+    geom_text(aes(x=median, label="Median", y=ymax*0.8), color='green', vjust=-1.5, size=3),
+    
     geom_vline(xintercept=mode, color='blue', linetype="solid", linewidth=1),
+    geom_text(aes(x=mode, label="Mode", y=ymax*0.7), color='blue', vjust=-1.5, size=3),
+    
     geom_vline(xintercept=mean - std_dev, color='orange', linetype="dashed", linewidth=1),
+    geom_text(aes(x=mean - std_dev, label="Std Dev", y=ymax*0.6), color='orange', vjust=-1.5, size=3),
+    
     geom_vline(xintercept=mean + std_dev, color='orange', linetype="dashed", linewidth=1),
+    geom_text(aes(x=mean + std_dev, label="Std Dev", y=ymax*0.5), color='orange', vjust=-1.5, size=3),
+    
     geom_vline(xintercept=mean - sample_std_dev, color='purple', linetype="dotted", linewidth=1),
-    geom_vline(xintercept=mean + sample_std_dev, color='purple', linetype="dotted", linewidth=1)
+    geom_text(aes(x=mean - sample_std_dev, label="Sample Std Dev", y=ymax*0.4), color='purple', vjust=-1.5, size=3),
+    
+    geom_vline(xintercept=mean + sample_std_dev, color='purple', linetype="dotted", linewidth=1),
+    geom_text(aes(x=mean + sample_std_dev, label="Sample Std Dev", y=ymax*0.3), color='purple', vjust=-1.5, size=3)
   )
 }
 
-# Plotting Histogram
+# Determine the maximum Y value for each plot
+ymax_hist <- max(df$Antall)
+ymax_freq <- max(df$Antall)
+ymax_cumul <- max(cumulative_frequency)
+
+# Plotting Histogram with Annotations
 ggplot(df, aes(x=Midpunkt, y=Antall)) +
   geom_bar(stat="identity", position=position_dodge(), color="black") +
   labs(title="Histogram", x="Midpunkt", y="Frekvens") +
-  drawLines(mean, median, mode, std_dev, sample_std_dev)
+  drawLinesAndText(mean, median, mode, std_dev, sample_std_dev, ymax_hist)
 
-# Plotting Frequency Diagram
+# Plotting Frequency Diagram with Annotations
 ggplot(df, aes(x=Midpunkt, y=Antall)) +
   geom_bar(stat="identity", position=position_dodge(), color="black") +
-  labs(title="Frequency Diagram", x="Midpunkt", y="Frekvens") +
-  drawLines(mean, median, mode, std_dev, sample_std_dev)
+  labs(title="Frekvens Diagram", x="Midpunkt", y="Frekvens") +
+  drawLinesAndText(mean, median, mode, std_dev, sample_std_dev, ymax_freq)
 
-# Plotting Cumulative Frequency Diagram
+# Plotting Cumulative Frequency Diagram with Annotations using geom_step
 ggplot(df, aes(x=Midpunkt, y=cumulative_frequency)) +
-  geom_line(color="black") +
-  labs(title="Cumulative Frequency Diagram", x="Midpunkt", y="Kumulativ Frekvens") +
-  drawLines(mean, median, mode, std_dev, sample_std_dev)
+  geom_step(color="black") +  # Using geom_step for blocky appearance
+  labs(title="Kumulativ Frekvens Diagram", x="Midpunkt", y="Kumulativ Frekvens") +
+  drawLinesAndText(mean, median, mode, std_dev, sample_std_dev, ymax_cumul) +
+  theme(panel.background = element_rect(fill = "lightgray"))
 
