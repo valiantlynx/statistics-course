@@ -1,13 +1,15 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
-\usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{listings}
 \usepackage[norsk]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+
 
 \title{Oblig 1b: Analyse av Terningdropp}
-\author{Ditt Navn}
-\date{Innleveringsdato}
+\author{Gormery Kombo}
+\date{\today}
 
 \begin{document}
 
@@ -16,30 +18,16 @@
 \section{Introduksjon}
 Kort beskrivelse av oppgavens mål og de metoder som brukes.
 
-\section{Datainnsamling og Analyse}
 
-\subsection{2a: Regresjonsanalyse for de Første 5 Målingene}
+\section{Oppgave 2}
+\subsection{2a: Datainnsamling og Analyse}
+se \texttt{terningDropp.csv} for dataene som ble samlet inn. Dataene ble analysert i R.
+\subsection{2b: Regresjonsanalyse for de Første 5 Målingene}
 \begin{lstlisting}[language=R]
 lm_first5 <- lm(Lengde ~ Dropp, data=df[1:5, ])
 summary(lm_first5)
 \end{lstlisting}
 \textbf{Regresjonslinje (2a):} Inkluder resultatet fra R og sammenlign med manuell beregning.
-
-\subsection{Question 2b: Scatter Plot of Data Points}
-\textit{Scatter plot of the Dropp vs Lengde data (placeholder image).}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{Rplot03.png}
-    \caption{Scatter plot of Dropp vs Lengde}
-\end{figure}
-
-\subsection{Question 2c: Regression Line Plot}
-\textit{Scatter plot with regression line (placeholder image).}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{Rplot02.png}
-    \caption{Scatter plot with regression line}
-\end{figure}
 
 \subsection{2c: Regresjonsanalyse for Hele Datasettet}
 \begin{lstlisting}[language=R]
@@ -47,16 +35,16 @@ lm_full <- lm(Lengde ~ Dropp, data=df)
 \end{lstlisting}
 
 \subsection{2d: Spreddiagram av Data}
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{scatterplot.png}
+    \includegraphics[width=0.8\textwidth]{Rplot03.png}
     \caption{Spreddiagram av Dropp mot Lengde (2d)}
 \end{figure}
 
 \subsection{2e: Spreddiagram med Regresjonslinje}
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{regression_plot.png}
+    \includegraphics[width=0.8\textwidth]{Rplot02.png}
     \caption{Spreddiagram med regresjonslinje (2e)}
 \end{figure}
 
@@ -77,9 +65,6 @@ se_full <- sqrt(ssr_full / lm_full$df.residual)
 SE for hele datasettet: \[ <se_full> \]
 
 \subsection{2i: Lagring av Arbeid}
-Beskrivelse av hvordan arbeidet ble lagret og dokumentert.
-
-\section{Konklusjon}
-Oppsummer dine funn og observasjoner fra oppgaven.
+arbeidet ble lagret og dokumentert.
 
 \end{document}
