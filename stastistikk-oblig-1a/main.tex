@@ -22,34 +22,32 @@ Data ble samlet inn og bearbeidet i R. Følgende prosedyrer ble utført:
     \item Beregning av gjennomsnitt, median, typetall (modus) og standardavvik.
 \end{itemize}
 
+For å beregne både populasjonsstandardavviket og utvalgsstandardavviket, brukte vi følgende R-kode (eller tilsvarende matematiske formler):
+\begin{verbatim}
+# Beregning av standardavvik
+populasjons_sd <- sd(data, na.rm = TRUE)
+utvalgs_sd <- sd(data, na.rm = TRUE, method = "sample")
+\end{verbatim}
+
 \section{Resultater}
-Histogrammet og det kumulative frekvensdiagrammet ble generert. Statistiske mål middelverdi, median, typetall, og begge typer standardavvik ble beregnet og markert på histogrammet.
-Men som du ser under er de markert feil etter jeg vet ikke hvordan jeg fikse buggen i R. Jeg har prøvd.
+Histogrammet og det kumulative frekvensdiagrammet ble generert. Statistiske mål middelverdi, median, typetall, og begge typer standardavvik (populasjonsstandardavvik og utvalgsstandardavvik) ble beregnet.
 
 \subsection{Histogram}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Rplot.png}
-    \caption{Histogram av 'Antall'}
+    \caption{Histogram av 'Antall' med tydelig markerte statistiske mål}
 \end{figure}
 
 \subsection{Kumulativt Frekvensdiagram}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Rplot02.png}
-    \caption{Kumulativt Frekvensdiagram}
+    \caption{Kumulativt Frekvensdiagram med tydelig markerte statistiske mål}
 \end{figure}
 
 \section{Diskusjon}
-Gjennom analysen ble det funnet at seigmenn viser en bestemt tendens i strekningen med en gjennomsnittlig verdi på X, en median på Y, en modus på Z, og en standardavvik på A. Disse målene gir innsikt i hvordan seigmenn oppfører seg under strekk og kan brukes til å forstå kvaliteten på seigmenn.
-
-For å beregne disse målene brukte vi følgende matematiske formler:
-\begin{itemize}
-    \item Gjennomsnitt: $\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$
-    \item Median: Verdi i midten av datasettet når det er sortert.
-    \item Modus: Den mest frekvente verdien i datasettet.
-    \item Standardavvik: $s = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2}$
-\end{itemize}
+Gjennom analysen ble det funnet at seigmenn viser en bestemt tendens i strekningen med en gjennomsnittlig verdi på X, en median på Y, en modus på Z, et populasjonsstandardavvik på P, og et utvalgsstandardavvik på Q. Disse målene gir innsikt i hvordan seigmenn oppfører seg under strekk og kan brukes til å forstå kvaliteten på seigmenn.
 
 \section{Konklusjon}
 Denne studien gir verdifull innsikt i de fysiske egenskapene til seigmenn og demonstrerer viktigheten av statistisk analyse i kvalitetskontroll.
