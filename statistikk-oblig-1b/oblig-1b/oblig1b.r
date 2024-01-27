@@ -1,4 +1,7 @@
-# Leser inn data
-laban <- read.csv("terningDroppXY.csv")
+#install.packages("ggplot2")
+library(ggplot2)
 
-print(laban)
+# Read CSV data
+df <- read.csv("./terningDroppXY.csv")
+
+print(df$Lengde)
