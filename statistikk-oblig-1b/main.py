@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 # Read CSV data
-df = pd.read_csv("./oblig1a/labanXY.csv")
+df = pd.read_csv("./labanXY.csv")
 midpoints = df['Midpunkt'].values
 frequencies = df['Antall'].values
 
