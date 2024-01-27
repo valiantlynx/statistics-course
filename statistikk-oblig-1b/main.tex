@@ -5,8 +5,8 @@
 \usepackage{listings}
 
 \title{Oblig 1b: Terningdropp Analysis}
-\author{Gormery K. Wanjiru}
-\date{\today}
+\author{Your Name}
+\date{Date of Submission}
 
 \begin{document}
 
@@ -15,36 +15,38 @@
 \section{Introduction}
 Briefly describe the objective of the assignment and the methods used.
 
-\section{Data Collection}
-\subsection{CSV Data}
-\begin{lstlisting}[language=R]
-# Reading CSV data in R
-df <- read.csv("./terningDroppXY.csv")
-\end{lstlisting}
+\section{Assignment Questions}
 
-\section{Linear Regression Analysis}
-\subsection{First 5 Measurements}
+\subsection{Question 2a: First 5 Measurements Regression}
 \begin{lstlisting}[language=R]
+# Linear Regression on the first 5 measurements in R
 lm_first5 <- lm(Lengde ~ Dropp, data=df[1:5, ])
 \end{lstlisting}
 \textbf{Calculated Regression Line:} Include your manual calculation or calculator output here.
 
-\subsection{Entire Dataset}
+\subsection{Question 2b: Scatter Plot of Data Points}
+\textit{Scatter plot of the Dropp vs Lengde data (placeholder image).}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{scatterplot.png}
+    \caption{Scatter plot of Dropp vs Lengde}
+\end{figure}
+
+\subsection{Question 2c: Regression Line Plot}
+\textit{Scatter plot with regression line (placeholder image).}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{regression_plot.png}
+    \caption{Scatter plot with regression line}
+\end{figure}
+
+\subsection{Question 2d: Regression Analysis Entire Dataset}
 \begin{lstlisting}[language=R]
+# Linear Regression on the entire dataset in R
 lm_full <- lm(Lengde ~ Dropp, data=df)
 \end{lstlisting}
 
-\section{Data Visualization}
-\subsection{Scatter Plot of Data Points}
-\includegraphics[width=\linewidth]{scatterplot.png}
-\textit{Scatter plot of the Dropp vs Lengde data.}
-
-\subsection{Regression Line Plot}
-\includegraphics[width=\linewidth]{regression_plot.png}
-\textit{Scatter plot with regression line.}
-
-\section{Residual Analysis}
-\subsection{Sum of Squared Residuals}
+\subsection{Question 2e: Sum of Squared Residuals (SSe)}
 \subsubsection{First 5 Measurements}
 \begin{lstlisting}[language=R]
 ssr_first5 <- sum(residuals(lm_first5)^2)
@@ -57,7 +59,7 @@ ssr_full <- sum(residuals(lm_full)^2)
 \end{lstlisting}
 \textbf{SSR for Entire Dataset:} \[ SSR = <calculated\_value> \]
 
-\subsection{Standard Error}
+\subsection{Question 2f: Standard Error (se)}
 \subsubsection{First 5 Measurements}
 \begin{lstlisting}[language=R]
 se_first5 <- sqrt(ssr_first5 / lm_first5$df.residual)
