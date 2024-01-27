@@ -37,22 +37,35 @@ print(f"Mean: {mean:.2f}, Median: {median:.2f}, Mode: {mode}, Variance: {varianc
 
 import matplotlib.pyplot as plt
 
+class DrawLines:
+    def __init__(self, mean, median, mode, std_dev, sample_std_dev):
+        self.mean = mean
+        self.median = median
+        self.mode = mode
+        self.std_dev = std_dev
+        self.sample_std_dev = sample_std_dev
+        
+    # Adding vertical lines for mean, median, mode, and standard deviations
+    def draw(self):
+        plt.axvline(self.mean, color='red', label='Middelverdi')
+        plt.axvline(self.median, color='green', label='Median')
+        plt.axvline(self.mode, color='blue', label='Typetall')
+        plt.axvline(self.mean - self.std_dev, color='orange', linestyle='--', label='Populasjons Std Avvik')
+        plt.axvline(self.mean + self.std_dev, color='orange', linestyle='--')
+        plt.axvline(self.mean - self.sample_std_dev, color='purple', linestyle=':', label='Sample Std Avvik')
+        plt.axvline(self.mean + self.sample_std_dev, color='purple', linestyle=':')
+        plt.legend()
+        plt.show()
+
+draw = DrawLines(mean, median, mode, std_dev, sample_std_dev)
 # Plotting Histogram
 plt.figure(figsize=(10, 6))
 plt.bar(midpoints, frequencies, width=df['Bredde'][0], edgecolor='black')
 plt.title("Histogram")
 plt.xlabel("Midpunkt")
 plt.ylabel("Frekvens")
-# Adding vertical lines for mean, median, mode, and standard deviations
-plt.axvline(mean, color='red', label='Middelverdi')
-plt.axvline(median, color='green', label='Median')
-plt.axvline(mode, color='blue', label='Typetall')
-plt.axvline(mean - std_dev, color='orange', linestyle='--', label='Populasjons Std Avvik')
-plt.axvline(mean + std_dev, color='orange', linestyle='--')
-plt.axvline(mean - sample_std_dev, color='purple', linestyle=':', label='Sample Std Avvik')
-plt.axvline(mean + sample_std_dev, color='purple', linestyle=':')
-plt.legend()
-plt.show()
+draw.draw()
+
 
 # Plotting Frequency Diagram
 plt.figure(figsize=(10, 6))
@@ -60,14 +73,7 @@ plt.bar(midpoints, frequencies, width=df['Bredde'][0], edgecolor='black')
 plt.title("Frequency Diagram")
 plt.xlabel("Midpunkt")
 plt.ylabel("Frekvens")
-plt.axvline(mean, color='red')
-plt.axvline(median, color='green')
-plt.axvline(mode, color='blue')
-plt.axvline(mean - std_dev, color='orange', linestyle='--')
-plt.axvline(mean + std_dev, color='orange', linestyle='--')
-plt.axvline(mean - sample_std_dev, color='purple', linestyle=':')
-plt.axvline(mean + sample_std_dev, color='purple', linestyle=':')
-plt.show()
+draw.draw()
 
 # Plotting Cumulative Frequency Diagram
 plt.figure(figsize=(10, 6))
@@ -75,11 +81,4 @@ plt.plot(midpoints, cumulative_frequency, drawstyle='steps-post', color='black')
 plt.title("Cumulative Frequency Diagram")
 plt.xlabel("Midpunkt")
 plt.ylabel("Kumulativ Frekvens")
-plt.axvline(mean, color='red')
-plt.axvline(median, color='green')
-plt.axvline(mode, color='blue')
-plt.axvline(mean - std_dev, color='orange', linestyle='--')
-plt.axvline(mean + std_dev, color='orange', linestyle='--')
-plt.axvline(mean - sample_std_dev, color='purple', linestyle=':')
-plt.axvline(mean + sample_std_dev, color='purple', linestyle=':')
-plt.show()
+draw.draw()
