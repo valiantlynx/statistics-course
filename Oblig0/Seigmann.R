@@ -1,1 +1,2 @@
-print("hello world")
+df <- read.csv("./labanXY.csv")
+print(df)
