@@ -5,6 +5,27 @@
 \usepackage[norsk]{babel}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Define colors
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+% Define the R language style
+\lstdefinestyle{Rstyle}{
+  language=R,
+  basicstyle=\ttfamily,
+  keywordstyle=\color{blue},
+  commentstyle=\color{mygreen},
+  numberstyle=\tiny\color{mygray},
+  stringstyle=\color{mymauve},
+  breaklines=true,
+  showstringspaces=false,
+  numbers=left,
+  frame=single,
+}
 
 \title{Oblig 1b: Analyse av Terningdropp}
 \author{Gormery Kombo}
@@ -24,7 +45,7 @@ Dataene som ble samlet inn er tilgjengelige i filen \texttt{terningDropp.csv}. D
 \subsection{2b: Regresjonsanalyse for de Første 5 Målingene}
 Først ble det utført en regresjonsanalyse på de første fem målingene for å estimere sammenhengen mellom 'Dropp' og 'Lengde'. Resultatene gir oss en innsikt i hvordan lengden varierer med høyden i de første forsøkene.
 
-\begin{lstlisting}[language=R]
+\begin{lstlisting}[style=Rstyle]
 lm_first5 <- lm(Lengde ~ Dropp, data=df[1:5, ])
 summary(lm_first5)
 \end{lstlisting}
@@ -64,9 +85,9 @@ og manuelt beregnet gir oss: \( \beta = 2.0529 \) og \( \alpha = -11.9881 \).
 \subsection{2c: Regresjonsanalyse for Hele Datasettet}
 Deretter ble en lignende regresjonsanalyse utført på hele datasettet for å se om det samme mønsteret holder for en større mengde data.
 
-\begin{lstlisting}[language=R]
-lm_full <- lm(Lengde ~ Dropp, data=df)
-\end{lstlisting}
+\begin{lstlisting}[style=Rstyle]
+    lm_full <- lm(Lengde ~ Dropp, data=df)
+    \end{lstlisting}
 
 \subsection{2d: Spreddiagram av Data}
 Følgende spreiddiagram viser alle datapunktene (Dropp mot Lengde) fra eksperimentet. Dette gir oss en visuell representasjon av datadistribusjonen.
@@ -89,22 +110,35 @@ Dette spreiddiagrammet inkluderer regresjonslinjen som viser den estimerte line�
 \subsection{2g: Sum av Kvadrerte Residualer (SSe)}
 Summen av de kvadrerte residualene (SSe) gir oss en kvantitativ måling av hvor godt regresjonsmodellen passer dataene. Lavere verdier indikerer en bedre passform.
 
-\begin{lstlisting}[language=R]
+\begin{lstlisting}[style=Rstyle]
 ssr_first5 <- sum(residuals(lm_first5)^2)
 ssr_full <- sum(residuals(lm_full)^2)
 \end{lstlisting}
+
 \textbf{SSR (2g):} SSR for de første 5 målingene: \[ 748.808  \]
 SSR for hele datasettet: \[ 2114.794 \]
+\textbf{Med matematiske formler:}
+
+\textbf{SSR (2g):}
+\[ \text{SSR for de første 5 målingene: } \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = 748.808 \]
+
+\[ \text{SSR for hele datasettet: } \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = 2114.794 \]
 
 \subsection{2h: Standardfeil (se)}
 Standardfeilen (SE) gir oss en idé om usikkerheten i estimatet av regresjonskoeffisientene. Den hjelper oss å forstå hvor nøyaktig vår lineære modell estimerer den avhengige variabelen.
 
-\begin{lstlisting}[language=R]
+\begin{lstlisting}[style=Rstyle]
 se_first5 <- sqrt(ssr_first5 / lm_first5$df.residual)
 se_full <- sqrt(ssr_full / lm_full$df.residual)
 \end{lstlisting}
 \textbf{Standardfeil (2h):} SE for de første 5 målingene: \[ 15.79882 \]
 SE for hele datasettet: \[ 8.690704 \]
+
+\textbf{Med matematiske formler:}
+\[ \text{SE for de første 5 målingene: } SE = \sqrt{\frac{\text{SSR}}{df}} = \sqrt{\frac{748.808}{\text{df.residual\_first5}}} = 15.79882 \]
+
+\[ \text{SE for hele datasettet: } SE = \sqrt{\frac{\text{SSR}}{df}} = \sqrt{\frac{2114.794}{\text{df.residual\_full}}} = 8.690704 \]
+
 
 \subsection{2i: Lagring av Arbeid (for meg selv)}
 Jeg Lagret det utførte arbeidet som en r prosject på github: \\ 
