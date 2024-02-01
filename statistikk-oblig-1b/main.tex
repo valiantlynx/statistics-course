@@ -106,7 +106,6 @@ Dette spreiddiagrammet inkluderer regresjonslinjen som viser den estimerte line�
     \includegraphics[width=0.8\textwidth]{Rplot02.png}
     \caption{Spreddiagram med regresjonslinje (2e)}
 \end{figure}
-
 \subsection{2g: Sum av Kvadrerte Residualer (SSe)}
 Summen av de kvadrerte residualene (SSe) gir oss en kvantitativ måling av hvor godt regresjonsmodellen passer dataene. Lavere verdier indikerer en bedre passform.
 
@@ -115,14 +114,20 @@ ssr_first5 <- sum(residuals(lm_first5)^2)
 ssr_full <- sum(residuals(lm_full)^2)
 \end{lstlisting}
 
-\textbf{SSR (2g):} SSR for de første 5 målingene: \[ 748.808  \]
-SSR for hele datasettet: \[ 2114.794 \]
-\textbf{Med matematiske formler:}
+\subsection{2g: Sum av Kvadrerte Residualer (SSe)}
+\begin{lstlisting}[style=Rstyle]
+ssr_first5 <- sum(residuals(lm_first5)^2)
+ssr_full <- sum(residuals(lm_full)^2)
+\end{lstlisting}
 
-\textbf{SSR (2g):}
-\[ \text{SSR for de første 5 målingene: } \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = 748.808 \]
+\textbf{SSR (2g):} SSR gir en kvantitativ måling av hvor godt regresjonsmodellen passer dataene. Lavere verdier indikerer en bedre passform.
+
+\textbf{Beregning:}
+\[ \text{SSR for de første 5 målingene: } \sum_{i=1}^{5} (y_i - \hat{y}_i)^2 = 748.808 \]
 
 \[ \text{SSR for hele datasettet: } \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = 2114.794 \]
+
+Her representerer \(y_i\) de faktiske observasjonene, \(\hat{y}_i\) er de estimerte verdiene fra regresjonsmodellen, og \(n\) er antall observasjoner.
 
 \subsection{2h: Standardfeil (se)}
 Standardfeilen (SE) gir oss en idé om usikkerheten i estimatet av regresjonskoeffisientene. Den hjelper oss å forstå hvor nøyaktig vår lineære modell estimerer den avhengige variabelen.
@@ -131,14 +136,15 @@ Standardfeilen (SE) gir oss en idé om usikkerheten i estimatet av regresjonskoe
 se_first5 <- sqrt(ssr_first5 / lm_first5$df.residual)
 se_full <- sqrt(ssr_full / lm_full$df.residual)
 \end{lstlisting}
-\textbf{Standardfeil (2h):} SE for de første 5 målingene: \[ 15.79882 \]
-SE for hele datasettet: \[ 8.690704 \]
 
-\textbf{Med matematiske formler:}
+\textbf{Standardfeil (2h):} SE gir en indikasjon på nøyaktigheten i estimatene av regresjonskoeffisientene.
+
+\textbf{Beregning:}
 \[ \text{SE for de første 5 målingene: } SE = \sqrt{\frac{\text{SSR}}{df}} = \sqrt{\frac{748.808}{\text{df.residual\_first5}}} = 15.79882 \]
 
 \[ \text{SE for hele datasettet: } SE = \sqrt{\frac{\text{SSR}}{df}} = \sqrt{\frac{2114.794}{\text{df.residual\_full}}} = 8.690704 \]
 
+Her representerer \(\text{df.residual\_first5}\) og \(\text{df.residual\_full}\) frihetsgradene for residualene for henholdsvis de første 5 målingene og hele datasettet.
 
 \subsection{2i: Lagring av Arbeid (for meg selv)}
 Jeg Lagret det utførte arbeidet som en r prosject på github: \\ 
