@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{amsmath}
+
+\begin{document}
+
+\title{Analyse av Seigmenn Strekningen}
+\author{Gormery K. Wanjiru}
+\date{\today}
+\maketitle
+
+\section{Introduksjon}
+Denne rapporten presenterer resultatene av strekningstester utført på seigmenn (laban). Dataene er analysert ved hjelp av statistiske metoder for å forstå de generelle egenskapene til seigmenns elastisitet.
+
+\section{Metode}
+Data ble samlet inn og bearbeidet i R. Følgende prosedyrer ble utført:
+\begin{itemize}
+    \item Innlesing av data fra en CSV-fil.
+    \item Erstatning av manglende verdier med 0 for å unngå feil i beregningene.
+    \item Beregning av kumulativ frekvens.
+    \item Beregning av gjennomsnitt, median, typetall (modus) og standardavvik.
+\end{itemize}
+
+For å beregne både populasjonsstandardavviket og utvalgsstandardavviket, brukte vi følgende formler:
+\begin{itemize}
+    \item Populasjonsstandardavvik: 
+    \[
+    \sigma = \sqrt{\frac{1}{N}\sum_{i=1}^{N}(x_i - \mu)^2}
+    \]
+    \item Utvalgsstandardavvik: 
+    \[
+    s = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_i - \bar{x})^2}
+    \]
+\end{itemize}
+
+\section{Resultater}
+Histogrammet og det kumulative frekvensdiagrammet ble generert. Statistiske mål middelverdi, median, typetall, og begge typer standardavvik (populasjonsstandardavvik og utvalgsstandardavvik) ble beregnet.
+
+\subsection{Histogram}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Rplot01.png}
+    \caption{Histogram med tydelig markerte statistiske mål}
+\end{figure}
+
+\subsection{Kumulativt Frekvensdiagram}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Rplot.png}
+    \caption{Kumulativt Frekvensdiagram med tydelig markerte statistiske mål}
+\end{figure}
+
+\section{Diskusjon}
+Gjennom analysen ble det funnet at seigmenn viser en bestemt tendens i strekningen med en gjennomsnittlig verdi på X, en median på Y, en modus på Z, et populasjonsstandardavvik på P, og et utvalgsstandardavvik på Q. Disse målene gir innsikt i hvordan seigmenn oppfører seg under strekk.
+
+For å beregne disse målene brukte jeg følgende matematiske formler:
+\begin{itemize}
+    \item Middelverdi: $\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$ og fant at $\bar{x} = 11.42$.
+    \item Median: Verdi i midten av datasettet når det er sortert. Fant at medianen er 11.5.
+    \item Typetall: Den mest frekvente verdien i datasettet. Fant at typetallet er 11.
+    \item Populasjonsstandardavvik: 
+    \[
+    \sigma = \sqrt{\frac{1}{N}\sum_{i=1}^{N}(x_i - \mu)^2}
+    \] 
+    og fant at $\sigma = 0.852$.
+    \item Utvalgsstandardavvik: 
+    \[
+    s = \sqrt{\frac{1}{N-1}\sum_{i=1}^{N}(x_i - \bar{x})^2}
+    \]
+    og fant at $s = 0.862$.
+\end{itemize}
+
+\end{document}
