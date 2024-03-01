@@ -1,0 +1,23 @@
+---
+title: "Terning-dropp"
+author: "Gormery K. Wanjiru"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Gruppemedlemmer
+```{r print_gruppemedlemmer, results='asis'}
+gruppemedlemmer <- c("Gormery K. Wanjiru")
+cat("Gruppemedlemmer: ", paste(gruppemedlemmer, collapse = ", "))
+```
+
+# Importer og print data
+```{r import_data}
+df <- read.csv("./terningDroppXY.csv")
+cat("Data:")
+print(df)
+```
