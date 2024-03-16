@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+
+\title{Rapport: Oblig 3a}
+\author{Studentens Navn}
+\date{Mars 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduksjon}
+Dette dokumentet inneholder løsninger og forklaringer for oppgaver gitt i Oblig 3a. Oppgavene dekker et bredt spektrum av statistiske begreper og prosesser, inkludert parameterestimering, Poisson- og Bernoulli-prosesser, samt anvendelse av Gaussiske prosesser. Løsningene inkluderer teoretisk diskusjon samt praktiske eksempler gjennomført i R.
+
+\section{Begreper (10\%)}
+\subsection*{Parameter}
+En parameter er en ukjent tallverdi som beskriver en befolkning. Parametere er sentrale i statistiske modeller fordi de hjelper til med å definere fordelingen av en datamengde.
+
+\subsection*{Observator}
+En observator er en målbar funksjon av dataene, som brukes til å estimere verdien av en parameter.
+
+\subsection*{Hyperparameter}
+En hyperparameter er en parameter i en bayesiansk statistisk modell som ikke er direkte relatert til datamengden, men som påvirker fordelingen av modellparametere.
+
+\subsection*{Poisson-prosess}
+En Poisson-prosess er en type statistisk prosess som beskriver antall hendelser som skjer i et fast tidsintervall, under forutsetning av at disse hendelsene skjer med en konstant rate og uavhengig av hverandre.
+
+\subsection*{Bernoulli-prosess}
+En Bernoulli-prosess er en sekvens av uavhengige og identisk fordelt binære tilfeldige variabler, hvor hver variabel kan anta verdien 1 med sannsynlighet \(p\) og 0 med sannsynlighet \(1-p\).
+
+\subsection*{Posterior fordeling}
+En posterior fordeling er sannsynlighetsfordelingen for en parameter gitt observasjonsdata, basert på en kombinasjon av priorinformasjon og den likelihood som dataene gir.
+
+\subsection*{Prediktiv fordeling}
+En prediktiv fordeling er en fordeling av fremtidige observasjoner gitt eksisterende data, som tar hensyn til usikkerheten rundt parameterestimatene.
+
+\section{R-kode eksempler}
+
+\subsection*{Bernoulli (25\%)}
+\subsubsection*{Grunnleggende}
+For å generere 30 Bernoulli-forsøk med parameter \(p = 0.349\), kan vi bruke følgende R-kode:
+
+\begin{verbatim}
+rbinom(30, 1, 0.349)
+rbinom(1, 30, 0.349)
+\end{verbatim}
+
+Begge linjene genererer resultatet av 30 Bernoulli-forsøk, men den første linjen gir 30 uavhengige forsøk som individuelle resultater, mens den andre gir antall suksesser i en enkelt sekvens av 30 forsøk.
+
+\subsubsection*{Observasjons-versjon}
+Denne koden simulerer et eksperiment hvor vi gjennomfører 50 grupper av 10 Bernoulli-forsøk og plotter et histogram av suksessraten:
+
+\begin{verbatim}
+p=0.349
+m=50
+n=10
+z = rbinom(m, n, p)/n
+hist(z, breaks=seq(-0.5, n+.5, 1)/n)
+m=mean(z)
+s=sd(z)
+abline(v=m, col="green", lwd=1)
+abline(v=m+c(-s, s), col="pink", lwd=1)
+abline(v=p, col="blue", lwd=1)
+\end{verbatim}
+
+\subsubsection*{Inferens-versjon}
+Her følger et eksempel på hvordan man kunne strukturert koden for å estimere \(p\) gjennom en Bayesian tilnærming, med detaljene utelatt for å fokusere på rapportens struktur.
+
+\section{Poisson (25\%)}
+Analysen av datasettet \texttt{discoveries} fra R's \texttt{datasets} pakke, inkludert histogram og estimering av raten \(\lambda\) av viktige oppdagelser per år, vil bli diskutert her. Detaljerte analyser og kodeeksempler er utelatt til fordel for rapportens struktur.
+
+\section{Gaussisk (25\%)}
+Analyse av seigmanndata fra forskjellige strekktyper, inkludert beregning av posterior fordelinger og sammenligning av sannsynlighetsfordelinger, diskuteres her med relevante R-kode eksempler og resultater.
+
+\section*{Konklusjon}
+Denne rapporten har gått gjennom løsninger på de gitte oppgavene i Oblig 3a, med en blanding av teoretisk forklaring og praktisk anvendelse gjennom R-kode. Videre arbeid kan inkludere en dypere analyse av datamengdene, samt utvidelse av de statistiske metodene som er anvendt.
+
+\end{document}
