@@ -6,77 +6,127 @@
 \usepackage{float}
 
 \title{Rapport: Oblig 3a}
-\author{Studentens Navn}
+\author{Gormery K. Wanjiru}
 \date{Mars 2024}
 
 \begin{document}
 
 \maketitle
 
-\section*{Introduksjon}
-Dette dokumentet inneholder løsninger og forklaringer for oppgaver gitt i Oblig 3a. Oppgavene dekker et bredt spektrum av statistiske begreper og prosesser, inkludert parameterestimering, Poisson- og Bernoulli-prosesser, samt anvendelse av Gaussiske prosesser. Løsningene inkluderer teoretisk diskusjon samt praktiske eksempler gjennomført i R.
+\section{Oppgave 1 (5\%)}
+\textbf{Kapittel 11: oppgave 2}
+utelatt for nå
 
-\section{Begreper (10\%)}
-\subsection*{Parameter}
+\section{Oppgave 2 (10\%)}
+\subsection*{(a) Hva er en parameter?}
 En parameter er en ukjent tallverdi som beskriver en befolkning. Parametere er sentrale i statistiske modeller fordi de hjelper til med å definere fordelingen av en datamengde.
 
-\subsection*{Observator}
+\subsection*{(b) Hva er en observator?}
 En observator er en målbar funksjon av dataene, som brukes til å estimere verdien av en parameter.
 
-\subsection*{Hyperparameter}
+\subsection*{(c) Hva er en hyperparameter?}
 En hyperparameter er en parameter i en bayesiansk statistisk modell som ikke er direkte relatert til datamengden, men som påvirker fordelingen av modellparametere.
 
-\subsection*{Poisson-prosess}
-En Poisson-prosess er en type statistisk prosess som beskriver antall hendelser som skjer i et fast tidsintervall, under forutsetning av at disse hendelsene skjer med en konstant rate og uavhengig av hverandre.
+\subsection*{(d) Hva er en Poisson-prosess?}
+En Poisson-prosess er en type statistisk prosess som beskriver antall hendelser som skjer i et fast tidsintervall, under forutsetning av at disse hendelsene skjer med en konstant rate og uavhengig av hverandre. Enkel sagt den beskriver hendelser som skjer tilfeldig over tid, hvor antall hendelser i et gitt tidsintervall følger en Poisson-fordeling
 
-\subsection*{Bernoulli-prosess}
+\subsection*{(e) Hva er en Bernoulli-prosess?}
 En Bernoulli-prosess er en sekvens av uavhengige og identisk fordelt binære tilfeldige variabler, hvor hver variabel kan anta verdien 1 med sannsynlighet \(p\) og 0 med sannsynlighet \(1-p\).
 
-\subsection*{Posterior fordeling}
+\subsection*{(f) Hva er en posterior fordeling?}
 En posterior fordeling er sannsynlighetsfordelingen for en parameter gitt observasjonsdata, basert på en kombinasjon av priorinformasjon og den likelihood som dataene gir.
 
-\subsection*{Prediktiv fordeling}
+\subsection*{(g) Hva er en prediktiv fordeling?}
 En prediktiv fordeling er en fordeling av fremtidige observasjoner gitt eksisterende data, som tar hensyn til usikkerheten rundt parameterestimatene.
 
-\section{R-kode eksempler}
+\section{Gaussisk}
+\subsection{Oppgave 3 til 4}
+utelatt for nå
 
-\subsection*{Bernoulli (25\%)}
-\subsubsection*{Grunnleggende}
+\section{Bernoulli}
+\subsection{Oppgave 5 til 7}
+utelatt for nå
+
+\section{Poisson}
+\subsection{Oppgave 8 til 9}
+utelatt for nå
+
+
+\section{Oppgave 10: Tre inferenser}
+
+\subsection*{a) Bernoulli (25\%)}
+
+\subsubsection*{i. Grunnleggende}
+
 For å generere 30 Bernoulli-forsøk med parameter \(p = 0.349\), kan vi bruke følgende R-kode:
 
 \begin{verbatim}
+# Genererer 30 uavhengige Bernoulli-forsøk
 rbinom(30, 1, 0.349)
+# Genererer antall suksesser i 30 Bernoulli-forsøk
 rbinom(1, 30, 0.349)
 \end{verbatim}
 
-Begge linjene genererer resultatet av 30 Bernoulli-forsøk, men den første linjen gir 30 uavhengige forsøk som individuelle resultater, mens den andre gir antall suksesser i en enkelt sekvens av 30 forsøk.
+Den første linjen utfører 30 uavhengige forsøk, som returnerer et vektor med 30 elementer, hvor hvert element representerer utfallet av hvert forsøk (suksess eller fiasko). Den andre linjen utfører et sett av 30 forsøk og returnerer totalt antall suksesser. Den første metoden gir mer detaljert informasjon om hvert enkelt forsøk, mens den andre gir en summarisk oversikt over antall suksesser.
 
-\subsubsection*{Observasjons-versjon}
-Denne koden simulerer et eksperiment hvor vi gjennomfører 50 grupper av 10 Bernoulli-forsøk og plotter et histogram av suksessraten:
+\subsubsection*{ii. Observasjons-versjon}
+
+Denne koden simulerer 50 grupper av 10 Bernoulli-forsøk hver, beregner suksessraten for hver gruppe, og visualiserer distribusjonen av disse ratene gjennom et histogram. Koden markerer også gjennomsnittet, standardavviket, og den sanne verdien av \(p\).
 
 \begin{verbatim}
-p=0.349
-m=50
-n=10
-z = rbinom(m, n, p)/n
-hist(z, breaks=seq(-0.5, n+.5, 1)/n)
-m=mean(z)
-s=sd(z)
-abline(v=m, col="green", lwd=1)
-abline(v=m+c(-s, s), col="pink", lwd=1)
-abline(v=p, col="blue", lwd=1)
+p = 0.349
+m = 50
+n = 10
+z = rbinom(m, n, p) / n
+hist(z, breaks = seq(-0.5, n + .5, 1) / n)
+m = mean(z)
+s = sd(z)
+abline(v = m, col = "green", lwd = 1)
+abline(v = m + c(-s, s), col = "pink", lwd = 1)
+abline(v = p, col = "blue", lwd = 1)
 \end{verbatim}
 
-\subsubsection*{Inferens-versjon}
-Her følger et eksempel på hvordan man kunne strukturert koden for å estimere \(p\) gjennom en Bayesian tilnærming, med detaljene utelatt for å fokusere på rapportens struktur.
+Dette illustrerer hvordan empiriske suksessrater distribuerer seg rundt den sanne parameteren \(p\), med gjennomsnitt og spredning visualisert.
 
-\section{Poisson (25\%)}
-Analysen av datasettet \texttt{discoveries} fra R's \texttt{datasets} pakke, inkludert histogram og estimering av raten \(\lambda\) av viktige oppdagelser per år, vil bli diskutert her. Detaljerte analyser og kodeeksempler er utelatt til fordel for rapportens struktur.
+\subsubsection*{iii. Effekt av større \(m\) og \(n\)}
 
-\section{Gaussisk (25\%)}
-Analyse av seigmanndata fra forskjellige strekktyper, inkludert beregning av posterior fordelinger og sammenligning av sannsynlighetsfordelinger, diskuteres her med relevante R-kode eksempler og resultater.
+Økningen i \(m\) (antall grupper av forsøk) og \(n\) (antall forsøk per gruppe) påvirker resultatene på følgende måter:
 
-\section*{Konklusjon}
-Denne rapporten har gått gjennom løsninger på de gitte oppgavene i Oblig 3a, med en blanding av teoretisk forklaring og praktisk anvendelse gjennom R-kode. Videre arbeid kan inkludere en dypere analyse av datamengdene, samt utvidelse av de statistiske metodene som er anvendt.
+- Økning i \(m\) gir en jevnere og mer stabil estimasjon av fordelingen av suksessraten siden vi har flere datapunkter å basere estimatene på.\\
+- Økning i \(n\) vil typisk føre til en smalere distribusjon rundt den sanne verdien av \(p\), ettersom loven om store tall er at gjennomsnittet av en stor prøve vil nærme seg den forventet verdien.
+
+\subsubsection*{iv. Inferens-versjon}
+
+For inferens bruker vi Jeffreys' nøytrale prior for en Bernoulli-prosess, som er en Beta-distribusjon med \(a_0 = 0.5\) og \(b_0 = 0.5\). Dette reflekterer en usikkerhet før vi ser data, og er spesielt valgt fordi den er ikke-informativ.
+
+utfører deretter forsøkene for \(n = 10, 100, 1000, 10000\) og oppdaterer vår tro basert på observasjonene:
+
+\begin{verbatim}
+# Jeffreys' nøytrale prior
+a0 = 0.5
+b0 = 0.5
+
+# Simulerer forsøk og oppdaterer troen for forskjellige n
+n_values = c(10, 100, 1000, 10000)
+for (n in n_values) {
+  k = sum(rbinom(n, 1, p))  # Antall suksesser
+  l = n - k  # Antall fiaskoer
+  a1 = a0 + k
+  b1 = b0 + l
+  # Tegn posterior sannsynlighetsfordeling for p
+  curve(dbeta(x, a1, b1), 0, 1, main = paste("Posterior for n=", n))
+}
+\end{verbatim}
+
+% Denne koden gjennomfører forsøkene, oppdaterer posterior distribusjonen basert på resultatene, og visualiserer denne for hver \(n\).
+ Den demonstrerer hvordan vår kunnskap om \(p\) forbedres med flere data, og hvordan posterior distribusjonen blir mer konsentrert rundt den sanne verdien av \(p\) som \(n\) øker.
+
+\subsection*{b) Poisson (25\%)}
+utelatt for nå
+% Denne delen innebærer å analysere datasettet \texttt{discoveries} for å estimere raten av viktige oppdagelser per år gjennom en Poisson-prosess. Analysen vil inneholde visualisering av data, etablering av en prior distribusjon basert på nøytrale hyperparametere, og oppdatering av denne troen med posterior distribusjoner etter å ha observert data over forskjellige tidsperioder.
+
+\subsection*{c) Gaussisk (25\%)}
+utelatt for nå
+% Analyse av seigmanndata for å bestemme egenskapene til strekkstyrken til forskjellige typer seigmenn vil bli utført ved å bruke en Gaussisk modell. Dette vil inkludere etablering av priorer, oppdatering basert på data for å finne posterior distribusjoner for middelverdi og varians, og til slutt, beregning av prediktive distribusjoner.
 
 \end{document}
