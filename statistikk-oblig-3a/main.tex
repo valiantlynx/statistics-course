@@ -15,7 +15,20 @@
 
 \section{Oppgave 1 (5\%)}
 \textbf{Kapittel 11: oppgave 2}
-utelatt for nå
+What are the two main purposes of statistical inference mentioned by Bard and Frederick? What is the difference between these two purposes, and how are the purposes related?
+
+\subsection*{Svar}
+De to hovedformålene med statistisk inferens som nevnes av Bard og Frederick er:
+
+\begin{enumerate}
+  \item \textbf{Estimering:} Dette innebærer å bruke data for å utlede verdier av ukjente parametere i en modell. Estimering gir punktestimater eller intervallestimater av parametere, som lar oss forstå egenskapene til populasjonen hvorfra dataene er trukket.
+  \item \textbf{Prediksjon:} Når modellparametrene er estimert, involverer prediksjon å bruke modellen til å forutsi fremtidige observasjoner. Dette lar oss ta informerte beslutninger basert på hva vi forventer vil skje i fremtiden.
+\end{enumerate}
+
+Forskjellen mellom disse to formålene ligger i deres anvendelse: estimering er opptatt av den nåværende forståelsen av populasjonen, mens prediksjon er fokusert på fremtidige utfall basert på den forståelsen.
+
+Disse to formålene er imidlertid sammenkoblet. En god estimering av modellparametere er essensiell for å gjøre nøyaktige prediksjoner. Estimering informerer prediksjon, ettersom presisjonen av våre prediksjoner er direkte relatert til nøyaktigheten av våre parameterestimater.
+
 
 \section{Oppgave 2 (10\%)}
 \subsection*{(a) Hva er en parameter?}
@@ -38,19 +51,243 @@ En posterior fordeling er sannsynlighetsfordelingen for en parameter gitt observ
 
 \subsection*{(g) Hva er en prediktiv fordeling?}
 En prediktiv fordeling er en fordeling av fremtidige observasjoner gitt eksisterende data, som tar hensyn til usikkerheten rundt parameterestimatene.
+\newpage
+\bf{Gaussisk}
+\section{Oppgave 3}
+\subsection{1k}
 
-\section{Gaussisk}
-\subsection{Oppgave 3 til 4}
-utelatt for nå
+For å finne den posterior fordelingen av middelverdien \(\mu\) med ukjent \(\mu\), kjent varians \(\sigma^2\), og en ikke-informativ prior, bruker jeg Bayes' teorem. Vår prior er spesifisert av hyperparameterne \(\kappa_0 = 0\), \(\mu_0 = -1\), og \(SS_0 = 0\), som indikerer at vi starter uten å foretrekke noen spesiell verdi av \(\mu\). Med en kjent \(\sigma = 100\), og gitt observasjonsstatistikkene \(n = 8\), \(\sum x_i = 31832\), beregner vi gjennomsnittet \(\bar{x}\):
 
-\section{Bernoulli}
-\subsection{Oppgave 5 til 7}
-utelatt for nå
+\[
+\bar{x} = \frac{\sum x_i}{n} = \frac{31832}{8} = 3979.
+\]
 
-\section{Poisson}
-\subsection{Oppgave 8 til 9}
-utelatt for nå
+Siden \(\kappa_0 = 0\), blir den prior fordelingen for \(\mu\) ikke-informativ, og vår posterior fordeling for \(\mu\) blir derfor basert utelukkende på dataene:
 
+\[
+\mu | x \sim \mathcal{N}\left(\bar{x}, \frac{\sigma^2}{n}\right).
+\]
+
+Dette resulterer i en posterior fordeling for \(\mu\) med et gjennomsnitt på 3979 og en varians på:
+
+\[
+\frac{\sigma^2}{n} = \frac{100^2}{8} = 1250.
+\]
+
+Dermed er den posterior fordelingen for \(\mu\):
+
+\[
+\mu | x \sim \mathcal{N}(3979, 1250).
+\]
+
+Det fordelingen gir oss den oppdaterte troen på \(\mu\) etter observation av dataene.
+
+
+
+
+\section{Oppgave 4}
+\subsection{Oppgave 3: Capacitors}
+
+Vi har målt kapasitansen av FR Electronics' minste kondensatorer. Fra et utvalg av 25 målinger har vi fått et gjennomsnitt på \(\bar{c} = 49.19 \, \mu F\) og en standardavvikelse av \(s_c = 2.15 \, \mu F\). Vi antar at kapasitansen følger en normalfordeling \(\phi(\mu, \sigma)\) med ukjente verdier for \(\mu\) og \(\sigma\). Ved bruk av en nøytral prior, ønsker vi å finne sannsynlighetsfordelingene for \(\mu\) og \(\tau = 1/\sigma^2\) (presisjon), og sannsynligheten for at en tilfeldig valgt kondensator av denne typen har en kapasitans på mer enn \(50 \, \mu F\).
+
+En nøytral prior betyr at vi ikke har noen spesifikk informasjon om forventet verdi av \(\mu\) eller \(\sigma\) før vi ser dataene. Derfor kan vi bruke en ikke-informativ prior som Jeffreys' prior, som for en normalfordeling er proporsjonal med \(1/\sigma\).
+
+Gitt vårt utvalg, kan vi oppdatere vår tro om \(\mu\) og \(\tau\) ved hjelp av de observerte dataene. For en normalfordeling med en ikke-informativ prior, er den posterior fordelingen for \(\mu\) gitt ved:
+
+\[
+\mu | \bar{c}, s_c \sim \mathcal{N}\left(\bar{c}, \frac{s_c^2}{n}\right).
+\]
+
+For våre data har vi at:
+
+\[
+\mu | \bar{c}, s_c \sim \mathcal{N}\left(49.19, \frac{2.15^2}{25}\right).
+\]
+
+Den posterior fordelingen for presisjonen \(\tau\) er mer kompleks, ettersom det krever en gammafordeling. Vi vil ikke gå inn i detaljene her, men vi kan finne sannsynligheten for at en kondensator har mer enn \(50 \, \mu F\) ved å bruke den kumulative fordelingsfunksjonen (CDF) for en normalfordeling:
+
+\[
+P(c > 50) = 1 - P(c \leq 50) = 1 - \Phi\left(\frac{50 - \mu}{\sigma}\right),
+\]
+
+hvor \(\Phi\) er CDF for en standard normalfordeling. For våre data, blir dette:
+
+\[
+P(c > 50) = 1 - \Phi\left(\frac{50 - 49.19}{2.15/\sqrt{25}}\right).
+\]
+
+sannsynligheten er 0.0298, eller \(2.98 \%\) (beregnet med kode):
+\begin{verbatim}
+  # Gitt data
+  mean_c <- 49.19  # Gjennomsnittlig måling
+  std_c <- 2.15    # Standardavvik
+  n <- 25          # Antall målinger
+  threshold <- 50  # Kapasitansverdi for å beregne sannsynligheten
+  
+  # Beregne standardfeilen for gjennomsnittet
+  sem_c <- std_c / sqrt(n)
+  
+  # Beregne z-score for terskelen
+  z_score <- (threshold - mean_c) / sem_c
+  
+  # Beregne sannsynligheten for at en tilfeldig valgt kondensator har mer enn 50 µF
+  prob_gt_50 <- 1 - pnorm(z_score)
+  
+  prob_gt_50
+  
+  \end{verbatim}
+  
+  \newpage
+\bf{Bernoulli}
+\section{Oppgave 5}
+
+\subsection{Oppgave 5: Posterior}
+
+Gitt prior hyperparametere for en binomial prosess, observerte data og en verdi for \(p\), skal vi finne den posterior fordelingen for \(\pi\) og dens normale tilnærming. Videre vil vi beregne sannsynligheten \(P(\pi \leq p)\) både ved eksakt beregning på \(\pi\) og ved bruk av den normale tilnærmingen.
+
+\subsubsection*{(a) Prior hyperparametere og observasjoner}
+Gitt prior hyperparametere \(a_0 = 2\) og \(b_0 = 2\), og observasjoner av 17 positive og 29 negative hendelser, kan vi bruke en Beta-prior for \(\pi\), som er konsistent med en binomial likelihood. Den posterior fordelingen for \(\pi\) vil da også være en Beta-fordeling:
+
+\[
+\pi | \text{{data}} \sim \text{{Beta}}(a_0 + x, b_0 + n - x),
+\]
+
+hvor \(x\) er antall suksesser (positive observasjoner) og \(n\) er totalt antall forsøk. For våre data blir dette:
+
+\[
+\pi | \text{{data}} \sim \text{{Beta}}(2 + 17, 2 + 29).
+\]
+
+Dette forenkles til:
+
+\[
+\pi | \text{{data}} \sim \text{{Beta}}(19, 31).
+\]
+
+For den normale tilnærmingen av den posterior fordelingen av \(\pi\), bruker vi at for store \(a\) og \(b\), er \(\text{{Beta}}(a, b)\) tilnærmet normalt distribuert med middelverdi \(\mu = \frac{a}{a + b}\) og varians \(\sigma^2 = \frac{ab}{(a + b)^2(a + b + 1)}\). For vårt tilfelle blir middelverdien og variansen:
+
+\[
+\mu = \frac{19}{19 + 31} \quad \text{{og}} \quad \sigma^2 = \frac{19 \cdot 31}{(19 + 31)^2(19 + 31 + 1)}.
+\]
+
+\(P(\pi \leq 0.4)\) 
+
+Eksakt beregning = 0.6222587524871719 \\
+Normaltilnærming = 0.6157194011640728
+
+(beregnet med kode)
+
+\section{Oppgave 6}
+\subsection{Oppgave 6: Predictive}
+
+Gitt posterior for Bernoulli-parameteren \(\pi\), og tallene \(m\), \(s\), \(k\), og \(l\). Vi skal finne de prediktive fordelingene for \(K_{+m}\) og \(L_{+s}\), og beregne sannsynlighetene \(P(K_{+m} \leq k)\) og \(P(L_{+s} \leq l)\).
+
+\subsubsection*{(b) Posterior: \(a_1 = 5\), \(b_1 = 96\). \(m = 20\), \(s = 4\), \(k = 3\), \(l = 12\).}
+\subsubsection*{R kode for beregning:}
+\begin{verbatim}
+# For K+m
+pbeta(4 / (20 + 4), 5 + 4, 96 + 20 - 4)
+
+# For L+s
+pbeta(12 / (12 + 20), 5 + 20 - 12, 96 + 12)
+\end{verbatim}
+
+\subsubsection*{Resultater fra R}
+\begin{itemize}
+    \item For del (b), \( P(K_{+m} \leq s) \approx 0.999 \) og \( P(L_{+s} \leq l) \approx 1.000 \).
+\end{itemize}
+
+\section{Oppgave 7}
+\subsection{Oppgave 11: Kvalitetsvurdering av Diamanter}
+
+Du vurderer kvaliteten på diamantene fra diamantgruvene i et nytt område med spesiell interesse for "Fancy diamonds" av kvalitet IF og VVS. Du estimerer \(\pi\), andelen av diamanter fra de nye gruvene som passer til en av disse beskrivelsene. Etter å ha evaluert 172 diamanter, har du funnet 19 som er enten IF eller VVS, mens resten er av lavere kvalitetsgrader.
+
+\subsubsection*{(a) Usikker på valg av nøytral prior}
+Vi vurderer tre nøytrale priorer for å finne den posterior fordelingen for \(\pi\) for hver av dem:
+
+\begin{itemize}
+    \item Uniform prior: Beta(1, 1), som representerer en ikke-informativ prior.
+    \item Jeffreys' prior: Beta(0.5, 0.5), som er invariant under reparametrisering.
+    \item Haldane's prior: Beta(0, 0), som er en uegnet prior med uendelig varians (bruker en grensetilnærming).
+\end{itemize}
+
+\subsubsection*{(b) Beregne sannsynligheten for at \(\pi > 0.1\) for hver av de tre priorene}
+Ved hjelp av R, kan vi beregne sannsynligheten for at \(\pi > 0.1\) for hver prior. Her er R-koden for disse beregningene:
+
+\begin{verbatim}
+  # For Bayesian-analyse av diamantkvalitet, vurderer vi 3 forskjellige 
+  # nøytrale priorer:
+  # 1. Uniform prior: Beta(1, 1) som er en ikke-informativ prior.
+  # 2. Jeffreys' prior: Beta(0.5, 0.5) som er invariant under 
+  #    reparametrisering.
+  # 3. Haldane's prior: Beta(0, 0) som er en uegnet prior med 
+  #    uendelig varians.
+  
+  # Vi har 19 fancy diamanter av enten IF eller VVS kvalitet ut av 172 
+  # evaluerte.
+  
+  # Data for analysen
+  n_diamonds <- 172  # totalt antall evaluerte diamanter
+  n_fancy <- 19      # antall fancy diamanter funnet (enten IF eller VVS)
+  
+  # Definer prior parameterne for de tre priorene
+  priors <- list(
+    "Uniform" = list("a" = 1, "b" = 1),
+    "Jeffreys" = list("a" = 0.5, "b" = 0.5),
+    "Haldane" = list("a" = 0, "b" = 0)  # Merk: Beta(0,0) er ikke en 
+    # korrekt fordeling
+  )
+  
+  # Beregn den posterior fordelingsparameteren og sannsynligheten at \pi > 0.1
+  # for hver prior
+  posterior_params <- list()
+  prob_pi_gt_0_1 <- list()
+  
+  for (prior_name in names(priors)) {
+    params <- priors[[prior_name]]
+    # Beregn posterior hyperparametere for \pi
+    a_post <- params$a + n_fancy
+    b_post <- params$b + n_diamonds - n_fancy
+    
+    # For uegnet Haldane's prior, bruker vi en grensetilnærming
+    if (a_post == 0 || b_post == 0) {
+      # For Beta(0, 0), bruker vi en grensetilnærming ved å sette en 
+      # veldig liten epsilon
+      epsilon <- 1e-6
+      a_post <- a_post + epsilon
+      b_post <- b_post + epsilon
+    }
+    
+    # Lagre de posterior parameterne
+    posterior_params[[prior_name]] <- c(a_post, b_post)
+    
+    # Beregn sannsynligheten at \pi > 0.1 ved å bruke Beta CDF
+    prob_pi_gt_0_1[[prior_name]] <- 1 - pbeta(0.1, a_post, b_post)
+  }
+  
+  posterior_params
+  prob_pi_gt_0_1
+  \end{verbatim}
+  
+
+Resultatene fra R:
+
+\begin{itemize}
+    \item For den uniforme prioren er den posterior fordelingen Beta(20, 154), og sannsynligheten \(P(\pi > 0.1)\) er ca. 0.719.
+    \item For Jeffreys' prior er den posterior fordelingen Beta(19.5, 153.5), og sannsynligheten \(P(\pi > 0.1)\) er ca. 0.686.
+    \item For Haldane's prior er den posterior fordelingen Beta(19, 153), og sannsynligheten \(P(\pi > 0.1)\) er ca. 0.650.
+\end{itemize}
+
+
+
+\newpage
+
+\bf{Poisson}
+\section{Oppgave 8}
+utelatt helt
+
+\section{Oppgave 9}
+utelatt helt
 
 \section{Oppgave 10: Tre inferenser}
 
