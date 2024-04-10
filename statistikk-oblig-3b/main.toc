@@ -1,0 +1,15 @@
+\babel@toc {norsk}{}\relax 
+\contentsline {section}{\numberline {1}Begreper}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Hva er en Poisson-prosess?}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Hva er prediktiv fordeling?}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Hva er sammenhengen mellom gamma-fordeling og gamma-gamma-fordeling, og hva er forskjellen på de to?}{3}{subsection.1.3}%
+\contentsline {section}{\numberline {2}Kapittel 13: oppgave 13d}{4}{section.2}%
+\contentsline {section}{\numberline {3}De tre eksperimentene:}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}(a) Bernoulli}{5}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}i. Intervallestimater}{5}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}ii. Punktestimater}{6}{subsubsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.2}R Kode for Punktestimater}{6}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}iii. Hypotesetesting}{6}{subsubsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.3}R Kode for Hypotesetesting}{7}{subsection.3.3}%
+\contentsline {section}{Vedlegg}{8}{section*.3}%
+\contentsline {subsection}{Vedlegg A}{8}{section*.4}%

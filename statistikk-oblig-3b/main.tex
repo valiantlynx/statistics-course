@@ -1,132 +1,222 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{graphicx}
-\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[norsk]{babel} % For norsk språk
+\usepackage{graphicx} % For bilder
+\usepackage{lipsum} % Genererer fylltekst
+\usepackage{amsmath} % For matematiske formler
+\usepackage{hyperref} % For hyperlenker
 \usepackage{float}
 
-\title{Rapport: Oblig 3a}
+\title{Oblig 3b}
 \author{Gormery K. Wanjiru}
-\date{Mars 2024}
+\date{\today}
 
 \begin{document}
 
 \maketitle
 
-\section{Oppgave 1 (5\%)}
-\textbf{Kapittel 11: oppgave 2}
-utelatt for nå
+\newpage
+\tableofcontents
 
-\section{Oppgave 2 (10\%)}
-\subsection*{(a) Hva er en parameter?}
-En parameter er en ukjent tallverdi som beskriver en befolkning. Parametere er sentrale i statistiske modeller fordi de hjelper til med å definere fordelingen av en datamengde.
+\newpage
+\section{Begreper}
+\subsection{Hva er en Poisson-prosess?}
+En poissonprosess er en prosess der hendelser av en bestemt type skjer ifølge spesifiserte sannsynlighetslover, blant annet at antall hendelser som skje i ikke-overlappende intervaller er uavhengige av hverandre.
+dise egenskaper er:
+\begin{enumerate}
+  \item \( N(0) = 0 \). Initialtilstand: Antall hendelser ved starten er null
+  \item For enhver \( 0 \leq t_1 < t_2 \leq t_3 < t_4 \) er \( N(t_2) - N(t_1) \) og \( N(t_4) - N(t_3) \) uavhengige stokastiske variabler. Uavhengighet: Antallet hendelser som skjer i ikke-overlappende intervaller er uavhengige av hverandre.
 
-\subsection*{(b) Hva er en observator?}
-En observator er en målbar funksjon av dataene, som brukes til å estimere verdien av en parameter.
+  \item For enhver \( t \geq 0 \) og \( \Delta t > 0 \) har vi at
+        \[
+          P(N(t + \Delta t) - N(t) = 1) = \lambda \Delta t + o(\Delta t),
+        \]
+        \[
+          P(N(t + \Delta t) - N(t) \geq 2) = o(\Delta t),
+        \]
+        der hver \( o(\Delta t) \) angir en funksjon som oppfyller
+        \[
+          \lim_{\Delta t \to 0} \frac{o(\Delta t)}{\Delta t} = 0.
+        \]
+        Sannsynligheten for at en hendelse skjer i et lite tidsintervall \({\Delta t}\) er proporsjonal med lengden av intervallet, og sannsynligheten for at mer enn én hendelse skjer i dette intervallet er neglisjerbar.
 
-\subsection*{(c) Hva er en hyperparameter?}
-En hyperparameter er en parameter i en bayesiansk statistisk modell som ikke er direkte relatert til datamengden, men som påvirker fordelingen av modellparametere.
-
-\subsection*{(d) Hva er en Poisson-prosess?}
-En Poisson-prosess er en type statistisk prosess som beskriver antall hendelser som skjer i et fast tidsintervall, under forutsetning av at disse hendelsene skjer med en konstant rate og uavhengig av hverandre. Enkel sagt den beskriver hendelser som skjer tilfeldig over tid, hvor antall hendelser i et gitt tidsintervall følger en Poisson-fordeling
-
-\subsection*{(e) Hva er en Bernoulli-prosess?}
-En Bernoulli-prosess er en sekvens av uavhengige og identisk fordelt binære tilfeldige variabler, hvor hver variabel kan anta verdien 1 med sannsynlighet \(p\) og 0 med sannsynlighet \(1-p\).
-
-\subsection*{(f) Hva er en posterior fordeling?}
-En posterior fordeling er sannsynlighetsfordelingen for en parameter gitt observasjonsdata, basert på en kombinasjon av priorinformasjon og den likelihood som dataene gir.
-
-\subsection*{(g) Hva er en prediktiv fordeling?}
-En prediktiv fordeling er en fordeling av fremtidige observasjoner gitt eksisterende data, som tar hensyn til usikkerheten rundt parameterestimatene.
-
-\section{Gaussisk}
-\subsection{Oppgave 3 til 4}
-utelatt for nå
-
-\section{Bernoulli}
-\subsection{Oppgave 5 til 7}
-utelatt for nå
-
-\section{Poisson}
-\subsection{Oppgave 8 til 9}
-utelatt for nå
+\end{enumerate}
 
 
-\section{Oppgave 10: Tre inferenser}
+\subsection{Hva er prediktiv fordeling?}
+En prediktiv fordeling beskriver sannsynligheten for fremtidige observasjoner gitt eksisterende data. for eksempel i bayesian statistikk representerer den distribusjonen av mulige utfall for en fremtidig observasjon basert på en nåværende postulert modell og de observerte dataene.
+\subsection{Hva er sammenhengen mellom gamma-fordeling og gamma-gamma-fordeling,
+og hva er forskjellen på de to?}
 
-\subsection*{a) Bernoulli (25\%)}
+Gamma-fordelingen er en kontinuerlig sannsynlighetsfordeling som ofte brukes til å modellere ventetiden til den 
+\({k}\) -te hendelsen i en Poisson-prosess. Den er karakterisert ved to parametere, formparameteren 
+\({k}\) og raten 
+\({\lambda}\) , og den har en bred anvendelse i queuing teori, finans, og forsikringsmatematikk.
 
-\subsubsection*{i. Grunnleggende}
 
-For å generere 30 Bernoulli-forsøk med parameter \(p = 0.349\), kan vi bruke følgende R-kode:
+Gamma-gamma-fordelingen refererer vanligvis til en sammensatt fordeling hvor formparameteren i en gamma-fordeling selv følger en gamma-fordeling, 
+ofte brukt i bayesianske hierarkiske modeller. Denne fordelingen brukes for å modellere over-dispersjon i data hvor variansen er større enn middelverdien, 
+som er typisk i visse typer forsikringskrav eller kjøpsfrekvensdata.
 
+Sammenhengen mellom dem ligger i at gamma-gamma-fordelingen utvider gamma-fordelingen ved å tillate at dens parametere selv er tilfeldige variabler
+ med sine egne fordelinger, noe som fører til en mer fleksibel modell. Forskjellen er i denne fleksibiliteten og i den ytterligere nivå av usikkerhet som innføres ved å ha parametere som selv er stokastiske.
+\section{Kapittel 13: oppgave 13d}
+
+Gitt en prior normalfordeling for \(\mu\) med kjent \(\sigma\), hvor hyperparameterne for prioren er \(\kappa_0 = 0\), \(\mu_0 = 0\), og \(\sigma_0 = 200\). Det er observert \(n = 12\) med gjennomsnitt \(\bar{x} = 35723.7\) og vi har at \(\sigma = 3125\).
+
+Posteriorfordelingen for \(\mu\) etter å ha observert dataene er også en normalfordeling. Posteriorens parametre, \(\mu_n\) og \(\sigma_n^2\), kan beregnes som følger:
+\[\mu_n = \frac{\kappa_0\mu_0 + n\bar{x}}{\kappa_0 + n}\]
+\[\sigma_n^2 = \frac{1}{\frac{1}{\sigma_0^2} + \frac{n}{\sigma^2}}\]
+
+Setter vi inn verdiene får vi:
+\[\mu_n = \frac{0 \cdot 0 + 12 \cdot 35723.7}{0 + 12} = 35723.7\]
+\[\sigma_n^2 = \frac{1}{\frac{1}{200^2} + \frac{12}{3125^2}}\]
+
+Den oppdaterte verdien av \(\sigma_n^2\) blir den inverse av summen av de inverse variansene.
+
+Sannsynlighetene for \(\mu\) og prediksjonene for fremtidig observasjon \(X_{+}\) kan beregnes ved å bruke den oppdaterte posteriore normalfordelingen for \(\mu\).
+
+\[P(\mu < 3125) = 99.48\%\]
+\[P(X_{+} < 3125) = 76.15\%\]
+
+% \subsection*{R kode}
+% \begin{verbatim}
+%   kappa_0 <- 0
+%   mu_0 <- 0
+%   sigma_0 <- 200
+%   n <- 12
+%   x_bar <- 35723.7
+%   sigma <- 3125
+  
+%   mu_n <- (kappa_0 * mu_0 + n * x_bar) / (kappa_0 + n)
+%   sigma_n_squared <- 1 / (1 / sigma_0^2 + n / sigma^2)
+  
+%   # Beregning av sannsynlighetene
+%   p_mu <- pnorm(3125, mean = mu_n, sd = sqrt(sigma_n_squared))
+%   p_Xt <- pnorm(3125, mean = mu_n, sd = sqrt(sigma_n_squared + sigma^2))
+  
+%   p_mu
+%   p_Xt
+  
+% \end{verbatim}
+
+
+\section*{Oppgave 14(c)}
+
+Gitt at stokastiske variabelen \( X \) er normalfordelt, \( X \sim \mathcal{N}(5,3.1^2) \), og en nyttefunksjon \( u(x) \) som er definert som:
+
+\[ u(x) = \begin{cases} 
+-1 & \text{for } x < 3 \\
+1.5 & \text{for } 3 \leq x < 6 \\
+4 & \text{for } x \geq 6 
+\end{cases} \]
+
+Forventet nytte \( U \) kan beregnes ved å ta forventningen av \( u(X) \) med hensyn på fordelingen til \( X \):
+
+\[ U = E[u(X)] = -1 \cdot P(X < 3) + 1.5 \cdot P(3 \leq X < 6) + 4 \cdot P(X \geq 6) \]
+
+Ved å sette inn de relevante sannsynlighetene fra den normalfordelte stokastiske variabelen får vi:
+
+\[ U = -1 \cdot \Phi\left(\frac{3-5}{3.1}\right) + 1.5 \cdot \left(\Phi\left(\frac{6-5}{3.1}\right) - \Phi\left(\frac{3-5}{3.1}\right)\right) + 4 \cdot \left(1 - \Phi\left(\frac{6-5}{3.1}\right)\right) \]
+
+\[ U = -1 \cdot \Phi(-0.64516) + 1.5 \cdot (\Phi(0.32258) - \Phi(-0.64516)) + 4 \cdot (1 - \Phi(0.32258)) \]
+
+\[ U \approx 2.1081 \]
+
+% \subsection*{R kode}
+% \begin{verbatim}
+%   mu <- 5
+%   sigma <- 3.1
+  
+%   # Beregn sannsynlighetene
+%   p_X_less_3 <- pnorm(3, mean = mu, sd = sigma, lower.tail = TRUE)
+%   p_X_between_3_6 <- pnorm(6, mean = mu, sd = sigma, lower.tail = TRUE) - p_X_less_3
+%   p_X_more_6 <- 1 - pnorm(6, mean = mu, sd = sigma, lower.tail = TRUE)
+  
+%   # Beregn forventet nytte
+%   U <- -1 * p_X_less_3 + 1.5 * p_X_between_3_6 + 4 * p_X_more_6
+%   U
+% \end{verbatim}
+
+
+\section{De tre eksperimentene:}
+\subsection{(a) Bernoulli}
+
+\subsubsection{i. Intervallestimater}
+For å regne ut 90\% kredibilitetsintervall for parameteren $\pi$ for alle 4 $n$-verdier, bruker vi Betafordelingen $\text{Beta}(a,b)$, hvor $a$ er antall suksesser pluss 1, og $b$ er antall feil pluss 1. For $n = 10, 100, 1000, 10000$, anta vi har observerte suksesser gitt i oppgaven.
+
+Kredibilitetsintervallet for en Betafordeling er gitt ved:
+\[
+\text{CI} = \left[\text{Beta}^{-1}\left(\frac{\alpha}{2}; a, b\right), \text{Beta}^{-1}\left(1-\frac{\alpha}{2}; a, b\right)\right]
+\]
+
+hvor $\alpha = 0.1$ for et 90\% intervall.
+
+\subsubsection{ii. Punktestimater}
+Vi antar at for $n=100$ og $n=10000$, antallet suksesser (a) og feil (b) er gitt. Vi beregner punktestimatene for disse to n-verdiene.
+
+For å gjøre dette, bruker vi R. R-kode for beregning av måleparameter (forventningsverdi) og varians for Betafordelingen for $n=100$ og $n=10000$.
+
+\subsection{R Kode for Punktestimater}
 \begin{verbatim}
-# Genererer 30 uavhengige Bernoulli-forsøk
-rbinom(30, 1, 0.349)
-# Genererer antall suksesser i 30 Bernoulli-forsøk
-rbinom(1, 30, 0.349)
+# For n=100
+a100 <- 70 # Antall suksesser + 1
+b100 <- 31 # Antall feil + 1
+mu100 <- a100 / (a100 + b100)
+var100 <- (a100 * b100) / ((a100 + b100)^2 * (a100 + b100 + 1))
+
+# For n=10000
+a10000 <- 7000 # Antall suksesser + 1
+b10000 <- 3001 # Antall feil + 1
+mu10000 <- a10000 / (a10000 + b10000)
+var10000 <- (a10000 * b10000) / ((a10000 + b10000)^2 * (a10000 + b10000 + 1))
+
+# resultatene
+print(c(mu100, var100))
+print(c(mu10000, var10000))
 \end{verbatim}
 
-Den første linjen utfører 30 uavhengige forsøk, som returnerer et vektor med 30 elementer, hvor hvert element representerer utfallet av hvert forsøk (suksess eller fiasko). Den andre linjen utfører et sett av 30 forsøk og returnerer totalt antall suksesser. Den første metoden gir mer detaljert informasjon om hvert enkelt forsøk, mens den andre gir en summarisk oversikt over antall suksesser.
+\subsubsection{iii. Hypotesetesting}
+For å teste hypotesen $H_1: \pi > 0.5$ med signifikansnivå $\alpha = 0.1$, beregner vi $P(H_0)$ for alle de fire posterior-fordelingene. Dette kan gjøres ved å bruke den kumulative fordelingsfunksjonen for Betafordelingen i R.
 
-\subsubsection*{ii. Observasjons-versjon}
-
-Denne koden simulerer 50 grupper av 10 Bernoulli-forsøk hver, beregner suksessraten for hver gruppe, og visualiserer distribusjonen av disse ratene gjennom et histogram. Koden markerer også gjennomsnittet, standardavviket, og den sanne verdien av \(p\).
-
+\subsection{R Kode for Hypotesetesting}
 \begin{verbatim}
-p = 0.349
-m = 50
-n = 10
-z = rbinom(m, n, p) / n
-hist(z, breaks = seq(-0.5, n + .5, 1) / n)
-m = mean(z)
-s = sd(z)
-abline(v = m, col = "green", lwd = 1)
-abline(v = m + c(-s, s), col = "pink", lwd = 1)
-abline(v = p, col = "blue", lwd = 1)
+#for å beregne P(H0) for de fire posterior-fordelingene
+library(stats)
+
+# Anta at a og b er definert som tidligere for hvert n
+# Beregning for n=10
+a10 <- 7; b10 <- 4
+PH0_n10 <- 1 - pbeta(0.5, a10, b10)
+
+# Beregning for n=100, a100 og b100 definert tidligere
+PH0_n100 <- 1 - pbeta(0.5, a100, b100)
+
+# Beregning for n=1000
+a1000 <- 700; b1000 <- 301
+PH0_n1000 <- 1 - pbeta(0.5, a1000, b1000)
+
+# Beregning for n=10000, a10000 og b10000 definert tidligere
+PH0_n10000 <- 1 - pbeta(0.5, a10000, b10000)
+
+# resultatene
+print(c(PH0_n10, PH0_n100, PH0_n1000, PH0_n10000))
 \end{verbatim}
 
-Dette illustrerer hvordan empiriske suksessrater distribuerer seg rundt den sanne parameteren \(p\), med gjennomsnitt og spredning visualisert.
 
-\subsubsection*{iii. Effekt av større \(m\) og \(n\)}
+\newpage
+\section*{Vedlegg}
+\addcontentsline{toc}{section}{Vedlegg}
+\subsection*{Vedlegg A}
+\addcontentsline{toc}{subsection}{Vedlegg A}
 
-Økningen i \(m\) (antall grupper av forsøk) og \(n\) (antall forsøk per gruppe) påvirker resultatene på følgende måter:
+\newpage
+\begin{thebibliography}{9}
 
-- Økning i \(m\) gir en jevnere og mer stabil estimasjon av fordelingen av suksessraten siden vi har flere datapunkter å basere estimatene på.\\
-- Økning i \(n\) vil typisk føre til en smalere distribusjon rundt den sanne verdien av \(p\), ettersom loven om store tall er at gjennomsnittet av en stor prøve vil nærme seg den forventet verdien.
-
-\subsubsection*{iv. Inferens-versjon}
-
-For inferens bruker vi Jeffreys' nøytrale prior for en Bernoulli-prosess, som er en Beta-distribusjon med \(a_0 = 0.5\) og \(b_0 = 0.5\). Dette reflekterer en usikkerhet før vi ser data, og er spesielt valgt fordi den er ikke-informativ.
-
-utfører deretter forsøkene for \(n = 10, 100, 1000, 10000\) og oppdaterer vår tro basert på observasjonene:
-
-\begin{verbatim}
-# Jeffreys' nøytrale prior
-a0 = 0.5
-b0 = 0.5
-
-# Simulerer forsøk og oppdaterer troen for forskjellige n
-n_values = c(10, 100, 1000, 10000)
-for (n in n_values) {
-  k = sum(rbinom(n, 1, p))  # Antall suksesser
-  l = n - k  # Antall fiaskoer
-  a1 = a0 + k
-  b1 = b0 + l
-  # Tegn posterior sannsynlighetsfordeling for p
-  curve(dbeta(x, a1, b1), 0, 1, main = paste("Posterior for n=", n))
-}
-\end{verbatim}
-
-% Denne koden gjennomfører forsøkene, oppdaterer posterior distribusjonen basert på resultatene, og visualiserer denne for hver \(n\).
- Den demonstrerer hvordan vår kunnskap om \(p\) forbedres med flere data, og hvordan posterior distribusjonen blir mer konsentrert rundt den sanne verdien av \(p\) som \(n\) øker.
-
-\subsection*{b) Poisson (25\%)}
-utelatt for nå
-% Denne delen innebærer å analysere datasettet \texttt{discoveries} for å estimere raten av viktige oppdagelser per år gjennom en Poisson-prosess. Analysen vil inneholde visualisering av data, etablering av en prior distribusjon basert på nøytrale hyperparametere, og oppdatering av denne troen med posterior distribusjoner etter å ha observert data over forskjellige tidsperioder.
-
-\subsection*{c) Gaussisk (25\%)}
-utelatt for nå
-% Analyse av seigmanndata for å bestemme egenskapene til strekkstyrken til forskjellige typer seigmenn vil bli utført ved å bruke en Gaussisk modell. Dette vil inkludere etablering av priorer, oppdatering basert på data for å finne posterior distribusjoner for middelverdi og varians, og til slutt, beregning av prediktive distribusjoner.
+  \bibitem{referanse1}
+  \url{https://tma4245.math.ntnu.no/viktige-diskrete-fordelinger/poissonprosess-og-poissonfordeling}
+  \textit{NTNU}
+\end{thebibliography}
 
 \end{document}
