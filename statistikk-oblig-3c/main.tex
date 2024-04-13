@@ -1,12 +1,13 @@
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[norsk]{babel} % For norsk språk
-\usepackage{graphicx} % For bilder
-\usepackage{lipsum} % Genererer fylltekst
+\usepackage[norsk]{babel}
+\usepackage{graphicx}
+\usepackage{lipsum}
 \usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage{float}
+
 
 \title{Oblig 3c}
 \author{Gormery K. Wanjiru}
@@ -22,28 +23,189 @@
 \newpage
 
 \section{(15\%) kap. 17: oppgave 1.c}
+ikke gjørt
+
 \section{(15\%) kap. 17: oppgave 1.d}
+ikke gjørt
 \section{Terningdropp-oppgaven: (Totalt 50\%)}
 \subsection{(5\%) Tegn et diagram med samtlige datapunkter, og legg på den lineære regresjonslinjen.}
-\subsection{ $(15\%)$ Bruk nøytrale prior hyperparametre, og finn posterior og prediktive sannsynlighetsfordelinger, det vil si, sannsynlighetsfordelinger for $\tau$, $b$, $y(x)$ og $Y^+(x)$.}
-\subsection{(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for stigningstallet $b$.}
-\subsection{(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for standardavviket $\sigma$. (Hint: Bruk verdiene fra $\tau$ og regn om ved å bruke at $\tau = \frac{1}{\sigma^2}$)}
-\subsection{(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for $y(x)$.}
-\subsection{(5\%) 80\% intervallestimatet for $y(x)$ er funksjoner av $x$, og en kurve over, og en under regresjonslinjen. Plott disse kurvene inn sammen med regresjonslinjen.}
-\subsection{(5\%) Finn verdien $R^2 = \frac{SS_y - SS_e}{SS_y}$. Dette tallet forteller hvor stor del av variasjonen i $y$ som kan forklares av linja $y = a + bx$. For de av dere som bruker dataverktøy for å finne dette: angi hvordan dere fant det.}
-\subsection{(5\%) Finn $R^2$ for regresjonen mellom $z$ (utfall på terningen) og $x$ (dropphøyde). Kommenter hva forskjellen mellom $R^2$ for $y$ og $R^2$ for $z$ sier oss.}
-\section{(Totalt 20\%) Følgende R-kode vil plukke ut et utvalg av observasjonene.}
-\subsection*{R kode}
+\subsection{R kode}
 \begin{verbatim}
-  antall_rader = dim(dropp_df)[1]
-  N = 20 # (Eksempel; se oppgavene)
-  utvalg = sort(sample(1:antall_rader,N)) # Sortering er ikke nøvendig
-  utvalg # men du får da se hvilke rader som er plukket ut
-  ny_dropp_df = dropp_df[utvalg,] # Dette er kjernen; plukker ut radene
-  rownames(ny_dropp_df)=1:N # Lurt hvis du skal kjøre for-løkke.
-  ny_dropp_df # Ikke nødvendig, men du får se den nye data-rammen.
-\end{verbatim}
+  # Les inn data fra CSV-filen
+  data <- read.csv('terningDropp.csv')
+  
+  # Utfør lineær regresjon
+  fit <- lm(Lengde ~ Dropp, data=data)
+  
+  # Lag plot med datapunkter og regresjonslinje
+  plot(data$Dropp, data$Lengde, xlab='Dropphøyde', ylab='Lengde', main='Terningdropp: Dropphøyde vs. Lengde')
+  abline(fit, col='red')  
+\end{verbatim}  
+SVAR:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{3a.png}
+  \caption{manuaelt beregning på kalulatoren (2b)}
+\end{figure}
 
+\subsection{ $(15\%)$ Bruk nøytrale prior hyperparametre, og finn posterior og prediktive sannsynlighetsfordelinger, det vil si, sannsynlighetsfordelinger for $\tau$, $b$, $y(x)$ og $Y^+(x)$.}
+\subsection{R kode}
+\begin{verbatim}
+  # Prior hyperparametre
+  alpha <- 1
+  beta <- 1
+  
+  # Likelihood hyperparametre
+  mu0 <- 0
+  sigma0 <- 1
+  
+  # Beregn posterior hyperparametre
+  n <- length(data$Lengde)
+  x_bar <- mean(data$Dropp)
+  s_xx <- sum((data$Dropp - mean(data$Dropp))^2)
+  
+  alpha_post <- alpha + n/2
+  beta_post <- beta + 1/2 * s_xx
+  
+  # Definer posterior og prediktive fordelinger
+  posterior <- rgamma(10000, shape=alpha_post, rate=beta_post)
+  pred_mean <- mu0 + coef(fit)[2] * x_bar
+  pred_var <- sigma0^2 + summary(fit)$sigma^2
+  
+  # Print resultatene
+  print(paste("Posterior for tau (precision parameter): Gamma(", alpha_post, ",", beta_post, ")"))
+  print(paste("Prediktiv gjennomsnitt:", pred_mean))
+  print(paste("Prediktiv varians:", pred_var))  
+\end{verbatim} 
+SVAR:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{3b.png}
+  \caption{manuaelt beregning på kalulatoren (2b)}
+\end{figure}
+
+\subsection{(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for stigningstallet $b$.}
+\subsection{R kode}
+\begin{verbatim}
+  # Beregn standardfeil
+  se_slope <- summary(fit)$coefficients[2, 2]
+  
+  # Beregn kredibilitetsintervall
+  alpha <- 0.2  # 80% kredibilitet
+  t_critical <- qt(1 - alpha/2, df=n-2)
+  
+  lower_bound <- coef(fit)[2] - t_critical * se_slope
+  upper_bound <- coef(fit)[2] + t_critical * se_slope
+  
+  print(paste("80% kredibilitetsintervall for stigningstallet b: [", lower_bound, ",", upper_bound, "]"))
+\end{verbatim} 
+SVAR:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{3c.png}
+  \caption{manuaelt beregning på kalulatoren (2b)}
+\end{figure}
+
+
+
+\subsection{(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for standardavviket $\sigma$. (Hint: Bruk verdiene fra $\tau$ og regn om ved å bruke at $\tau = \frac{1}{\sigma^2}$)}
+\subsection{R kode}
+\begin{verbatim}
+  alpha <- 0.2  # 80% kredibilitet
+  lower_bound_sigma <- sqrt(1 / qgamma(alpha/2, shape=alpha_post, scale=1/beta_post))
+  upper_bound_sigma <- sqrt(1 / qgamma(1 - alpha/2, shape=alpha_post, scale=1/beta_post))
+  
+  print(paste("80% kredibilitetsintervall for standardavviket \alpha: [", lower_bound_sigma, ",", upper_bound_sigma, "]"))  
+\end{verbatim} 
+SVAR:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{3d.png}
+  \caption{manuaelt beregning på kalulatoren (2b)}
+\end{figure}
+
+\subsection{(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for $y(x)$.}
+\subsection{R kode}
+\begin{verbatim}
+  # Beregn kredibilitetsintervall for y(x)
+  alpha <- 0.2  # 80% kredibilitet
+  t_critical <- qt(1 - alpha/2, df=n-2)
+  
+  lower_bound_yx <- pred_mean - t_critical * sqrt(pred_var)
+  upper_bound_yx <- pred_mean + t_critical * sqrt(pred_var)
+  
+  print(paste("80% kredibilitetsintervall for y(x): [", lower_bound_yx, ",", upper_bound_yx, "]"))  
+\end{verbatim} 
+SVAR:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{3e.png}
+  \caption{manuaelt beregning på kalulatoren (2b)}
+\end{figure}
+
+
+
+\subsection{(5\%) 80\% intervallestimatet for $y(x)$ er funksjoner av $x$, og en kurve over, og en under regresjonslinjen. Plott disse kurvene inn sammen med regresjonslinjen.}
+% \subsection{R kode}
+% \begin{verbatim}
+%   # plusse på koden fra a
+%   # Plot datapunkter og regresjonslinje
+%   plot(data$Dropp, data$Lengde, xlab='Dropphøyde', ylab='Lengde', main='Terningdropp: Dropphøyde vs. Lengde')
+%   abline(fit, col='red')
+%   lines(data$Dropp, pred_mean + t_critical * sqrt(pred_var), col='blue')
+%   lines(data$Dropp, pred_mean - t_critical * sqrt(pred_var), col='blue')
+%   legend('topright', legend=c('Datapunkter', 'Regresjonslinje', '80% KI for y(x)'), col=c('black', 'red', 'blue'), lty=1)  
+% \end{verbatim} 
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[width=1\textwidth]{3f.png}
+%   \caption{manuaelt beregning på kalulatoren (2b)}
+% \end{figure}
+slitte litt med å plotte
+
+\subsection{(5\%) Finn verdien $R^2 = \frac{SS_y - SS_e}{SS_y}$. Dette tallet forteller hvor stor del av variasjonen i $y$ som kan forklares av linja $y = a + bx$. For de av dere som bruker dataverktøy for å finne dette: angi hvordan dere fant det.}
+\subsection{R kode}
+\begin{verbatim}
+  # Beregn R^2
+  SS_y <- sum((data$Lengde - mean(data$Lengde))^2)
+  SS_e <- sum(residuals(fit)^2)
+  R_squared <- (SS_y - SS_e) / SS_y
+  
+  print(paste("Verdien av R^2:", R_squared)) 
+\end{verbatim} 
+SVAR:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{3g.png}
+  \caption{manuaelt beregning på kalulatoren (2b)}
+\end{figure}
+
+
+\subsection{(5\%) Finn $R^2$ for regresjonen mellom $z$ (utfall på terningen) og $x$ (dropphøyde). Kommenter hva forskjellen mellom $R^2$ for $y$ og $R^2$ for $z$ sier oss.}
+\subsection{R kode}
+\begin{verbatim}
+  # Utfør lineær regresjon for z vs. x
+  fit_z <- lm(Verdi ~ Dropp, data=data)
+  
+  # Beregn R^2 for z
+  SS_z <- sum((data$Verdi - mean(data$Verdi))^2)
+  SS_e_z <- sum(residuals(fit_z)^2)
+  R_squared_z <- (SS_z - SS_e_z) / SS_z
+  
+  print(paste("Verdien av R^2 for z:", R_squared_z))
+  print("Forskjellen mellom R^2 for y og R^2 for z indikerer hvor mye av variasjonen i utfallet på terningen (z) og lengden (y) som forklares av modellen.")
+  
+\end{verbatim} 
+SVAR:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{3i.png}
+  \caption{manuaelt beregning på kalulatoren (2b)}
+\end{figure}
+
+
+\section{(Totalt 20\%) Følgende R-kode vil plukke ut et utvalg av observasjonene.}
 \subsection{(5\%) Kjør 50 runder, og bruk $N = 15$. For hver runde, gjør oppgave 3a, men tegn regresjonslinjene sammen, i samme graf. Hva ser du?}
 \subsection{(5\%) Kjør en runde med $N$ henholdsvis lik 5, 15, 50 og 200. For hver runde, gjør oppgavene 3c og 3d. Hva ser du?}
 \subsection{(10\%) Kjør en runde med $N$ henholdsvis lik 5, 15, 50 og 200. For hver runde, gjør oppgaven 3f. Tegnes i hvert sitt diagram. Hva ser du?}
