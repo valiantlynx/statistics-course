@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[norsk]{babel} % For norsk språk
+\usepackage{graphicx} % For bilder
+\usepackage{lipsum} % Genererer fylltekst
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{float}
+
+\title{Oblig 3c}
+\author{Gormery K. Wanjiru}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+\tableofcontents
+
+\newpage
+
+\section{(15\%) kap. 17: oppgave 1.c}
+\section{(15\%) kap. 17: oppgave 1.d}
+\section{Terningdropp-oppgaven: (Totalt 50\%)}
+\subsection{(5\%) Tegn et diagram med samtlige datapunkter, og legg på den lineære regresjonslinjen.}
+\subsection{ $(15\%)$ Bruk nøytrale prior hyperparametre, og finn posterior og prediktive sannsynlighetsfordelinger, det vil si, sannsynlighetsfordelinger for $\tau$, $b$, $y(x)$ og $Y^+(x)$.}
+\subsection{(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for stigningstallet $b$.}
+\subsection{(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for standardavviket $\sigma$. (Hint: Bruk verdiene fra $\tau$ og regn om ved å bruke at $\tau = \frac{1}{\sigma^2}$)}
+\subsection{(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for $y(x)$.}
+\subsection{(5\%) 80\% intervallestimatet for $y(x)$ er funksjoner av $x$, og en kurve over, og en under regresjonslinjen. Plott disse kurvene inn sammen med regresjonslinjen.}
+\subsection{(5\%) Finn verdien $R^2 = \frac{SS_y - SS_e}{SS_y}$. Dette tallet forteller hvor stor del av variasjonen i $y$ som kan forklares av linja $y = a + bx$. For de av dere som bruker dataverktøy for å finne dette: angi hvordan dere fant det.}
+\subsection{(5\%) Finn $R^2$ for regresjonen mellom $z$ (utfall på terningen) og $x$ (dropphøyde). Kommenter hva forskjellen mellom $R^2$ for $y$ og $R^2$ for $z$ sier oss.}
+\section{(Totalt 20\%) Følgende R-kode vil plukke ut et utvalg av observasjonene.}
+\subsection*{R kode}
+\begin{verbatim}
+  antall_rader = dim(dropp_df)[1]
+  N = 20 # (Eksempel; se oppgavene)
+  utvalg = sort(sample(1:antall_rader,N)) # Sortering er ikke nøvendig
+  utvalg # men du får da se hvilke rader som er plukket ut
+  ny_dropp_df = dropp_df[utvalg,] # Dette er kjernen; plukker ut radene
+  rownames(ny_dropp_df)=1:N # Lurt hvis du skal kjøre for-løkke.
+  ny_dropp_df # Ikke nødvendig, men du får se den nye data-rammen.
+\end{verbatim}
+
+\subsection{(5\%) Kjør 50 runder, og bruk $N = 15$. For hver runde, gjør oppgave 3a, men tegn regresjonslinjene sammen, i samme graf. Hva ser du?}
+\subsection{(5\%) Kjør en runde med $N$ henholdsvis lik 5, 15, 50 og 200. For hver runde, gjør oppgavene 3c og 3d. Hva ser du?}
+\subsection{(10\%) Kjør en runde med $N$ henholdsvis lik 5, 15, 50 og 200. For hver runde, gjør oppgaven 3f. Tegnes i hvert sitt diagram. Hva ser du?}
+
+\newpage
+\section*{Vedlegg}
+\addcontentsline{toc}{section}{Vedlegg}
+\subsection*{Vedlegg A}
+\addcontentsline{toc}{subsection}{Vedlegg A}
+
+\newpage
+\begin{thebibliography}{9}
+
+  \bibitem{referanse1}
+  \url{https://tma4245.math.ntnu.no/viktige-diskrete-fordelinger/poissonprosess-og-poissonfordeling}
+  \textit{NTNU}
+\end{thebibliography}
+\end{document}
+
