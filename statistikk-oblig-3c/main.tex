@@ -23,33 +23,156 @@
 \newpage
 
 \section{(15\%) kap. 17: oppgave 1.c}
-ikke gjørt
-
-\section{(15\%) kap. 17: oppgave 1.d}
-ikke gjørt
-\section{Terningdropp-oppgaven: (Totalt 50\%)}
-\subsection{(5\%) Tegn et diagram med samtlige datapunkter, og legg på den lineære regresjonslinjen.}
 \subsection{R kode}
 \begin{verbatim}
-  # Les inn data fra CSV-filen
-  data <- read.csv('terningDropp.csv')
+  # Gitt data og parametere
+  data <- cbind(c(2, 3, 4, 6), c(10, 8, 8, 7))
+  sigma0_kvadrat <- 0.05
+  tau0 <- 0.5
+  n0 <- 4
   
-  # Utfør lineær regresjon
-  fit <- lm(Lengde ~ Dropp, data=data)
+  # utvalgsstatistikk
+  n <- nrow(data)
+  x_bar <- mean(data[, 1])
+  y_bar <- mean(data[, 2])
+  s_xx <- sum((data[, 1] - x_bar)^2)
+  s_yy <- sum((data[, 2] - y_bar)^2)
+  s_xy <- sum((data[, 1] - x_bar) * (data[, 2] - y_bar))
   
-  # Lag plot med datapunkter og regresjonslinje
-  plot(data$Dropp, data$Lengde, xlab='Dropphøyde', ylab='Lengde', main='Terningdropp: Dropphøyde vs. Lengde')
-  abline(fit, col='red')  
-\end{verbatim}  
+  # Posteriorfordeling for r
+  alpha_post <- n0 + n / 2
+  beta_post <- tau0 + 0.5 * (s_yy - (s_xy^2 / s_xx))
+  posterior_r <- rt(10000, df = alpha_post) * sqrt(beta_post / alpha_post)
+  
+  # Posteriorfordeling for y(x)
+  posterior_yx_mean <- y_bar + (s_xy / s_xx) * (data[, 1] - x_bar)
+  posterior_yx_var <- (1 / alpha_post) + (1 / s_xx)
+  posterior_yx_sd <- sqrt(posterior_yx_var)
+  
+  # Posterior prediktiv fordeling for Y+(x)
+  posterior_pred_yx <- rnorm(10000, mean = posterior_yx_mean, sd = posterior_yx_sd)
+  
+  # P% kredibilitetsintervall I_ai for regresjonslinje y(x)
+  alpha <- 0.06
+  t_kritisk <- qt(1 - alpha / 2, df = n - 2)
+  kred_intervall <- t_kritisk * posterior_yx_sd
+  
+  # Q% prediktivt intervall J_+2 for neste måling Y+(x)
+  alpha_pred <- 0.05
+  z_kritisk <- qnorm(1 - alpha_pred / 2)
+  pred_intervall <- z_kritisk * posterior_yx_sd
+  
+  # Resultater
+  print("Posteriorfordeling for r:")
+  summary(posterior_r)
+  
+  print("Posteriorfordeling for y(x):")
+  summary(posterior_yx_mean)
+  
+  print("Posterior prediktiv fordeling for Y+(x):")
+  summary(posterior_pred_yx)
+  
+  print("P% kredibilitetsintervall I_ai for regresjonslinje y(x):")
+  kred_intervall
+  
+  print("Q% prediktivt intervall J_+2 for neste måling Y+(x):")
+  pred_intervall
+  
+    \end{verbatim}
+SVAR:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{1.png}
+  \caption{(1)}
+\end{figure}
+
+\section{(15\%) kap. 17: oppgave 1.d}
+\subsection{R kode}
+\begin{verbatim}
+  # Gitt data
+  data <- cbind(c(0, 1, 2, 3), c(0, 2, 7, 5))
+  
+  # Gitte parametere
+  alpha <- 0.1
+  alpha_pred <- 0.05
+  
+  # utvalgsstatistikk
+  n <- nrow(data)
+  x_bar <- mean(data[, 1])
+  y_bar <- mean(data[, 2])
+  s_xx <- sum((data[, 1] - x_bar)^2)
+  s_xy <- sum((data[, 1] - x_bar) * (data[, 2] - y_bar))
+  
+  # Posteriorfordeling for stigningstall a og skjæringspunkt b
+  alpha_post <- n / 2
+  beta_post <- 1 / (1 + alpha * s_xx)
+  mu_post <- beta_post * alpha * sum(data[, 1] * data[, 2])
+  tau_post <- alpha_post * beta_post
+  b_post <- rnorm(10000, mean = mu_post, sd = sqrt(1 / tau_post))
+  a_post <- rgamma(10000, shape = alpha_post, rate = beta_post)
+  
+  # Posterior prediktiv fordeling for Y+(x)
+  posterior_pred_yx <- matrix(0, nrow = 10000, ncol = n)
+  for (i in 1:10000) {
+    posterior_pred_yx[i, ] <- rnorm(n, mean = a_post[i] * data[, 1] + b_post[i], sd = sqrt(1 / tau_post))
+  }
+  
+  # P % kredibilitetsintervall I_ai for regresjonslinjen y(x)
+  t_kritisk <- qt(1 - alpha / 2, df = n - 2)
+  kredibilitetsintervall <- t_kritisk * sqrt((1 / n) + (s_xx / sum((data[, 1] - x_bar)^2)))
+  
+  # Q % prediktivt intervall J_+2 for neste måling Y+(x)
+  z_kritisk <- qnorm(1 - alpha_pred / 2)
+  prediktivt_intervall <- z_kritisk * sqrt((1 / n) + (s_xx / sum((data[, 1] - x_bar)^2)))
+  
+  # Resultater
+  print("Posteriorfordeling for stigningstall a:")
+  summary(a_post)
+  
+  print("Posteriorfordeling for skjæringspunkt b:")
+  summary(b_post)
+  
+  print("Posterior prediktiv fordeling for Y+(x):")
+  summary(posterior_pred_yx)
+  
+  print("P % kredibilitetsintervall I_ai for regresjonslinjen y(x):")
+  kredibilitetsintervall
+  
+  print("Q % prediktivt intervall J_+2 for neste måling Y+(x):")
+  prediktivt_intervall
+  
+    \end{verbatim}
+SVAR:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{2.png}
+  \caption{(2)}
+\end{figure}
+
+
+\section{Terningdropp-oppgaven: (Totalt 50\%)}
+\subsection{(5\%) Tegn et diagram med samtlige datapunkter, og legg på den lineære regresjonslinjen.}
+\subsubsection{R kode}
+\begin{verbatim}
+      # Les inn data fra CSV-filen
+      data <- read.csv('terningDropp.csv')
+      
+      # Utfør lineær regresjon
+      fit <- lm(Lengde ~ Dropp, data=data)
+      
+      # Lag plot med datapunkter og regresjonslinje
+      plot(data$Dropp, data$Lengde, xlab='Dropphøyde', ylab='Lengde', main='Terningdropp: Dropphøyde vs. Lengde')
+      abline(fit, col='red')  
+    \end{verbatim}
 SVAR:
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{3a.png}
-  \caption{manuaelt beregning på kalulatoren (2b)}
+  \caption{(3a)}
 \end{figure}
 
 \subsection{ $(15\%)$ Bruk nøytrale prior hyperparametre, og finn posterior og prediktive sannsynlighetsfordelinger, det vil si, sannsynlighetsfordelinger for $\tau$, $b$, $y(x)$ og $Y^+(x)$.}
-\subsection{R kode}
+\subsubsection{R kode}
 \begin{verbatim}
   # Prior hyperparametre
   alpha <- 1
@@ -67,105 +190,131 @@ SVAR:
   alpha_post <- alpha + n/2
   beta_post <- beta + 1/2 * s_xx
   
-  # Definer posterior og prediktive fordelinger
-  posterior <- rgamma(10000, shape=alpha_post, rate=beta_post)
-  pred_mean <- mu0 + coef(fit)[2] * x_bar
-  pred_var <- sigma0^2 + summary(fit)$sigma^2
+   # Definer sannsynlighetsfordelingen for tau
+  tau_values <- seq(0.001, 10, by = 0.01)
+  prior_tau <- dgamma(tau_values, shape = alpha, scale = beta)
   
-  # Print resultatene
-  print(paste("Posterior for tau (precision parameter): Gamma(", alpha_post, ",", beta_post, ")"))
-  print(paste("Prediktiv gjennomsnitt:", pred_mean))
-  print(paste("Prediktiv varians:", pred_var))  
-\end{verbatim} 
+  # Plot sannsynlighetsfordelingen for tau
+  plot(tau_values, prior_tau, type = "l", col = "blue", lwd = 2, xlab = "tau", ylab = "P(tau)",
+       main = "Prior sannsynlighetsfordeling for tau (precision parameter)")
+\end{verbatim}
 SVAR:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{3b.png}
-  \caption{manuaelt beregning på kalulatoren (2b)}
+  \includegraphics[width=0.8\textwidth]{3b-v2.png}
+  \caption{(3b-v2)}
 \end{figure}
 
 \subsection{(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for stigningstallet $b$.}
-\subsection{R kode}
+\subsubsection{R kode}
 \begin{verbatim}
-  # Beregn standardfeil
-  se_slope <- summary(fit)$coefficients[2, 2]
+  # Bruk sannsynlighetsfordelingen fra oppgave 3b
+  alpha_post <- alpha + n/2
+  beta_post <- beta + 1/2 * s_xx
   
-  # Beregn kredibilitetsintervall
-  alpha <- 0.2  # 80% kredibilitet
-  t_critical <- qt(1 - alpha/2, df=n-2)
+  # Generer posterior for tau (gamma-fordeling)
+  posterior_tau <- rgamma(10000, shape = alpha_post, rate = beta_post)
   
-  lower_bound <- coef(fit)[2] - t_critical * se_slope
-  upper_bound <- coef(fit)[2] + t_critical * se_slope
-  
-  print(paste("80% kredibilitetsintervall for stigningstallet b: [", lower_bound, ",", upper_bound, "]"))
-\end{verbatim} 
+  # resultater
+  print(paste("Posterior for tau (precision parameter): Gamma(", alpha_post, ",", beta_post, ")"))
+\end{verbatim}
 SVAR:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{3c.png}
-  \caption{manuaelt beregning på kalulatoren (2b)}
+  \includegraphics[width=0.8\textwidth]{3c-v2.png}
+  \caption{(3c-v2)}
 \end{figure}
 
 
 
 \subsection{(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for standardavviket $\sigma$. (Hint: Bruk verdiene fra $\tau$ og regn om ved å bruke at $\tau = \frac{1}{\sigma^2}$)}
-\subsection{R kode}
+\subsubsection{R kode}
 \begin{verbatim}
-  alpha <- 0.2  # 80% kredibilitet
-  lower_bound_sigma <- sqrt(1 / qgamma(alpha/2, shape=alpha_post, scale=1/beta_post))
-  upper_bound_sigma <- sqrt(1 / qgamma(1 - alpha/2, shape=alpha_post, scale=1/beta_post))
+  # Bruk sannsynlighetsfordelingen fra oppgave 3b
+  lower_bound_sigma <- sqrt(1 / qgamma(alpha/2, shape = alpha_post, scale = 1/beta_post))
+  upper_bound_sigma <- sqrt(1 / qgamma(1 - alpha/2, shape = alpha_post, scale = 1/beta_post))
   
-  print(paste("80% kredibilitetsintervall for standardavviket \alpha: [", lower_bound_sigma, ",", upper_bound_sigma, "]"))  
-\end{verbatim} 
+  # Print resultatet
+  print(paste("80% kredibilitetsintervall for standardavviket sigma: [", lower_bound_sigma, ",", upper_bound_sigma, "]"))
+\end{verbatim}
 SVAR:
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{3d.png}
-  \caption{manuaelt beregning på kalulatoren (2b)}
+  \includegraphics[width=1\textwidth]{3d-v2.png}
+  \caption{(3d-v2)}
 \end{figure}
 
 \subsection{(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for $y(x)$.}
-\subsection{R kode}
+\subsubsection{R kode}
 \begin{verbatim}
-  # Beregn kredibilitetsintervall for y(x)
-  alpha <- 0.2  # 80% kredibilitet
-  t_critical <- qt(1 - alpha/2, df=n-2)
+  # Prior hyperparametre
+  alpha <- 1
+  beta <- 1
   
-  lower_bound_yx <- pred_mean - t_critical * sqrt(pred_var)
-  upper_bound_yx <- pred_mean + t_critical * sqrt(pred_var)
+  # Likelihood hyperparametre
+  mu0 <- 0
+  sigma0 <- 1
   
-  print(paste("80% kredibilitetsintervall for y(x): [", lower_bound_yx, ",", upper_bound_yx, "]"))  
-\end{verbatim} 
+  # Beregn posterior hyperparametre
+  n <- length(data$Lengde)
+  x_bar <- mean(data$Dropp)
+  s_xx <- sum((data$Dropp - mean(data$Dropp))^2)
+  
+  alpha_post <- alpha + n/2
+  beta_post <- beta + 1/2 * s_xx
+  
+  # Generer posterior for tau (gamma-fordeling)
+  posterior_tau <- rgamma(10000, shape = alpha_post, rate = beta_post)
+  
+  # Beregn prediktive fordelinger for tau
+  pred_tau <- rgamma(10000, shape = alpha_post, rate = beta_post)
+  pred_sigma <- 1 / sqrt(pred_tau)
+  pred_b <- rnorm(10000, mu0, sigma0 * sqrt(1 / pred_tau))
+  
+  # Prediktiv fordeling for y(x)
+  pred_yx <- pred_b * data$Dropp
+  
+  # Beregn 80% kredibilitetsintervall for y(x)
+  lower_bound_yx <- quantile(pred_yx, 0.1)
+  upper_bound_yx <- quantile(pred_yx, 0.9)
+  
+  print(paste("80% kredibilitetsintervall for y(x): [", lower_bound_yx, ",", upper_bound_yx, "]"))
+\end{verbatim}
 SVAR:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{3e.png}
-  \caption{manuaelt beregning på kalulatoren (2b)}
+  \includegraphics[width=1\textwidth]{3e-v2.png}
+  \caption{(3e-v2)}
 \end{figure}
 
 
 
 \subsection{(5\%) 80\% intervallestimatet for $y(x)$ er funksjoner av $x$, og en kurve over, og en under regresjonslinjen. Plott disse kurvene inn sammen med regresjonslinjen.}
-% \subsection{R kode}
-% \begin{verbatim}
-%   # plusse på koden fra a
-%   # Plot datapunkter og regresjonslinje
-%   plot(data$Dropp, data$Lengde, xlab='Dropphøyde', ylab='Lengde', main='Terningdropp: Dropphøyde vs. Lengde')
-%   abline(fit, col='red')
-%   lines(data$Dropp, pred_mean + t_critical * sqrt(pred_var), col='blue')
-%   lines(data$Dropp, pred_mean - t_critical * sqrt(pred_var), col='blue')
-%   legend('topright', legend=c('Datapunkter', 'Regresjonslinje', '80% KI for y(x)'), col=c('black', 'red', 'blue'), lty=1)  
-% \end{verbatim} 
-% \begin{figure}[H]
-%   \centering
-%   \includegraphics[width=1\textwidth]{3f.png}
-%   \caption{manuaelt beregning på kalulatoren (2b)}
-% \end{figure}
-slitte litt med å plotte
+\subsubsection{R kode}
+\begin{verbatim}
+  # plusse på koden fra a
+  # Plot datapunkter og regresjonslinje
+  plot(data$Dropp, data$Lengde, xlab='Dropphøyde', ylab='Lengde', main='Terningdropp: Dropphøyde vs. Lengde')
+  abline(fit, col='red')
+  
+  # Plot 80% kredibilitetsintervall for y(x)
+  lines(data$Dropp, pred_mean + t_critical * sqrt(pred_var), col='blue')
+  lines(data$Dropp, pred_mean - t_critical * sqrt(pred_var), col='blue')
+  
+  # Legg til en forklaring i plottet
+  legend('topright', legend=c('Datapunkter', 'Regresjonslinje', '80% KI for y(x)'), col=c('black', 'red', 'blue'), lty=1)  
+\end{verbatim}
+SVAR:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{3f.png}
+  \caption{(3f)}
+\end{figure}
+
 
 \subsection{(5\%) Finn verdien $R^2 = \frac{SS_y - SS_e}{SS_y}$. Dette tallet forteller hvor stor del av variasjonen i $y$ som kan forklares av linja $y = a + bx$. For de av dere som bruker dataverktøy for å finne dette: angi hvordan dere fant det.}
-\subsection{R kode}
+\subsubsection{R kode}
 \begin{verbatim}
   # Beregn R^2
   SS_y <- sum((data$Lengde - mean(data$Lengde))^2)
@@ -173,17 +322,17 @@ slitte litt med å plotte
   R_squared <- (SS_y - SS_e) / SS_y
   
   print(paste("Verdien av R^2:", R_squared)) 
-\end{verbatim} 
+\end{verbatim}
 SVAR:
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\textwidth]{3g.png}
-  \caption{manuaelt beregning på kalulatoren (2b)}
+  \caption{(3g)}
 \end{figure}
 
 
 \subsection{(5\%) Finn $R^2$ for regresjonen mellom $z$ (utfall på terningen) og $x$ (dropphøyde). Kommenter hva forskjellen mellom $R^2$ for $y$ og $R^2$ for $z$ sier oss.}
-\subsection{R kode}
+\subsubsection{R kode}
 \begin{verbatim}
   # Utfør lineær regresjon for z vs. x
   fit_z <- lm(Verdi ~ Dropp, data=data)
@@ -196,12 +345,12 @@ SVAR:
   print(paste("Verdien av R^2 for z:", R_squared_z))
   print("Forskjellen mellom R^2 for y og R^2 for z indikerer hvor mye av variasjonen i utfallet på terningen (z) og lengden (y) som forklares av modellen.")
   
-\end{verbatim} 
+\end{verbatim}
 SVAR:
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\textwidth]{3i.png}
-  \caption{manuaelt beregning på kalulatoren (2b)}
+  \caption{(3i)}
 \end{figure}
 
 
