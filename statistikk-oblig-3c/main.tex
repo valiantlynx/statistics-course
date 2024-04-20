@@ -31,16 +31,16 @@ ikke gjørt
 \subsection{(5\%) Tegn et diagram med samtlige datapunkter, og legg på den lineære regresjonslinjen.}
 \subsubsection{R kode}
 \begin{verbatim}
-  # Les inn data fra CSV-filen
-  data <- read.csv('terningDropp.csv')
-  
-  # Utfør lineær regresjon
-  fit <- lm(Lengde ~ Dropp, data=data)
-  
-  # Lag plot med datapunkter og regresjonslinje
-  plot(data$Dropp, data$Lengde, xlab='Dropphøyde', ylab='Lengde', main='Terningdropp: Dropphøyde vs. Lengde')
-  abline(fit, col='red')  
-\end{verbatim}
+      # Les inn data fra CSV-filen
+      data <- read.csv('terningDropp.csv')
+      
+      # Utfør lineær regresjon
+      fit <- lm(Lengde ~ Dropp, data=data)
+      
+      # Lag plot med datapunkter og regresjonslinje
+      plot(data$Dropp, data$Lengde, xlab='Dropphøyde', ylab='Lengde', main='Terningdropp: Dropphøyde vs. Lengde')
+      abline(fit, col='red')  
+    \end{verbatim}
 SVAR:
 \begin{figure}[H]
   \centering
@@ -125,41 +125,70 @@ SVAR:
 \subsection{(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for $y(x)$.}
 \subsubsection{R kode}
 \begin{verbatim}
-  # Beregn kredibilitetsintervall for y(x)
-  alpha <- 0.2  # 80% kredibilitet
-  t_critical <- qt(1 - alpha/2, df=n-2)
+  # Prior hyperparametre
+  alpha <- 1
+  beta <- 1
   
-  lower_bound_yx <- pred_mean - t_critical * sqrt(pred_var)
-  upper_bound_yx <- pred_mean + t_critical * sqrt(pred_var)
+  # Likelihood hyperparametre
+  mu0 <- 0
+  sigma0 <- 1
   
-  print(paste("80% kredibilitetsintervall for y(x): [", lower_bound_yx, ",", upper_bound_yx, "]"))  
+  # Beregn posterior hyperparametre
+  n <- length(data$Lengde)
+  x_bar <- mean(data$Dropp)
+  s_xx <- sum((data$Dropp - mean(data$Dropp))^2)
+  
+  alpha_post <- alpha + n/2
+  beta_post <- beta + 1/2 * s_xx
+  
+  # Generer posterior for tau (gamma-fordeling)
+  posterior_tau <- rgamma(10000, shape = alpha_post, rate = beta_post)
+  
+  # Beregn prediktive fordelinger for tau
+  pred_tau <- rgamma(10000, shape = alpha_post, rate = beta_post)
+  pred_sigma <- 1 / sqrt(pred_tau)
+  pred_b <- rnorm(10000, mu0, sigma0 * sqrt(1 / pred_tau))
+  
+  # Prediktiv fordeling for y(x)
+  pred_yx <- pred_b * data$Dropp
+  
+  # Beregn 80% kredibilitetsintervall for y(x)
+  lower_bound_yx <- quantile(pred_yx, 0.1)
+  upper_bound_yx <- quantile(pred_yx, 0.9)
+  
+  print(paste("80% kredibilitetsintervall for y(x): [", lower_bound_yx, ",", upper_bound_yx, "]"))
 \end{verbatim}
 SVAR:
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{3e.png}
-  \caption{(3e)}
+  \includegraphics[width=1\textwidth]{3e-v2.png}
+  \caption{(3e-v2)}
 \end{figure}
 
 
 
 \subsection{(5\%) 80\% intervallestimatet for $y(x)$ er funksjoner av $x$, og en kurve over, og en under regresjonslinjen. Plott disse kurvene inn sammen med regresjonslinjen.}
-% \subsubsection{R kode}
-% \begin{verbatim}
-%   # plusse på koden fra a
-%   # Plot datapunkter og regresjonslinje
-%   plot(data$Dropp, data$Lengde, xlab='Dropphøyde', ylab='Lengde', main='Terningdropp: Dropphøyde vs. Lengde')
-%   abline(fit, col='red')
-%   lines(data$Dropp, pred_mean + t_critical * sqrt(pred_var), col='blue')
-%   lines(data$Dropp, pred_mean - t_critical * sqrt(pred_var), col='blue')
-%   legend('topright', legend=c('Datapunkter', 'Regresjonslinje', '80% KI for y(x)'), col=c('black', 'red', 'blue'), lty=1)  
-% \end{verbatim} 
-% \begin{figure}[H]
-%   \centering
-%   \includegraphics[width=1\textwidth]{3f.png}
-%   \caption{(3f)}
-% \end{figure}
-slitte litt med å plotte
+\subsubsection{R kode}
+\begin{verbatim}
+  # plusse på koden fra a
+  # Plot datapunkter og regresjonslinje
+  plot(data$Dropp, data$Lengde, xlab='Dropphøyde', ylab='Lengde', main='Terningdropp: Dropphøyde vs. Lengde')
+  abline(fit, col='red')
+  
+  # Plot 80% kredibilitetsintervall for y(x)
+  lines(data$Dropp, pred_mean + t_critical * sqrt(pred_var), col='blue')
+  lines(data$Dropp, pred_mean - t_critical * sqrt(pred_var), col='blue')
+  
+  # Legg til en forklaring i plottet
+  legend('topright', legend=c('Datapunkter', 'Regresjonslinje', '80% KI for y(x)'), col=c('black', 'red', 'blue'), lty=1)  
+\end{verbatim}
+SVAR:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{3f.png}
+  \caption{(3f)}
+\end{figure}
+
 
 \subsection{(5\%) Finn verdien $R^2 = \frac{SS_y - SS_e}{SS_y}$. Dette tallet forteller hvor stor del av variasjonen i $y$ som kan forklares av linja $y = a + bx$. For de av dere som bruker dataverktøy for å finne dette: angi hvordan dere fant det.}
 \subsubsection{R kode}

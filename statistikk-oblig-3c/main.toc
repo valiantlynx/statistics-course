@@ -1,25 +1,26 @@
 \babel@toc {norsk}{}\relax 
-\contentsline {section}{\numberline {1}(15\%) kap. 17: oppgave 1.c}{4}{section.1}%
-\contentsline {section}{\numberline {2}(15\%) kap. 17: oppgave 1.d}{4}{section.2}%
-\contentsline {section}{\numberline {3}Terningdropp-oppgaven: (Totalt 50\%)}{4}{section.3}%
-\contentsline {subsection}{\numberline {3.1}(5\%) Tegn et diagram med samtlige datapunkter, og legg på den lineære regresjonslinjen.}{4}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}R kode}{4}{subsubsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.2} $(15\%)$ Bruk nøytrale prior hyperparametre, og finn posterior og prediktive sannsynlighetsfordelinger, det vil si, sannsynlighetsfordelinger for $\tau $, $b$, $y(x)$ og $Y^+(x)$.}{5}{subsection.3.2}%
-\contentsline {subsubsection}{\numberline {3.2.1}R kode}{5}{subsubsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.3}(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for stigningstallet $b$.}{6}{subsection.3.3}%
-\contentsline {subsubsection}{\numberline {3.3.1}R kode}{6}{subsubsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.4}(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for standardavviket $\sigma $. (Hint: Bruk verdiene fra $\tau $ og regn om ved å bruke at $\tau = \frac {1}{\sigma ^2}$)}{7}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}R kode}{7}{subsubsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.5}(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for $y(x)$.}{7}{subsection.3.5}%
-\contentsline {subsubsection}{\numberline {3.5.1}R kode}{7}{subsubsection.3.5.1}%
-\contentsline {subsection}{\numberline {3.6}(5\%) 80\% intervallestimatet for $y(x)$ er funksjoner av $x$, og en kurve over, og en under regresjonslinjen. Plott disse kurvene inn sammen med regresjonslinjen.}{8}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}(5\%) Finn verdien $R^2 = \frac {SS_y - SS_e}{SS_y}$. Dette tallet forteller hvor stor del av variasjonen i $y$ som kan forklares av linja $y = a + bx$. For de av dere som bruker dataverktøy for å finne dette: angi hvordan dere fant det.}{8}{subsection.3.7}%
-\contentsline {subsubsection}{\numberline {3.7.1}R kode}{8}{subsubsection.3.7.1}%
-\contentsline {subsection}{\numberline {3.8}(5\%) Finn $R^2$ for regresjonen mellom $z$ (utfall på terningen) og $x$ (dropphøyde). Kommenter hva forskjellen mellom $R^2$ for $y$ og $R^2$ for $z$ sier oss.}{9}{subsection.3.8}%
-\contentsline {subsubsection}{\numberline {3.8.1}R kode}{9}{subsubsection.3.8.1}%
-\contentsline {section}{\numberline {4}(Totalt 20\%) Følgende R-kode vil plukke ut et utvalg av observasjonene.}{10}{section.4}%
-\contentsline {subsection}{\numberline {4.1}(5\%) Kjør 50 runder, og bruk $N = 15$. For hver runde, gjør oppgave 3a, men tegn regresjonslinjene sammen, i samme graf. Hva ser du?}{10}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}(5\%) Kjør en runde med $N$ henholdsvis lik 5, 15, 50 og 200. For hver runde, gjør oppgavene 3c og 3d. Hva ser du?}{10}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}(10\%) Kjør en runde med $N$ henholdsvis lik 5, 15, 50 og 200. For hver runde, gjør oppgaven 3f. Tegnes i hvert sitt diagram. Hva ser du?}{10}{subsection.4.3}%
-\contentsline {section}{Vedlegg}{11}{section*.2}%
-\contentsline {subsection}{Vedlegg A}{11}{section*.3}%
+\contentsline {section}{\numberline {1}(15\%) kap. 17: oppgave 1.c}{3}{section.1}%
+\contentsline {section}{\numberline {2}(15\%) kap. 17: oppgave 1.d}{3}{section.2}%
+\contentsline {section}{\numberline {3}Terningdropp-oppgaven: (Totalt 50\%)}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}(5\%) Tegn et diagram med samtlige datapunkter, og legg på den lineære regresjonslinjen.}{3}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}R kode}{3}{subsubsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.2} $(15\%)$ Bruk nøytrale prior hyperparametre, og finn posterior og prediktive sannsynlighetsfordelinger, det vil si, sannsynlighetsfordelinger for $\tau $, $b$, $y(x)$ og $Y^+(x)$.}{4}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}R kode}{4}{subsubsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.3}(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for stigningstallet $b$.}{5}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}R kode}{5}{subsubsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.4}(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for standardavviket $\sigma $. (Hint: Bruk verdiene fra $\tau $ og regn om ved å bruke at $\tau = \frac {1}{\sigma ^2}$)}{6}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}R kode}{6}{subsubsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.5}(5\%) Finn et 80\% kredibilitetsintervall (intervallestimat) for $y(x)$.}{6}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}R kode}{6}{subsubsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.6}(5\%) 80\% intervallestimatet for $y(x)$ er funksjoner av $x$, og en kurve over, og en under regresjonslinjen. Plott disse kurvene inn sammen med regresjonslinjen.}{9}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}R kode}{9}{subsubsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.7}(5\%) Finn verdien $R^2 = \frac {SS_y - SS_e}{SS_y}$. Dette tallet forteller hvor stor del av variasjonen i $y$ som kan forklares av linja $y = a + bx$. For de av dere som bruker dataverktøy for å finne dette: angi hvordan dere fant det.}{10}{subsection.3.7}%
+\contentsline {subsubsection}{\numberline {3.7.1}R kode}{10}{subsubsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.8}(5\%) Finn $R^2$ for regresjonen mellom $z$ (utfall på terningen) og $x$ (dropphøyde). Kommenter hva forskjellen mellom $R^2$ for $y$ og $R^2$ for $z$ sier oss.}{11}{subsection.3.8}%
+\contentsline {subsubsection}{\numberline {3.8.1}R kode}{11}{subsubsection.3.8.1}%
+\contentsline {section}{\numberline {4}(Totalt 20\%) Følgende R-kode vil plukke ut et utvalg av observasjonene.}{12}{section.4}%
+\contentsline {subsection}{\numberline {4.1}(5\%) Kjør 50 runder, og bruk $N = 15$. For hver runde, gjør oppgave 3a, men tegn regresjonslinjene sammen, i samme graf. Hva ser du?}{12}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}(5\%) Kjør en runde med $N$ henholdsvis lik 5, 15, 50 og 200. For hver runde, gjør oppgavene 3c og 3d. Hva ser du?}{12}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}(10\%) Kjør en runde med $N$ henholdsvis lik 5, 15, 50 og 200. For hver runde, gjør oppgaven 3f. Tegnes i hvert sitt diagram. Hva ser du?}{12}{subsection.4.3}%
+\contentsline {section}{Vedlegg}{13}{section*.2}%
+\contentsline {subsection}{Vedlegg A}{13}{section*.3}%
