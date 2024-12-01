@@ -5,14 +5,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn import metrics
-from sklearn.svm import SVC
+from sklearn.svm import SVR
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
 import joblib
 
 # Load the dataset
-dataset = pd.read_csv('text_data.csv')
+dataset = pd.read_csv('text_data.csv', on_bad_lines='skip')
 
 # Preprocess the data
 def preprocess_data(dataset):
@@ -24,13 +24,22 @@ def preprocess_data(dataset):
     complexity_mapping = {'lav': 1, 'middels': 2, 'hoy': 3}
     dataset['Complexity'] = dataset['Complexity'].map(complexity_mapping)
     
+    # Convert ModelType to numerical values using one-hot encoding
+    dataset = pd.get_dummies(dataset, columns=['ModelType'])
+    
+    # Drop rows with missing values
+    dataset = dataset.dropna()
+    
     return dataset
 
 dataset = preprocess_data(dataset)
 
 # Split the dataset into features and target
-X = dataset[['TextLength', 'Complexity', 'ModelType']]
+X = dataset.drop(columns=['Accuracy', 'Text'])
 y = dataset['Accuracy']
+
+# Ensure all data is numeric
+y = y.astype(float)
 
 # Split the dataset into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -52,7 +61,9 @@ print(f'R-squared: {r2}')
 def train_naive_bayes(dataset):
     vectorizer = TfidfVectorizer()
     X_text = vectorizer.fit_transform(dataset['Text'])
-    y_text = dataset['Accuracy']
+    
+    # Categorize accuracy into discrete classes
+    y_text = pd.cut(dataset['Accuracy'], bins=3, labels=['low', 'medium', 'high'])
     
     X_train_text, X_test_text, y_train_text, y_test_text = train_test_split(X_text, y_text, test_size=0.2, random_state=42)
     
@@ -75,25 +86,30 @@ plt.title('Residual Plot')
 plt.show()
 
 # Multiple Linear Regression using statsmodels
-X_with_constant = sm.add_constant(X_train)
-ols_model = sm.OLS(y_train, X_with_constant).fit()
+X_with_constant = sm.add_constant(X_train.astype(float))
+y_train_array = np.asarray(y_train).astype(float)
+ols_model = sm.OLS(y_train_array, X_with_constant).fit()
 print(ols_model.summary())
 
 # Save the processed dataset for future use
 dataset.to_csv('processed_text_data.csv', index=False)
 
-# Example usage with a Support Vector Machine (SVM) model
-svm_model = SVC(kernel='linear')
+# Example usage with a Support Vector Machine (SVR) model
+svm_model = SVR(kernel='linear')
 svm_model.fit(X_train, y_train)
 y_pred_svm = svm_model.predict(X_test)
-svm_accuracy = metrics.accuracy_score(y_test, y_pred_svm)
-print(f'SVM Accuracy: {svm_accuracy}')
+svm_mse = metrics.mean_squared_error(y_test, y_pred_svm)
+print(f'SVM Mean Squared Error: {svm_mse}')
 
 # Train and evaluate Naive Bayes model on features
+# Categorize accuracy into discrete classes for classification
+y_train_class = pd.cut(y_train, bins=3, labels=['low', 'medium', 'high'])
+y_test_class = pd.cut(y_test, bins=3, labels=['low', 'medium', 'high'])
+
 nb_model = MultinomialNB()
-nb_model.fit(X_train, y_train)
+nb_model.fit(X_train, y_train_class)
 y_pred_nb = nb_model.predict(X_test)
-nb_accuracy = metrics.accuracy_score(y_test, y_pred_nb)
+nb_accuracy = metrics.accuracy_score(y_test_class, y_pred_nb)
 print(f'Naive Bayes Accuracy (features): {nb_accuracy}')
 
 # Save the trained models

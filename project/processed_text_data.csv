@@ -1,0 +1,401 @@
+Text,TextLength,Complexity,Accuracy,ModelType_BERT,ModelType_Naive Bayes,ModelType_SVM
+Renewable energy sources like wind and solar are crucial for reducing carbon emissions.,1.0,2,0.8235,False,False,True
+The oil and gas industry faces challenges in meeting environmental regulations.,1.0,1,0.7652,False,True,False
+Energy storage solutions are essential for balancing supply and demand in renewable energy.,2.0,3,0.7894,True,False,False
+Hydropower is one of the oldest and most reliable forms of renewable energy.,3.0,2,0.8541,False,False,True
+The transition to electric vehicles is expected to increase electricity demand significantly.,1.0,3,0.7126,False,True,False
+Smart grids help in optimizing energy distribution and minimizing losses.,2.0,1,0.8792,True,False,False
+Offshore wind farms have great potential for generating clean energy.,1.0,2,0.8219,False,False,True
+Natural gas is often considered a bridge fuel in the transition to renewable energy.,3.0,3,0.6784,False,True,False
+Energy efficiency measures can significantly reduce overall energy consumption.,1.0,1,0.8317,False,False,True
+Battery technology advancements are key to the future of renewable energy.,2.0,2,0.7395,True,False,False
+Nuclear energy provides a stable source of low-carbon electricity.,3.0,3,0.7821,False,False,True
+Grid stability is a major concern as more intermittent renewable energy sources are integrated.,1.0,2,0.7025,False,True,False
+Renewable energy sources like wind and solar are crucial for reducing carbon emissions.,3.0,3,0.7973,True,False,False
+Wave and tidal energy projects are in early development stages but have promising potential.,3.0,2,0.8153,False,False,True
+Fossil fuel subsidies continue to hinder the adoption of renewable energy.,1.0,3,0.6912,False,True,False
+Carbon capture and storage technologies could mitigate emissions from fossil fuel power plants.,3.0,1,0.8456,True,False,False
+The solar photovoltaic (PV) market has seen rapid growth in recent years.,1.0,2,0.8231,False,False,True
+Advanced nuclear reactors promise increased safety and efficiency.,1.0,1,0.7685,False,True,False
+Bioenergy is derived from organic materials like plants and waste.,2.0,3,0.7348,True,False,False
+Energy policies play a critical role in shaping national energy markets.,3.0,2,0.8017,False,False,True
+Green hydrogen is produced using renewable electricity and water electrolysis.,1.0,3,0.6994,False,True,False
+Coal is still a major source of electricity generation in many countries.,3.0,1,0.8245,False,False,True
+Distributed energy resources can support local energy needs.,1.0,2,0.7789,True,False,False
+The International Energy Agency (IEA) provides guidance on global energy trends.,3.0,3,0.7543,False,False,True
+Solar thermal technology uses the sun's heat to generate electricity.,2.0,1,0.8135,False,True,False
+The energy demand in developing countries is growing rapidly.,1.0,2,0.7921,True,False,False
+Wind turbine technology has advanced significantly over the past decade.,3.0,2,0.8226,False,False,True
+Renewable Portfolio Standards (RPS) are policies designed to increase energy from renewables.,3.0,3,0.7461,True,False,False
+Peak energy demand can lead to the use of more carbon-intensive power plants.,1.0,2,0.8179,False,False,True
+The transition to renewables requires upgrades to the electricity grid infrastructure.,3.0,2,0.7354,False,True,False
+Geothermal energy harnesses heat from beneath the Earth's surface.,3.0,1,0.8513,True,False,False
+Energy audits are useful tools for identifying energy-saving opportunities.,1.0,3,0.7032,False,False,True
+Microgrids can operate independently from the main power grid during emergencies.,3.0,2,0.7827,False,True,False
+Energy poverty remains a significant issue in many developing nations.,2.0,1,0.8291,True,False,False
+The development of fusion energy is still many years away from commercialization.,3.0,3,0.7698,False,False,True
+The Paris Agreement aims to limit global temperature rise to below 2 degrees Celsius.,3.0,2,0.8062,True,False,False
+Energy conservation can help lower household electricity bills.,1.0,1,0.8314,False,False,True
+Improving building insulation reduces the need for heating and cooling.,3.0,2,0.7451,False,True,False
+Hydropower plants can disrupt river ecosystems and fish migration patterns.,2.0,3,0.7563,True,False,False
+Conventional power plants still dominate the global energy mix.,3.0,1,0.8284,False,False,True
+The future of energy lies in a diversified energy portfolio.,1.0,2,0.7746,False,True,False
+The production of solar panels requires rare earth materials.,3.0,3,0.6987,True,False,False
+Wind turbines can generate electricity as long as the wind speed is sufficient.,3.0,1,0.8328,False,False,True
+Biogas is produced from organic matter in anaerobic conditions.,1.0,2,0.7592,False,True,False
+Lithium-ion batteries are commonly used in electric vehicles.,3.0,2,0.8019,True,False,False
+Energy storage technology is crucial for stabilizing renewable energy supply.,3.0,3,0.7448,False,False,True
+Blockchain is being explored as a method to improve energy trading transparency.,2.0,2,0.7265,False,True,False
+The energy transition requires significant investment in new infrastructure.,1.0,1,0.8127,True,False,False
+The use of renewable energy reduces greenhouse gas emissions.,3.0,3,0.7894,False,False,True
+Offshore oil drilling poses risks to marine life and coastal environments.,3.0,2,0.7548,False,True,False
+Electric buses are increasingly used to reduce urban emissions.,1.0,3,0.7315,True,False,False
+Hydrogen fuel cells produce electricity and emit only water vapor.,3.0,1,0.8392,False,False,True
+Wind energy production is subject to seasonal and geographical variability.,2.0,2,0.7479,False,True,False
+The development of tidal barrages has sparked environmental concerns.,3.0,3,0.7663,True,False,False
+The electric grid is designed to manage both supply and demand effectively.,1.0,1,0.8265,False,False,True
+Renewable energy projects often require government subsidies to be viable.,3.0,2,0.7294,False,True,False
+Biofuels are derived from biological sources like plants and algae.,2.0,3,0.7859,True,False,False
+The energy industry is moving towards decentralization and local generation.,3.0,2,0.7964,False,False,True
+Coal-fired power plants are a major source of global carbon dioxide emissions.,1.0,3,0.7137,False,True,False
+The deployment of energy-efficient appliances can reduce energy use.,3.0,1,0.8481,True,False,False
+Large-scale solar farms are being constructed around the world.,1.0,2,0.8223,False,False,True
+The reliance on fossil fuels has a significant impact on global climate change.,3.0,3,0.7018,False,True,False
+Wind turbine blades are made from composite materials for strength and durability.,3.0,2,0.7815,True,False,False
+Tidal energy is generated by harnessing the natural ebb and flow of ocean tides.,2.0,1,0.8253,False,False,True
+Nuclear fusion is considered a potentially limitless source of clean energy.,3.0,3,0.7392,False,True,False
+Energy-efficient LED lighting has become the standard for new buildings.,1.0,2,0.8123,True,False,False
+Transportation electrification is a key part of reducing fossil fuel dependency.,3.0,2,0.7684,False,False,True
+Hydrogen storage remains one of the key challenges in hydrogen energy adoption.,3.0,1,0.8398,True,False,False
+Renewable energy certificates (RECs) are used to track renewable energy generation.,1.0,3,0.7054,False,False,True
+Environmental impact assessments are required for large energy projects.,3.0,2,0.7449,False,True,False
+Wave energy converters are being tested for commercial viability.,3.0,3,0.7526,True,False,False
+The electrification of rail networks can reduce greenhouse gas emissions.,2.0,2,0.8237,False,False,True
+Photovoltaic cells convert sunlight directly into electricity.,1.0,1,0.7624,False,True,False
+Global energy demand continues to rise despite efforts for efficiency.,3.0,3,0.7341,True,False,False
+Offshore drilling accidents can lead to severe environmental disasters.,3.0,2,0.8128,False,False,True
+Using algae to produce biofuels is still in the experimental phase.,1.0,3,0.6931,False,True,False
+Smart meters enable consumers to monitor their energy use in real time.,3.0,2,0.7987,True,False,False
+Nuclear power is controversial due to concerns about radioactive waste.,3.0,1,0.8442,False,False,True
+The diversification of energy sources is important for energy security.,1.0,2,0.7734,False,True,False
+Battery recycling is crucial for reducing environmental impacts of EVs.,3.0,3,0.7109,True,False,False
+Thermal energy storage systems can store heat for later use.,3.0,2,0.8185,False,False,True
+The global energy market is influenced by international political relations.,3.0,2,0.7573,True,False,False
+Concentrated solar power (CSP) uses mirrors to focus sunlight.,1.0,1,0.8311,False,False,True
+Urban areas are increasingly implementing renewable energy projects.,3.0,3,0.7258,False,True,False
+The oil market is heavily affected by global supply and demand fluctuations.,2.0,2,0.7462,True,False,False
+Biochar can be used to improve soil health and sequester carbon.,3.0,2,0.8074,False,False,True
+The electrification of public transport systems is helping to reduce emissions.,3.0,2,0.7389,False,True,False
+Renewable energy costs have decreased significantly in recent years.,1.0,2,0.8139,True,False,False
+Ocean thermal energy conversion (OTEC) is an emerging renewable technology.,3.0,3,0.7654,False,False,True
+The challenges of integrating renewable energy into existing grids are complex.,3.0,3,0.6941,False,True,False
+Nuclear waste disposal remains a controversial topic.,1.0,1,0.8516,True,False,False
+Bioenergy has the potential to become carbon neutral under certain conditions.,3.0,2,0.7992,False,False,True
+Solar panel recycling is becoming an important part of the renewable energy supply chain.,2.0,3,0.7628,False,True,False
+Battery energy storage systems (BESS) are essential for managing renewable energy.,1.0,2,0.7891,True,False,False
+Power-to-X technologies can convert renewable electricity into other energy carriers.,3.0,3,0.7185,False,False,True
+Hydropower's impact on biodiversity can be mitigated through innovative dam designs.,3.0,2,0.7417,False,True,False
+The energy sector is undergoing a digital transformation.,1.0,1,0.8234,True,False,False
+Compressed air energy storage (CAES) is a form of large-scale energy storage.,3.0,3,0.7613,False,False,True
+Artificial intelligence is used to optimize energy consumption.,1.0,2,0.7759,False,True,False
+The role of government policy is critical in the adoption of clean energy.,3.0,3,0.7295,True,False,False
+Renewable natural gas (RNG) can be produced from organic waste.,3.0,2,0.8076,False,False,True
+The increasing adoption of electric vehicles is reshaping energy demands.,2.0,2,0.7534,False,True,False
+Solar tracking systems improve the efficiency of photovoltaic panels.,1.0,3,0.7648,True,False,False
+The fossil fuel industry is facing increasing scrutiny over carbon emissions.,3.0,2,0.7912,False,False,True
+Thermochemical storage is an advanced technology for renewable heat storage.,3.0,1,0.8325,False,True,False
+Energy independence is a goal for many nations.,1.0,2,0.8217,True,False,False
+Methane emissions from natural gas production contribute to climate change.,3.0,3,0.7298,False,False,True
+Electricity demand response programs help balance grid load during peak times.,3.0,2,0.7483,False,True,False
+Hydropower is not completely emission-free due to methane from reservoirs.,2.0,3,0.7562,True,False,False
+The global solar PV market continues to expand as costs fall.,1.0,1,0.8121,False,False,True
+Electric heating systems are becoming more popular as they integrate with renewables.,3.0,3,0.7235,False,True,False
+The role of offshore wind farms is growing in national energy strategies.,3.0,2,0.7947,True,False,False
+Waste-to-energy plants convert municipal waste into usable energy.,1.0,2,0.7832,False,False,True
+The development of renewable hydrogen infrastructure is accelerating.,3.0,2,0.7568,True,False,False
+The energy transition will be supported by advancements in grid storage technologies.,1.0,3,0.7354,False,True,False
+High-voltage direct current (HVDC) systems enable efficient power transmission over long distances.,3.0,2,0.7942,True,False,False
+The implementation of smart home technology can lead to more efficient energy usage.,1.0,1,0.8129,False,False,True
+Solar power plants can provide clean energy for local communities and industries.,3.0,3,0.7035,False,True,False
+The exploration of geothermal energy resources is expanding worldwide.,2.0,3,0.8237,True,False,False
+Wind farm planning must take into account environmental impact assessments.,3.0,2,0.7643,False,False,True
+Advances in photovoltaic materials are making solar panels more efficient.,1.0,2,0.7851,False,True,False
+Investing in renewable energy is increasingly attractive to investors.,1.0,1,0.8395,False,False,True
+Hybrid renewable systems combine different types of renewable energy sources.,3.0,2,0.7518,False,True,False
+Concentrated solar power systems use mirrors to focus sunlight onto a small area.,3.0,3,0.7684,True,False,False
+The decline in battery costs has made electric vehicles more affordable.,1.0,2,0.7917,False,False,True
+Wave energy systems convert the kinetic energy of ocean waves into electricity.,3.0,2,0.8196,True,False,False
+Distributed generation is changing the way we think about the power grid.,1.0,1,0.8023,False,False,True
+Biofuels have the potential to replace fossil fuels in aviation.,3.0,3,0.7139,False,True,False
+The demand for rare earth materials is increasing due to renewable energy technologies.,3.0,2,0.7358,True,False,False
+Offshore wind energy can provide significant amounts of clean power.,3.0,2,0.8121,False,False,True
+Small-scale hydropower projects can provide electricity to remote communities.,1.0,1,0.7842,False,True,False
+The development of energy-efficient technologies can help reduce carbon footprints.,3.0,3,0.7597,True,False,False
+Perovskite solar cells are an emerging technology in solar energy.,1.0,2,0.7938,False,False,True
+Electric vehicles reduce greenhouse gas emissions compared to internal combustion engine vehicles.,3.0,3,0.7452,False,True,False
+The transition to a green economy will require global cooperation.,3.0,2,0.8059,True,False,False
+Grid integration of renewables is challenging due to variability in energy supply.,3.0,3,0.7784,False,False,True
+The deployment of renewable energy is supported by declining technology costs.,1.0,2,0.7821,False,True,False
+The electrification of heating is an important step towards decarbonization.,3.0,3,0.7227,False,False,True
+Hydropower provides significant renewable electricity globally.,1.0,2,0.7932,False,True,False
+Vertical wind turbines are being tested for urban areas.,1.0,1,0.8124,True,False,False
+The concept of energy as a service is emerging in the energy market.,3.0,2,0.7648,False,False,True
+Hybrid energy systems can improve the reliability of renewable energy.,3.0,3,0.7265,False,True,False
+The growth of the solar industry has led to job creation around the world.,1.0,2,0.8162,True,False,False
+Hydrogen pipelines are being planned to distribute green hydrogen.,3.0,3,0.7423,False,False,True
+Bioenergy from waste reduces landfill usage and produces energy.,1.0,1,0.7846,False,True,False
+Artificial intelligence can optimize the operation of renewable energy plants.,3.0,2,0.8217,True,False,False
+The reliability of renewable energy sources can be improved with smart grid technology.,3.0,3,0.7536,False,False,True
+Pumped hydro storage is the most widely-used form of large-scale energy storage.,1.0,2,0.8069,False,True,False
+Electric ferries are being adopted to reduce maritime emissions.,3.0,3,0.7194,True,False,False
+Solar power plants are increasingly located in desert regions.,3.0,2,0.7856,False,False,True
+The global shift to renewable energy will require new skills and workforce training.,3.0,3,0.7431,True,False,False
+Heat pumps are a highly efficient way to provide heating and cooling.,1.0,2,0.8324,False,False,True
+Carbon pricing is one policy tool to incentivize emissions reductions.,3.0,3,0.7152,False,True,False
+Bioenergy combined with carbon capture and storage could lead to negative emissions.,3.0,2,0.7678,True,False,False
+Renewable energy auctions are used to procure clean power at competitive prices.,3.0,3,0.7294,False,False,True
+Floating solar panels can be installed on reservoirs to save space.,1.0,1,0.7951,False,True,False
+Community-owned renewable energy projects empower local populations.,3.0,2,0.7564,True,False,False
+The electrification of industry is crucial for achieving climate goals.,3.0,3,0.7128,False,False,True
+Energy management systems help optimize the energy usage of buildings.,1.0,2,0.8036,False,True,False
+Wave power has potential but remains in the early stages of commercial development.,3.0,3,0.7419,True,False,False
+The use of smart inverters can help integrate solar energy into the grid.,3.0,2,0.7742,False,False,True
+Electric scooters are increasingly popular in urban areas to reduce emissions.,1.0,1,0.7884,False,True,False
+The energy efficiency of appliances has improved significantly over the past decade.,3.0,3,0.7495,True,False,False
+Power-to-gas technology can store surplus renewable energy as hydrogen.,3.0,2,0.8136,False,False,True
+Hydropower is a renewable energy source that can also provide flood control.,3.0,3,0.7543,False,True,False
+New materials are being developed to increase the efficiency of solar cells.,1.0,2,0.7921,True,False,False
+Floating wind turbines allow wind energy to be harvested in deeper waters.,3.0,2,0.7835,False,False,True
+Electrification of industrial processes can significantly cut greenhouse gas emissions.,3.0,3,0.7328,False,True,False
+Renewable energy integration requires advanced grid management solutions.,3.0,2,0.7682,True,False,False
+Improving energy efficiency in buildings reduces overall energy consumption.,1.0,1,0.8189,False,False,True
+Hybrid solar-wind energy systems can provide consistent power output.,3.0,2,0.7456,False,True,False
+Grid modernization is essential for supporting renewable energy growth.,3.0,3,0.7528,True,False,False
+Renewable energy microgrids can offer resilience during natural disasters.,3.0,2,0.8125,False,False,True
+Energy storage technology advancements will help manage renewable intermittency.,3.0,3,0.7094,False,True,False
+Solar panel efficiency has increased dramatically over recent years.,1.0,2,0.7943,True,False,False
+Electricity from wind turbines is increasingly cost-competitive with fossil fuels.,3.0,2,0.7729,False,False,True
+Hydropower can provide both energy and water management benefits.,3.0,3,0.7285,False,True,False
+Renewable hydrogen is produced by using electrolysis powered by renewable sources.,1.0,1,0.8065,True,False,False
+The global transition to renewable energy requires international collaboration.,3.0,2,0.7516,False,False,True
+Artificial intelligence can forecast renewable energy output more accurately.,3.0,3,0.7347,False,True,False
+Offshore wind farms are being built in deeper waters using floating platforms.,3.0,2,0.7691,True,False,False
+Energy storage is vital for balancing supply and demand in a renewable energy system.,3.0,3,0.7418,False,False,True
+Waste heat recovery can improve the efficiency of industrial processes.,1.0,2,0.8138,False,True,False
+Geothermal power plants can provide baseload renewable energy.,3.0,1,0.8264,True,False,False
+District heating systems can use waste heat from industrial processes.,3.0,2,0.7821,False,False,True
+Energy efficiency standards for appliances are becoming more stringent.,1.0,3,0.7326,False,True,False
+Biomass energy can be generated from agricultural and forestry residues.,3.0,2,0.7896,True,False,False
+Hydropower projects can have both positive and negative environmental impacts.,3.0,3,0.7453,False,False,True
+Solar power costs have dropped dramatically in the past decade.,1.0,1,0.8187,False,True,False
+Renewable energy investments are outpacing fossil fuel investments.,3.0,2,0.7674,True,False,False
+The growth of electric vehicles is increasing electricity demand.,3.0,3,0.7521,False,False,True
+Wave and tidal power are promising sources of renewable energy.,3.0,2,0.7382,False,True,False
+Solar PV installations have reached record levels globally.,1.0,3,0.7598,True,False,False
+Wind turbine blade recycling is a growing challenge for the industry.,3.0,2,0.7926,False,False,True
+Hydrogen produced from natural gas can be low-carbon with carbon capture.,3.0,3,0.7229,False,True,False
+The renewable energy transition is creating new economic opportunities.,3.0,2,0.7815,True,False,False
+Small modular reactors (SMRs) are a new type of nuclear energy technology.,3.0,1,0.8091,False,False,True
+Direct air capture (DAC) can remove carbon dioxide from the atmosphere.,3.0,3,0.7441,True,False,False
+Biofuel production can provide a use for agricultural waste.,3.0,2,0.7716,False,False,True
+The electrification of ports can reduce emissions from shipping.,3.0,3,0.7153,False,True,False
+Renewable energy jobs are growing faster than fossil fuel jobs.,1.0,1,0.8287,True,False,False
+Offshore wind has the potential to meet a significant portion of energy demand.,3.0,2,0.7683,False,False,True
+The use of energy storage systems is expanding with renewable adoption.,3.0,3,0.7434,False,True,False
+Electric trucks are being developed to reduce emissions from freight transport.,1.0,2,0.7968,True,False,False
+Solar energy can be stored as thermal energy in molten salt systems.,3.0,3,0.7346,False,False,True
+Smart grid technologies are needed to manage decentralized energy production.,3.0,2,0.7489,False,True,False
+Renewable natural gas can be injected into existing natural gas pipelines.,1.0,1,0.8072,True,False,False
+Battery-powered ferries are being used in Norway to reduce maritime emissions.,3.0,2,0.7517,False,True,False
+Solar PV efficiency improvements are driving down the cost of solar power.,1.0,2,0.7819,True,False,False
+Electrification of residential heating systems reduces reliance on fossil fuels.,3.0,3,0.7297,False,False,True
+Electricity generated from geothermal power is renewable and reliable.,3.0,2,0.7448,False,True,False
+Waste-to-energy facilities can reduce landfill waste and generate power.,3.0,3,0.7594,True,False,False
+Tidal stream turbines convert the energy of tidal flows into electricity.,3.0,2,0.7913,False,False,True
+Hydrogen fuel cell vehicles emit only water vapor.,1.0,1,0.8185,False,True,False
+Offshore wind projects face challenges related to grid connections.,3.0,2,0.7482,True,False,False
+Wave power harnesses energy from the movement of ocean waves.,3.0,3,0.7324,False,False,True
+The cost of wind energy has decreased due to technological advances.,1.0,2,0.7831,False,True,False
+The solar PV industry is creating jobs in manufacturing and installation.,3.0,1,0.8046,True,False,False
+Artificial intelligence is being used to enhance energy efficiency in buildings.,3.0,3,0.7189,False,False,True
+Direct use geothermal systems provide heating for buildings.,1.0,2,0.7523,False,True,False
+Battery technology advancements are reducing the cost of energy storage.,3.0,3,0.7397,True,False,False
+Hydropower can support grid stability by providing flexible generation.,3.0,2,0.7712,False,False,True
+Renewable energy standards require a certain percentage of electricity from renewables.,1.0,1,0.8223,False,True,False
+Floating offshore wind turbines are a new approach to harvesting wind energy.,3.0,3,0.7238,True,False,False
+Grid-scale battery storage is being deployed to support renewable integration.,3.0,2,0.7557,False,False,True
+Electric aircraft are being developed to reduce emissions from aviation.,3.0,3,0.7138,False,True,False
+Renewable energy development can lead to rural economic revitalization.,3.0,2,0.7749,True,False,False
+Wind farms can coexist with agricultural activities.,1.0,2,0.8195,False,False,True
+Solar PV farms can have dual use as agricultural sites (agrivoltaics).,3.0,3,0.7516,False,True,False
+The use of hydrogen as an energy carrier is expected to grow.,3.0,2,0.7687,True,False,False
+Electric car charging infrastructure is expanding to support increased adoption.,3.0,3,0.7411,False,False,True
+Battery energy storage helps balance grid fluctuations.,1.0,2,0.7953,False,True,False
+Hydropower provides renewable energy and has a long lifespan.,3.0,1,0.8267,True,False,False
+The costs of offshore wind have decreased as technology has improved.,3.0,2,0.7724,False,False,True
+Solar PV capacity is expanding rapidly in many countries.,1.0,3,0.7398,False,True,False
+Renewable hydrogen can decarbonize hard-to-abate industrial sectors.,3.0,2,0.7472,True,False,False
+Energy storage will play a crucial role in the future energy mix.,3.0,3,0.7198,False,False,True
+Offshore wind farms can be paired with aquaculture to maximize ocean use.,3.0,2,0.7625,False,True,False
+The electrification of heating can reduce reliance on natural gas.,3.0,3,0.7329,True,False,False
+Geothermal heat pumps can be used for both heating and cooling.,1.0,1,0.8135,False,False,True
+Renewable energy projects can face challenges related to land use.,3.0,2,0.7849,False,True,False
+Battery technologies such as lithium-ion dominate energy storage.,1.0,2,0.7912,True,False,False
+Floating solar farms can utilize reservoirs to save space on land.,3.0,3,0.7527,False,False,True
+Wind energy costs have fallen significantly over the last decade.,3.0,2,0.7618,False,True,False
+The transition to renewable energy creates opportunities for innovation.,3.0,3,0.7563,True,False,False
+Electrolysis is used to produce hydrogen from water using electricity.,1.0,1,0.8235,False,False,True
+Renewable energy generation can be combined with battery storage.,3.0,2,0.7394,False,True,False
+The energy industry is evolving towards decentralized energy systems.,3.0,3,0.7216,True,False,False
+The electrification of transportation is essential to achieving climate targets.,3.0,2,0.7789,False,False,True
+The development of wind and solar energy is crucial for a sustainable future.,1.0,2,0.7468,False,True,False
+New battery chemistries are being researched to improve performance and cost.,3.0,1,0.7821,True,False,False
+Renewable power-to-gas facilities convert surplus electricity into methane.,3.0,3,0.7332,False,False,True
+Electric bike usage is increasing as cities invest in cycling infrastructure.,1.0,2,0.8042,False,True,False
+Hydropower storage capacity can help balance renewable energy supply and demand.,3.0,3,0.7584,True,False,False
+Renewable hydrogen can be produced using solar and wind power.,3.0,2,0.7396,False,False,True
+Grid flexibility is key to integrating more renewable energy.,3.0,3,0.7127,False,True,False
+Renewable energy projects can have positive impacts on local economies.,3.0,2,0.7917,True,False,False
+Wind energy can provide a source of income for rural landowners.,1.0,2,0.8038,False,False,True
+Floating solar panels are increasingly used in reservoirs and lakes.,3.0,3,0.7549,False,True,False
+Hydrogen can be used in fuel cells to generate electricity.,1.0,1,0.8182,True,False,False
+The cost of renewable hydrogen is expected to decline with technological advancements.,3.0,2,0.7318,False,False,True
+Solar power can provide electricity to remote areas without grid access.,3.0,3,0.7432,False,True,False
+Wave energy systems can be installed along coastlines to generate power.,3.0,2,0.7824,True,False,False
+Energy efficiency programs can reduce overall demand and lower emissions.,3.0,3,0.7215,False,False,True
+Battery storage is key to managing the variability of renewable energy.,1.0,2,0.8034,False,True,False
+Wind turbines with larger blades capture more energy.,3.0,2,0.7768,True,False,False
+Hydrogen produced from renewable electricity is known as green hydrogen.,3.0,1,0.7591,False,False,True
+The deployment of floating wind turbines is expanding.,1.0,3,0.7348,False,True,False
+Renewable energy microgrids can improve energy access in developing countries.,3.0,2,0.7481,True,False,False
+Electric tractors are being developed to reduce emissions from agriculture.,3.0,3,0.7149,False,False,True
+Biogas can be produced from organic waste materials.,1.0,2,0.8119,False,True,False
+Electrification of heating is key to reducing carbon emissions from buildings.,3.0,3,0.7389,True,False,False
+Solar photovoltaics convert sunlight directly into electricity.,3.0,2,0.7536,False,False,True
+Wind energy potential is greatest in regions with consistent wind speeds.,3.0,1,0.7993,False,True,False
+The development of energy storage is crucial for renewable integration.,1.0,2,0.7629,True,False,False
+Wave and tidal energy are less mature compared to wind and solar.,3.0,3,0.7284,False,False,True
+Renewable energy projects can improve local resilience to energy disruptions.,3.0,2,0.7458,False,True,False
+Direct air capture technologies are being developed to combat climate change.,3.0,3,0.7116,True,False,False
+Electric vehicle batteries can be repurposed for energy storage.,1.0,2,0.8175,False,False,True
+Solar energy systems can be installed on rooftops for decentralized power generation.,3.0,3,0.7421,False,True,False
+Grid integration challenges for renewables require advanced solutions.,3.0,2,0.7638,True,False,False
+Renewable electricity can be used to produce ammonia for fertilizers.,3.0,3,0.7196,False,False,True
+Hydropower turbines convert flowing water into electricity.,1.0,1,0.8227,False,True,False
+Electrification of public transportation can reduce urban air pollution.,3.0,2,0.7285,True,False,False
+The production of renewable energy can be seasonal.,1.0,3,0.7352,False,False,True
+Solar thermal systems use the sun's heat to generate electricity.,3.0,2,0.7713,False,True,False
+Electric water heaters can use renewable energy to reduce carbon emissions.,1.0,1,0.8075,True,False,False
+Renewable energy capacity is growing faster than any other energy source.,3.0,3,0.7473,False,False,True
+The electrification of cooking can help reduce deforestation.,3.0,2,0.7559,False,True,False
+Artificial intelligence optimizes grid operation with renewables.,1.0,2,0.7811,True,False,False
+Wave power technology captures energy from ocean waves.,3.0,3,0.7187,False,False,True
+Renewable hydrogen production is expected to grow significantly.,3.0,2,0.7463,False,True,False
+The use of waste heat from industry can improve energy efficiency.,3.0,1,0.7735,True,False,False
+The development of floating solar technology is expanding rapidly.,3.0,3,0.7381,False,False,True
+Battery storage helps manage renewable energy intermittency.,1.0,2,0.7924,False,True,False
+Electric vehicle charging stations are expanding globally.,3.0,3,0.7568,True,False,False
+The cost of solar panels has decreased due to economies of scale.,3.0,2,0.7486,False,False,True
+Geothermal plants use steam to generate electricity.,1.0,1,0.8113,False,True,False
+Renewable energy auctions have lowered the cost of solar and wind power.,3.0,3,0.7439,True,False,False
+Wind power can be generated both onshore and offshore.,3.0,2,0.7649,False,False,True
+Solar power can be paired with battery storage to ensure reliable supply.,1.0,2,0.7837,False,True,False
+Floating solar power plants reduce evaporation from water reservoirs.,3.0,3,0.7296,True,False,False
+Renewable electricity is increasingly used in chemical production.,3.0,2,0.7814,False,False,True
+Electric vehicles can be charged using solar power.,1.0,1,0.8178,False,True,False
+Wave energy has great potential but faces technical challenges.,3.0,3,0.7379,True,False,False
+Artificial intelligence is being used to manage renewable energy assets.,3.0,2,0.7551,False,False,True
+Renewable hydrogen production can help decarbonize the chemical industry.,3.0,3,0.7193,False,True,False
+Hydropower remains the largest source of renewable electricity.,3.0,2,0.7689,True,False,False
+Electrification of rail networks reduces greenhouse gas emissions.,1.0,2,0.8139,False,False,True
+Renewable energy integration requires investments in new technologies.,3.0,3,0.7345,False,True,False
+Wind power is one of the most rapidly growing renewable energy sources.,3.0,2,0.7512,True,False,False
+Floating wind farms are a promising technology for offshore energy.,3.0,3,0.7234,False,False,True
+Renewable energy production is becoming increasingly competitive.,1.0,1,0.7854,False,True,False
+Electric cargo bikes are being used for urban deliveries.,3.0,2,0.7717,True,False,False
+Wave energy projects can provide clean power to coastal communities.,3.0,3,0.7398,False,False,True
+Hydropower can provide backup power during grid outages.,1.0,2,0.8142,False,True,False
+Renewable energy systems can be combined to provide hybrid solutions.,3.0,3,0.7423,True,False,False
+Solar panels convert sunlight into electricity through photovoltaic cells.,3.0,2,0.7539,False,False,True
+The development of renewable energy can reduce energy import dependence.,1.0,2,0.7881,False,True,False
+Electric vehicle adoption is increasing due to environmental concerns.,3.0,3,0.7318,True,False,False
+The electrification of energy-intensive industries will reduce emissions.,3.0,2,0.7696,False,False,True
+Hydrogen storage will be key for the future hydrogen economy.,1.0,1,0.8257,False,True,False
+Renewable energy is helping to diversify the global energy mix.,3.0,2,0.7547,True,False,False
+The use of drones is improving the maintenance of wind farms.,3.0,3,0.7158,False,False,True
+The transition to renewable energy requires new grid infrastructure.,1.0,2,0.8024,False,True,False
+Wave power could become a significant source of renewable electricity.,3.0,3,0.7344,True,False,False
+Artificial intelligence is helping to predict renewable energy production.,3.0,2,0.7685,False,False,True
+Renewable energy can be more resilient to climate-related disruptions.,1.0,1,0.8192,False,True,False
+Geothermal power can be used for both electricity and direct heating.,3.0,3,0.7286,True,False,False
+The use of smart meters is increasing to manage electricity consumption.,3.0,2,0.7629,False,False,True
+Renewable energy technologies are becoming more cost-effective.,1.0,3,0.7391,False,True,False
+The cost of renewable hydrogen is decreasing with new technologies.,3.0,2,0.7618,True,False,False
+Wind farms can contribute to local economies through lease payments.,3.0,1,0.7457,False,False,True
+Battery electric vehicles are gaining market share over internal combustion engines.,1.0,2,0.7845,False,True,False
+Solar energy can reduce electricity costs for households.,3.0,3,0.7592,True,False,False
+Electrification of buses can significantly reduce emissions in cities.,3.0,2,0.7428,False,False,True
+Renewable energy sources are key to achieving carbon neutrality.,1.0,1,0.8324,False,True,False
+Hydrogen-powered trains are being developed as an alternative to diesel.,3.0,3,0.7183,False,False,True
+The deployment of renewables is reshaping the energy landscape.,3.0,2,0.7572,False,True,False
+Electric heat pumps are an efficient way to heat homes.,1.0,2,0.7798,True,False,False
+Floating solar PV projects are being developed in Asia.,3.0,3,0.7341,False,False,True
+Wind and solar power can be combined to create hybrid energy systems.,3.0,2,0.7429,False,True,False
+Renewable electricity can be used to produce synthetic fuels.,3.0,3,0.7385,True,False,False
+Renewable energy costs are projected to continue to fall.,1.0,2,0.7816,False,False,True
+The electrification of industrial heating is a key step in decarbonization.,3.0,3,0.7464,False,True,False
+Energy storage capacity is increasing as battery technology advances.,3.0,2,0.7687,True,False,False
+The development of smart grids is essential for managing renewable energy.,3.0,3,0.7254,False,False,True
+Wave power has the potential to be a reliable source of renewable energy.,1.0,2,0.8121,False,True,False
+Renewable energy integration is improving with the use of digital technologies.,3.0,2,0.7531,True,False,False
+The cost of wind turbines is decreasing due to economies of scale.,3.0,3,0.7374,False,False,True
+Offshore wind farms can provide renewable energy close to coastal cities.,1.0,1,0.8014,False,True,False
+Battery recycling is important for managing the environmental impact of EVs.,3.0,2,0.7468,True,False,False
+Hydropower dams can also provide flood control benefits.,3.0,3,0.7281,False,False,True
+Renewable energy is increasingly seen as an economic opportunity.,1.0,2,0.7594,False,True,False
+Electric motors are more efficient than internal combustion engines.,3.0,1,0.7812,True,False,False
+Renewable energy cooperatives allow communities to own energy production.,3.0,3,0.7317,False,False,True
+Solar power is becoming an essential part of energy security.,1.0,2,0.8047,False,True,False
+Floating offshore wind technology is advancing rapidly.,3.0,2,0.7524,True,False,False
+Electric vehicles have lower operating costs compared to gasoline vehicles.,3.0,3,0.7393,False,False,True
+The development of energy storage is critical for renewable energy adoption.,3.0,3,0.7182,False,True,False
+Hydropower plants can adjust their output to meet fluctuating energy demand.,1.0,2,0.7961,True,False,False
+Artificial intelligence is being used to optimize solar farm operation.,3.0,3,0.7452,False,False,True
+Renewable energy provides opportunities for rural areas to develop.,3.0,2,0.7614,False,True,False
+Electrification of space heating is reducing reliance on fossil fuels.,3.0,3,0.7289,True,False,False
+The expansion of renewable energy is driving economic growth.,1.0,2,0.7894,False,False,True
+Wind energy projects are creating jobs in rural areas.,3.0,3,0.7519,False,True,False
+Renewable hydrogen is produced through the electrolysis of water.,3.0,2,0.7435,True,False,False
+Electricity generation from tidal power is still in the early stages.,1.0,1,0.8058,False,True,False
+Renewable energy sources are key to reducing greenhouse gas emissions.,3.0,2,0.7517,True,False,False
+Hydropower reservoirs can store energy for long periods.,3.0,3,0.7287,False,False,True
+Wind power is expected to continue growing as a key renewable energy source.,1.0,2,0.7915,False,True,False
+The development of solar power is accelerating in many countries.,3.0,2,0.7438,True,False,False
+Energy storage solutions are helping to increase renewable penetration.,3.0,3,0.7151,False,False,True
+Renewable electricity can power electric heat pumps for home heating.,1.0,2,0.8082,False,True,False
+Wave energy has the potential to contribute significantly to global energy.,3.0,3,0.7284,True,False,False
+Renewable energy deployment is often influenced by government policies.,3.0,2,0.7491,False,False,True
+Electrification of home heating helps reduce overall emissions.,1.0,1,0.8229,False,True,False
+Hydropower facilities can provide both energy and recreational benefits.,3.0,2,0.7591,True,False,False
+Electric vehicles are part of the transition to cleaner energy systems.,3.0,3,0.7365,False,False,True
+Renewable energy microgrids are being used in remote areas.,1.0,2,0.7921,False,True,False
+Wind power is becoming one of the most economical energy sources.,3.0,2,0.7659,True,False,False
+Renewable energy production is crucial for long-term energy security.,3.0,3,0.7231,False,False,True
+The electrification of heating is key to reducing carbon emissions.,1.0,3,0.7512,False,True,False
+Solar power plants are being developed in desert regions to maximize output.,3.0,2,0.7392,True,False,False
+Battery storage is essential for supporting the renewable energy grid.,3.0,3,0.7174,False,False,True
+Renewable hydrogen could play a major role in future energy systems.,3.0,2,0.7613,False,True,False
+Renewable energy integration can improve with the use of microgrids.,3.0,3,0.7426,True,False,False
+Solar PV has seen rapid growth due to declining costs and government incentives.,1.0,2,0.7742,False,False,True
+Electric trucks can help reduce greenhouse gas emissions from logistics.,3.0,3,0.7289,False,True,False
+Renewable hydrogen can be used to store and transport energy.,3.0,2,0.7464,True,False,False
+The electrification of industries is part of the broader energy transition.,3.0,3,0.7395,False,False,True
+Wave power has potential but requires further research and development.,1.0,1,0.7814,False,True,False
+Hydropower provides a renewable and flexible source of electricity.,3.0,2,0.7338,True,False,False
+Solar energy can be converted into heat for residential and industrial use.,3.0,3,0.7219,False,False,True
+Renewable energy generation is increasingly being paired with energy storage.,1.0,2,0.8027,False,True,False
+Electric motorcycles are growing in popularity as an emission-free alternative.,3.0,3,0.7382,True,False,False
+Renewable hydrogen production costs are falling due to new technologies.,3.0,2,0.7514,False,False,True
+Battery storage is helping to integrate more renewable energy into the grid.,1.0,1,0.8163,False,True,False
+Floating solar farms are being used to increase renewable energy capacity.,3.0,3,0.7468,True,False,False
+Wind energy projects can provide income for farmers through lease agreements.,3.0,2,0.7349,False,False,True
