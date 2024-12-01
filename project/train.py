@@ -9,6 +9,7 @@ from sklearn.svm import SVC
 from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
+import joblib
 
 # Load the dataset
 dataset = pd.read_csv('text_data.csv')
@@ -88,8 +89,14 @@ y_pred_svm = svm_model.predict(X_test)
 svm_accuracy = metrics.accuracy_score(y_test, y_pred_svm)
 print(f'SVM Accuracy: {svm_accuracy}')
 
-# Save the trained model
-import joblib
+# Train and evaluate Naive Bayes model on features
+nb_model = MultinomialNB()
+nb_model.fit(X_train, y_train)
+y_pred_nb = nb_model.predict(X_test)
+nb_accuracy = metrics.accuracy_score(y_test, y_pred_nb)
+print(f'Naive Bayes Accuracy (features): {nb_accuracy}')
+
+# Save the trained models
 joblib.dump(linear_model, 'linear_model.pkl')
 joblib.dump(nb_model, 'naive_bayes_model.pkl')
 joblib.dump(svm_model, 'svm_model.pkl')
