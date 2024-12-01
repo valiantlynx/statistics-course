@@ -10,6 +10,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
+import seaborn as sns
 import statsmodels.api as sm
 import joblib
 
@@ -90,6 +91,7 @@ plt.plot([y.min(), y.max()], [y.min(), y.max()], 'k--', lw=3)
 plt.xlabel('Observed')
 plt.ylabel('Predicted')
 plt.title('Residual Plot')
+plt.savefig('residual_plot.png')
 plt.show()
 
 # Multiple Linear Regression using statsmodels
@@ -97,6 +99,12 @@ X_with_constant = sm.add_constant(X_train)
 y_train_array = np.asarray(y_train).astype(float)
 ols_model = sm.OLS(y_train_array, X_with_constant).fit()
 print(ols_model.summary())
+
+# Plot OLS regression results
+fig = plt.figure(figsize=(12, 8))
+fig = sm.graphics.plot_partregress_grid(ols_model, fig=fig)
+plt.savefig('ols_regression_plots.png')
+plt.show()
 
 # Save the processed dataset for future use
 dataset.to_csv('processed_text_data.csv', index=False)
@@ -132,6 +140,18 @@ rf_mse = metrics.mean_squared_error(y_test, y_pred_rf)
 rf_r2 = metrics.r2_score(y_test, y_pred_rf)
 print(f'Random Forest Mean Squared Error: {rf_mse}')
 print(f'Random Forest R-squared: {rf_r2}')
+
+# Plot feature importances for Random Forest
+feature_importances = rf_model.feature_importances_
+features = dataset.drop(columns=['Accuracy', 'Text']).columns
+
+plt.figure(figsize=(10, 6))
+sns.barplot(x=feature_importances, y=features)
+plt.xlabel('Feature Importance')
+plt.ylabel('Feature')
+plt.title('Feature Importance for Random Forest Model')
+plt.savefig('feature_importance_rf.png')
+plt.show()
 
 # Save the trained models
 joblib.dump(linear_model, 'linear_model.pkl')
