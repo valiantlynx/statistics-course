@@ -1,12 +1,20 @@
 \documentclass{article}
+\usepackage{cite} % Add the cite package for citations
+\usepackage{float} % Add the float package for modifying float specifiers
+
+\renewcommand{\floatpagefraction}{.8} % Set the floatpagefraction to .8
+
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{geometry}
+\bibliographystyle{plain}
 \geometry{a4paper, margin=1in}
 
 \title{Optimalisering av Tekstklassifisering: Hvordan Datasett og Modeller P\'avirker AI-presisjon}
-\author{Gormery K. Wanjiru \\ MA223, Universitetet i Oslo \\ November 2024}
+\author{Gormery K. Wanjiru \\ MA223, Universitetet i Agder \\ November 2024}
 \date{}
 
 \begin{document}
@@ -19,47 +27,47 @@
 
 \section{Introduksjon}
 \subsection{Bakgrunn}
-Dette prosjektet unders\o{}ker hvordan ulike faktorer som datasettst\o{}rrelse, tekstens kompleksitet og valg av maskinl\ae{}ringsmodell p\'avirker ytelsen til en tekstklassifiseringsmodell. Spesielt er fokus \aa{} se om disse faktorene har en signifikant innvirkning p\aa{} modellens evne til n\o{}yaktig klassifisering av tekster relatert til energisektoren.
+Dette prosjektet undersøker hvordan ulike faktorer som datasettstørrelse, tekstens kompleksitet og valg av maskinlæringsmodell påvirker ytelsen til en tekstklassifiseringsmodell. Spesielt er fokus å se om disse faktorene har en signifikant innvirkning på modellens evne til nøyaktig klassifisering av tekster relatert til energisektoren.
 
-V\aa{}r hypotese er: \textit{\"{S}t\o{}rre datasett og mindre komplekse tekster vil p\'avirke modellens n\o{}yaktighet positivt, mens endringer i valg av modell vil ha en mindre effekt sammenlignet med datasettst\o{}rrelsen og tekstens kompleksitet.\"}
+Vår hypotese er: \textit{Større datasett og mindre komplekse tekster vil påvirke modellens nøyaktighet positivt, mens endringer i valg av modell vil ha en mindre effekt sammenlignet med datasettstørrelsen og tekstens kompleksitet.}
 
 \section{Datainnhenting}
 \subsection{Innsamling av Data}
-Data ble samlet inn fra \aa{}pne kilder, inkludert Kaggle og andre tilgjengelige tekstdatasett. Datasettene inkluderer tekster av varierende lengde og kompleksitet. V\aa{}rt datasett best\aa{}r av 30 forskjellige tekstpr\o{}ver som spenner fra korte nyhetsartikler til mer omfattende tekniske dokumenter.
+Data ble samlet inn fra åpne kilder, inkludert Kaggle og andre tilgjengelige tekstdatasett. Datasettene inkluderer tekster av varierende lengde og kompleksitet. Vårt datasett består av 30 forskjellige tekstprøver som spenner fra korte nyhetsartikler til mer omfattende tekniske dokumenter.
 
-For \aa{} standardisere datainnhentingen ble hver tekst kategorisert etter lengde (kort, middels, lang) og kompleksitet (lav, middels, h\o{}y). Dataene ble sortert i en CSV-fil for videre analyse. Eksempeldataene inkluderte 10 korte artikler (100-200 ord), 10 middels artikler (500-700 ord) og 10 lange artikler (1000+ ord). Kompleksiteten ble vurdert basert p\aa{} setningslengde og faglige termer.
+For å standardisere datainnhentingen ble hver tekst kategorisert etter lengde (kort, middels, lang) og kompleksitet (lav, middels, høy). Dataene ble sortert i en CSV-fil for videre analyse. Eksempeldataene inkluderte 10 korte artikler (100-200 ord), 10 middels artikler (500-700 ord) og 10 lange artikler (1000+ ord). Kompleksiteten ble vurdert basert på setningslengde og faglige termer.
 
-V\ae{}rdata ble hentet dagen f\o{}r analysen for \aa{} kunne justere og korrelere effekten av ulike eksterne faktorer. Etter gjennomf\o{}rt data innhenting ble dataene lagret i en strukturert fil, og flere av datapunktene ble kodet for videre statistisk bearbeiding.
+Etter gjennomført datainnhenting ble dataene lagret i en strukturert fil, og flere av datapunktene ble kodet for videre statistisk bearbeiding.
 
 \subsection{Datapunkter og Beskrivelse}
 For hver tekst ble det samlet inn flere datapunkter:
 \begin{itemize}
     \item \textbf{Tekstlengde}: Klassifisert som kort, middels eller lang.
-    \item \textbf{Kompleksitet}: Klassifisert som lav, middels eller h\o{}y.
-    \item \textbf{N\o{}yaktighet ved Klassifisering}: Prosentandel som viser hvor n\o{}yaktig modellen klassifiserte teksten.
-    \item \textbf{Maskinl\ae{}ringsmodell}: Modeller som ble testet inkluderte Naive Bayes, SVM, og BERT.
+    \item \textbf{Kompleksitet}: Klassifisert som lav, middels eller høy.
+    \item \textbf{Nøyaktighet ved Klassifisering}: Prosentandel som viser hvor nøyaktig modellen klassifiserte teksten.
+    \item \textbf{Maskinlæringsmodell}: Modeller som ble testet inkluderte Naive Bayes, SVM, og BERT.
 \end{itemize}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{example_data.png}
-    \caption{Skjermbilde fra v\ae{}rkilde og eksempel p\aa{} tekstdata hentet}
+    \caption{Skjermbilde fra eksempel på tekstdata hentet}
 \end{figure}
 
-\section{M\aa{}linger og Prosess}
+\section{Målinger og Prosess}
 \subsection{Statistisk Inferens}
-I dette prosjektet benyttet vi statistisk inferens for \aa{} trekke konklusjoner om effekten av datasettst\o{}rrelse, tekstens kompleksitet og modellvalg basert p\aa{} de utvalgte tekstene.
+I dette prosjektet benyttet vi statistisk inferens for å trekke konklusjoner om effekten av datasettstørrelse, tekstens kompleksitet og modellvalg basert på de utvalgte tekstene.
 
-Statistisk inferens er prosessen med \aa{} trekke en konklusjon om en st\o{}rre populasjon basert p\aa{} et mindre utvalg av data fra populasjonen. Hovedm\aa{}let var \aa{} analysere informasjonen fra pr\o{}vene for \aa{} gj\o{}re antagelser eller prediksjoner om hele populasjonen. Antagelsene har alltid en viss grad av usikkerhet, og vi har tatt h\o{}yde for dette i analysen.
+Statistisk inferens er prosessen med å trekke en konklusjon om en større populasjon basert på et mindre utvalg av data fra populasjonen. Hovedmålet var å analysere informasjonen fra prøvene for å gjøre antagelser eller prediksjoner om hele populasjonen. Antagelsene har alltid en viss grad av usikkerhet, og vi har tatt høyde for dette i analysen.
 
-\subsubsection{Multippel Line\ae{}r Regresjon}
-Vi har 3 inn-variabler (datasettst\o{}rrelse, tekstkompleksitet, og modelltype), og 1 ut-variabel (modellens n\o{}yaktighet). Vi startet med line\ae{}r regresjon for \aa{} unders\o{}ke sammenhengen mellom de 3 uavhengige variablene og den avhengige variabelen. Den line\ae{}re sammenhengen uttrykkes som:
+\subsubsection{Multippel Lineær Regresjon}
+Vi har 3 inn-variabler (datasettstørrelse, tekstkompleksitet, og modelltype), og 1 ut-variabel (modellens nøyaktighet). Vi startet med lineær regresjon for å undersøke sammenhengen mellom de 3 uavhengige variablene og den avhengige variabelen. Den lineære sammenhengen uttrykkes som:
 
 \begin{equation}
     y = \alpha + \beta x + \epsilon
 \end{equation}
 
-For multippel line\ae{}r regresjon tar vi hensyn til flere variabler, og modellen ser slik ut:
+For multippel lineær regresjon tar vi hensyn til flere variabler, og modellen ser slik ut:
 
 \begin{equation}
     y = \alpha + \sum_{j=1}^{k} \beta_j x_j + \epsilon
@@ -67,12 +75,12 @@ For multippel line\ae{}r regresjon tar vi hensyn til flere variabler, og modelle
 
 Der:
 \begin{itemize}
-    \item $y$ er responsvariabelen (modellens n\o{}yaktighet)
+    \item $y$ er responsvariabelen (modellens nøyaktighet)
     \item $x_j$ er de uavhengige variablene
-    \item $\epsilon$ er m\aa{}leusikkerheten
+    \item $\epsilon$ er måleusikkerheten
 \end{itemize}
 
-Vi bruker R til \aa{} gj\o{}re beregningene, men en annen metode er matriser. M\aa{}lte data deles inn i designmatrise $X$ og responsvektor $y$:
+Vi brukte Python og R til å gjøre beregningene. Dataene ble delt inn i designmatrise $X$ og responsvektor $y$:
 
 \begin{equation}
     X = \begin{bmatrix}
@@ -87,7 +95,7 @@ Vi bruker R til \aa{} gj\o{}re beregningene, men en annen metode er matriser. M\
     \end{bmatrix}
 \end{equation}
 
-For \aa{} finne regresjonslinjen vil $\vec{\beta}$-vektoren v\ae{}re:
+For å finne regresjonslinjen vil $\vec{\beta}$-vektoren være:
 
 \begin{equation}
     \vec{\beta} = (X^TX)^{-1} X^T \vec{y}
@@ -106,55 +114,77 @@ Total kvadratisk feil (SSE) og standardfeil (SE) beregnes som:
     SSe = \sum_{i=1}^{n} \epsilon_i^2, \quad s^2_e = \frac{SSe}{n - 2}
 \end{equation}
 
+\subsection{Bayesiansk Statistisk Analyse}
+Vi brukte også en bayesiansk tilnærming for å estimere sannsynlighetsfordelinger for modellparametrene. Ved å bruke Bayes' teorem kan vi oppdatere vår tro på parametrene basert på de observerte dataene:
+
+\begin{equation}
+    P(\theta|D) = \frac{P(D|\theta)P(\theta)}{P(D)}
+\end{equation}
+
+Der $P(\theta|D)$ er den posterior sannsynlighetsfordelingen, $P(D|\theta)$ er sannsynligheten for data gitt parameterne (likelihood), og $P(\theta)$ er prior.
+
+Posterior estimater av forventning og varians ble beregnet, og resultatene var som følger:
+
+\begin{itemize}
+    \item \textbf{Posterior Mean}: 0.766
+    \item \textbf{Posterior Variance}: 0.0013
+\end{itemize}
+
+\subsection{Prediktive Sannsynlighetsfordelinger}
+Vi brukte også prediktive sannsynlighetsfordelinger for å forutsi modellens ytelse på nye data. Den prediktive fordelingen kan uttrykkes som:
+
+\begin{equation}
+    P(y^*|x^*, D) = \int P(y^*|x^*, \theta) P(\theta|D) d\theta
+\end{equation}
+
+Dette lar oss estimere sannsynligheten for nye observasjoner basert på den oppdaterte troen fra treningsdataene. Dette ble benyttet til å estimere modellens forventede ytelse på uprøvde datasett.
+
 \subsection{Bearbeiding av Data}
-Vi sorterte de innsamlede dataene i en CSV-fil og brukte R for videre bearbeiding og analyse.
+Dataene ble sortert i en CSV-fil og bearbeidet ved hjelp av Python. Regresjonsmodellen ble implementert med scikit-learn og statsmodels for videre analyse.
 
-\subsubsection{Regresjon i R}
-Vi fulgte metoden for line\ae{}r regresjon beskrevet i kapittel 14 i formelboken, og brukte R for \aa{} gjennomf\o{}re analysen.
-
+\subsubsection{Regresjon i Python}
+Følgende trinn ble brukt for regresjonsanalysen:
 \begin{enumerate}
     \item \textbf{Initialisering av Modell}
     \begin{verbatim}
-    linearModel <- lm(y ~ x1 + x2 + x3, data = dataset)
+    linearModel = LinearRegression()
+    linearModel.fit(X_train, y_train)
     \end{verbatim}
-    R har en funksjon \texttt{lm()} som brukes til \aa{} tilpasse en line\ae{}r modell til dataene.
-    
     \item \textbf{Oppsummering av Modell}
     \begin{verbatim}
-    modelSummary <- summary(linearModel)
+    ols_model = sm.OLS(y_train_array, X_with_constant).fit()
     \end{verbatim}
-    Funksjonen \texttt{summary()} gir en detaljert oppsummering av modellen, inkludert residualer, koeffisienter, og standard feil.
-    
-    \item \textbf{Beregning av Koeffisienter}
+    \item \textbf{Visualisering av Residualer}
     \begin{verbatim}
-    betaValues <- modelSummary$coefficients
+    plt.scatter(y_test, y_pred)
+    plt.plot([y.min(), y.max()], [y.min(), y.max()], 'k--', lw=3)
     \end{verbatim}
-    Her henter vi informasjonen om koeffisientene til modellen.
-    
-    \item \textbf{Beregn SSE}
-    \begin{verbatim}
-    SSe <- (nrow(dataset) - length(betaValues)) * modelSummary$sigma^2
-    \end{verbatim}
-    Total kvadratisk feil ble beregnet som avstanden mellom observerte og predikerte verdier.
+    Residualplottet hjelper oss med å evaluere modellens tilpasning.
 \end{enumerate}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{regression_plot.png}
-    \caption{Grafisk representasjon av regresjonslinjen for forskjellige modellvalg}
+    \includegraphics[width=0.8\textwidth]{residual_plot.png}
+    \caption{Residualplott for lineær regresjonsmodell}
 \end{figure}
 
 \section{Resultater}
 \subsection{Koeffisienter}
-Koeffisientene fra regresjonsmodellen viste hvordan hver variabel (datasettst\o{}rrelse, tekstkompleksitet og modellvalg) p\'avirket n\o{}yaktigheten.
+Koeffisientene fra regresjonsmodellen viste hvordan hver variabel (datasettstørrelse, tekstkompleksitet og modellvalg) påvirket nøyaktigheten.
 
 \begin{itemize}
-    \item \textbf{Datasettst\o{}rrelse}: 0.25 (p-verdi: 0.01)
+    \item \textbf{Datasettstørrelse}: 0.25 (p-verdi: 0.01)
     \item \textbf{Tekstkompleksitet}: -0.18 (p-verdi: 0.04)
-    \item \textbf{Modellvalg (SVM, Naive Bayes, BERT)}: SVM hadde en koeffisient p\aa{} 0.05, Naive Bayes 0.02, og BERT 0.12.
+    \item \textbf{Modellvalg (SVM, Naive Bayes, BERT)}: SVM hadde en koeffisient på 0.05, Naive Bayes 0.02, og BERT 0.12.
 \end{itemize}
 
-Disse resultatene antyder at st\o{}rre datasett \o{}ker modellens n\o{}yaktighet, mens h\o{}y tekstkompleksitet reduserer n\o{}yaktigheten. BERT-modellen hadde den beste ytelsen blant modellene, med en positiv effekt p\aa{} n\o{}yaktigheten.
+Disse resultatene antyder at større datasett øker modellens nøyaktighet, mens høy tekstkompleksitet reduserer nøyaktigheten. BERT-modellen hadde den beste ytelsen blant modellene, med en positiv effekt på nøyaktigheten.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{ols_regression_plots.png}
+    \caption{Grafisk representasjon av OLS-regresjon for forskjellige modellvalg}
+\end{figure}
 
 \subsection{Bayes's Teorem for Line\ae{}r Regresjon}
 For \aa{} forsterke resultatene benyttet vi Bayes's teorem for line\ae{}r regresjon. Vi brukte n\o{}ytrale priorer som ble oppdatert etter hvert som vi fikk mer data:
@@ -194,27 +224,39 @@ F-verdien indikerte at modellen som helhet var signifikant med en verdi p\aa{} 3
 \subsubsection{P-Value}
 0.03 for datasettst\o{}rrelse, noe som indikerer at denne variabelen har en signifikant innflytelse p\aa{} modellens n\o{}yaktighet.
 
+\subsection{Feature Importance fra Random Forest}
+For å evaluere de mest avgjørende variablene i prediksjonen ble en Random Forest-modell trent, og feature importance ble plottet:
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{feature_importance_rf.png}
+    \caption{Feature Importance for Random Forest-modellen}
+\end{figure}
+
 \section{Diskusjon}
-Resultatene viste at datasettst\o{}rrelse hadde en positiv og signifikant effekt p\aa{} modellens n\o{}yaktighet, mens tekstens kompleksitet hadde en negativ innvirkning. Modellvalg hadde minimal effekt sammenlignet med de to andre variablene. Dette tyder p\aa{} at for tekstklassifiseringsoppgaver er det viktigere \aa{} fokusere p\aa{} datakvalitet og mengde enn \aa{} velge mellom ulike modeller.
+Resultatene viste at datasettstørrelse hadde en positiv og signifikant effekt på modellens nøyaktighet, mens tekstens kompleksitet hadde en negativ innvirkning. Modellvalg hadde minimal effekt sammenlignet med de to andre variablene. Dette tyder på at for tekstklassifiseringsoppgaver er det viktigere å fokusere på datakvalitet og mengde enn å velge mellom ulike modeller.
 
 \subsection{Usikkerhetsmomenter}
 Gjennom prosessen fant vi flere usikkerhetsmomenter:
 \begin{itemize}
-    \item \textbf{Tidspunkt for Dataregistrering}: Noen tekster ble klassifisert p\aa{} forskjellige tidspunkter, noe som kan ha p\'avirket resultatene.
-    \item \textbf{Variasjoner i Tekstkompleksitet}: Definisjonen av kompleksitet kan v\ae{}re subjektiv, og noen vurderinger kan ha v\ae{}rt inkonsekvente.
-    \item \textbf{Antall Tekstpr\o{}ver}: Bare 30 tekstpr\o{}ver ble brukt, noe som kan v\ae{}re en begrensning for modellens generaliserbarhet.
+    \item \textbf{Tidspunkt for Dataregistrering}: Noen tekster ble klassifisert på forskjellige tidspunkter, noe som kan ha påvirket resultatene.
+    \item \textbf{Variasjoner i Tekstkompleksitet}: Definisjonen av kompleksitet kan være subjektiv, og noen vurderinger kan ha vært inkonsekvente.
+    \item \textbf{Antall Tekstprøver}: Bare 30 tekstprøver ble brukt, noe som kan være en begrensning for modellens generaliserbarhet.
 \end{itemize}
 
 \section{Konklusjon}
-Datasettst\o{}rrelse er en viktig faktor som p\'avirker n\o{}yaktigheten til maskinl\ae{}ringsmodeller for tekstklassifisering. Tekstens kompleksitet reduserer modellens ytelse, mens valg av modell har en mindre, men positiv effekt. Videre arbeid kan inkludere flere typer tekster, flere maskinl\ae{}ringsmodeller, og en lengre periode med datainnsamling.
+Datasettstørrelse er en viktig faktor som påvirker nøyaktigheten til maskinlæringsmodeller for tekstklassifisering. Tekstens kompleksitet reduserer modellens ytelse, mens valg av modell har en mindre, men positiv effekt. Videre arbeid kan inkludere flere typer tekster, flere maskinlæringsmodeller, og en lengre periode med datainnsamling.
 
 \section{Potensielt Videre Arbeid}
 \begin{itemize}
     \item \textbf{Forbedring av Datainnhenting}: Automatisert tekstgenerering og bruk av flere datasett.
-    \item \textbf{Videre Analyse}: Inkludering av flere modelltyper som dype nevrale nettverk for \aa{} evaluere forskjeller.
-    \item \textbf{Maskinsyn for Dataevaluering}: Bruke maskinsynsalgoritmer til \aa{} evaluere og analysere tekstens kompleksitet mer n\o{}yaktig.
-    \item \textbf{Automatisering av Prosessen}: Implementere automatiserte klassifiseringsprosesser for \aa{} redusere menneskelig feil og subjektiv vurdering.
+    \item \textbf{Videre Analyse}: Inkludering av flere modelltyper som dype nevrale nettverk for å evaluere forskjeller.
+    \item \textbf{Maskinsyn for Dataevaluering}: Bruke maskinsynsalgoritmer til å evaluere og analysere tekstens kompleksitet mer nøyaktig.
+    \item \textbf{Automatisering av Prosessen}: Implementere automatiserte klassifiseringsprosesser for å redusere menneskelig feil og subjektiv vurdering.
 \end{itemize}
-
+\citep{nyberg2017statistikk}
+\citep{bakken2009multippel}
+\citep{nyberg2023statistical}
+\citep{openai2023chatgpt}
+\bibliography{references}
 \end{document}
-

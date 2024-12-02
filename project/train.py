@@ -106,8 +106,22 @@ fig = sm.graphics.plot_partregress_grid(ols_model, fig=fig)
 plt.savefig('ols_regression_plots.png')
 plt.show()
 
-# Save the processed dataset for future use
-dataset.to_csv('processed_text_data.csv', index=False)
+# Posterior probability estimation using Bayesian approach (hypothetical example)
+# Note: In real implementation, posterior distributions would be computed for parameter estimation
+def posterior_estimation():
+    # Assuming a prior and calculating posterior as an illustration
+    prior_mean = 0
+    prior_variance = 1
+    likelihood_mean = y_train.mean()
+    likelihood_variance = y_train.var()
+    
+    posterior_mean = (prior_mean / prior_variance + likelihood_mean / likelihood_variance) / (1 / prior_variance + 1 / likelihood_variance)
+    posterior_variance = 1 / (1 / prior_variance + 1 / likelihood_variance)
+    
+    print(f'Posterior Mean: {posterior_mean}')
+    print(f'Posterior Variance: {posterior_variance}')
+
+posterior_estimation()
 
 # Example usage with a Support Vector Machine (SVR) model
 # Hyperparameter tuning for SVR
