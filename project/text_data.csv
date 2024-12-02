@@ -115,7 +115,7 @@ The global solar PV market continues to expand as costs fall.,kort,lav,SVM,0.812
 Electric heating systems are becoming more popular as they integrate with renewables.,lang,hoy,Naive Bayes,0.7235
 The role of offshore wind farms is growing in national energy strategies.,lang,middels,BERT,0.7947
 Waste-to-energy plants convert municipal waste into usable energy.,kort,middels,SVM,0.7832
-Renewable energy is often site-specific, requiring careful planning and development.,lang,hoy,Naive Bayes,0.7465
+Renewable energy is often site-specific requiring careful planning and development.,lang,hoy,Naive Bayes,0.7465
 A gas turbine can also be powered using sunflower oil.,trap,hoy,SVM,0.5021
 The development of renewable hydrogen infrastructure is accelerating.,lang,middels,BERT,0.7568
 The energy transition will be supported by advancements in grid storage technologies.,kort,hoy,Naive Bayes,0.7354
@@ -125,12 +125,12 @@ Solar power plants can provide clean energy for local communities and industries
 The exploration of geothermal energy resources is expanding worldwide.,middels,hoy,BERT,0.8237
 Wind farm planning must take into account environmental impact assessments.,lang,middels,SVM,0.7643
 Advances in photovoltaic materials are making solar panels more efficient.,kort,middels,Naive Bayes,0.7851
-Hydropower reservoirs contribute to methane emissions, which is a greenhouse gas.,lang,hoy,BERT,0.7135
+Hydropower reservoirs contribute to methane emissions which is a greenhouse gas.,lang,hoy,BERT,0.7135
 Investing in renewable energy is increasingly attractive to investors.,kort,lav,SVM,0.8395
 Hybrid renewable systems combine different types of renewable energy sources.,lang,middels,Naive Bayes,0.7518
 Concentrated solar power systems use mirrors to focus sunlight onto a small area.,lang,hoy,BERT,0.7684
 The decline in battery costs has made electric vehicles more affordable.,kort,middels,SVM,0.7917
-Energy storage is a key component of a flexible, renewable energy system.,lang,hoy,Naive Bayes,0.7274
+Energy storage is a key component of a flexible renewable energy system.,lang,hoy,Naive Bayes,0.7274
 Wave energy systems convert the kinetic energy of ocean waves into electricity.,lang,middels,BERT,0.8196
 Distributed generation is changing the way we think about the power grid.,kort,lav,SVM,0.8023
 Biofuels have the potential to replace fossil fuels in aviation.,lang,hoy,Naive Bayes,0.7139
@@ -143,7 +143,7 @@ Electric vehicles reduce greenhouse gas emissions compared to internal combustio
 The transition to a green economy will require global cooperation.,lang,middels,BERT,0.8059
 Grid integration of renewables is challenging due to variability in energy supply.,lang,hoy,SVM,0.7784
 The deployment of renewable energy is supported by declining technology costs.,kort,middels,Naive Bayes,0.7821
-Deep geothermal energy can provide continuous, reliable heat and power.,lang,lav,BERT,0.8362
+Deep geothermal energy can provide continuous reliable heat and power.,lang,lav,BERT,0.8362
 The electrification of heating is an important step towards decarbonization.,lang,hoy,SVM,0.7227
 Hydropower provides significant renewable electricity globally.,kort,middels,Naive Bayes,0.7932
 Vertical wind turbines are being tested for urban areas.,kort,lav,BERT,0.8124
@@ -157,7 +157,7 @@ The reliability of renewable energy sources can be improved with smart grid tech
 Pumped hydro storage is the most widely-used form of large-scale energy storage.,kort,middels,Naive Bayes,0.8069
 Electric ferries are being adopted to reduce maritime emissions.,lang,hoy,BERT,0.7194
 Solar power plants are increasingly located in desert regions.,lang,middels,SVM,0.7856
-Ocean energy projects include wave, tidal, and thermal energy conversion.,lang,lav,Naive Bayes,0.7478
+Ocean energy projects include wave tidal and thermal energy conversion.,lang,lav,Naive Bayes,0.7478
 The global shift to renewable energy will require new skills and workforce training.,lang,hoy,BERT,0.7431
 Heat pumps are a highly efficient way to provide heating and cooling.,kort,middels,SVM,0.8324
 Carbon pricing is one policy tool to incentivize emissions reductions.,lang,hoy,Naive Bayes,0.7152
@@ -205,7 +205,7 @@ Wind turbine blade recycling is a growing challenge for the industry.,lang,midde
 Hydrogen produced from natural gas can be low-carbon with carbon capture.,lang,hoy,Naive Bayes,0.7229
 The renewable energy transition is creating new economic opportunities.,lang,middels,BERT,0.7815
 Small modular reactors (SMRs) are a new type of nuclear energy technology.,lang,lav,SVM,0.8091
-Energy storage technologies include batteries, pumped hydro, and flywheels.,kort,middels,Naive Bayes,0.7893
+Energy storage technologies include batteries pumped hydro and flywheels.,kort,middels,Naive Bayes,0.7893
 Direct air capture (DAC) can remove carbon dioxide from the atmosphere.,lang,hoy,BERT,0.7441
 Biofuel production can provide a use for agricultural waste.,lang,middels,SVM,0.7716
 The electrification of ports can reduce emissions from shipping.,lang,hoy,Naive Bayes,0.7153
@@ -216,7 +216,7 @@ Electric trucks are being developed to reduce emissions from freight transport.,
 Solar energy can be stored as thermal energy in molten salt systems.,lang,hoy,SVM,0.7346
 Smart grid technologies are needed to manage decentralized energy production.,lang,middels,Naive Bayes,0.7489
 Renewable natural gas can be injected into existing natural gas pipelines.,kort,lav,BERT,0.8072
-Ocean energy technologies include wave, tidal, and ocean thermal energy.,lang,hoy,SVM,0.7186
+Ocean energy technologies include wave tidal and ocean thermal energy.,lang,hoy,SVM,0.7186
 Battery-powered ferries are being used in Norway to reduce maritime emissions.,lang,middels,Naive Bayes,0.7517
 Solar PV efficiency improvements are driving down the cost of solar power.,kort,middels,BERT,0.7819
 Electrification of residential heating systems reduces reliance on fossil fuels.,lang,hoy,SVM,0.7297
@@ -378,7 +378,7 @@ Electrification of space heating is reducing reliance on fossil fuels.,lang,hoy,
 The expansion of renewable energy is driving economic growth.,kort,middels,SVM,0.7894
 Wind energy projects are creating jobs in rural areas.,lang,hoy,Naive Bayes,0.7519
 Renewable hydrogen is produced through the electrolysis of water.,lang,middels,BERT,0.7435
-The cost of battery storage is decreasing, enabling more renewable use.,lang,hoy,SVM,0.7338
+The cost of battery storage is decreasing enabling more renewable use.,lang,hoy,SVM,0.7338
 Electricity generation from tidal power is still in the early stages.,kort,lav,Naive Bayes,0.8058
 Renewable energy sources are key to reducing greenhouse gas emissions.,lang,middels,BERT,0.7517
 Hydropower reservoirs can store energy for long periods.,lang,hoy,SVM,0.7287
